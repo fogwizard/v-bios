@@ -11,9 +11,29 @@ static int main(void)
 	VfsInit();
 	ExecShell();
 }
-static void SysInit(void)
+static void DisableWatchDog(void)
 {
 
+}
+static void InitInterrupt(void)
+{
+
+}
+static void InitClock(void)
+{
+
+}
+static void InitUart0(void)
+{
+
+}
+
+static void SysInit(void)
+{
+	DisableWatchDog();
+	InitInterrupt();
+	InitClock();
+	InitUart0();
 }
 static void VfsInit(void)
 {
