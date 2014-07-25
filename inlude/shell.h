@@ -1,0 +1,1 @@
+#define UartGetChar(n) Uart##n##GetChar()

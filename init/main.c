@@ -4,6 +4,7 @@ static void VfsInit(void);
 static void ExecShell(void); 
 
 char chByteCmdbuf[256];
+char chByteCommandLine[10][32];
 
 static int main(void)
 {

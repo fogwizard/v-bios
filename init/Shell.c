@@ -1,3 +1,4 @@
+#define SET_VALUE(var,val) do{var=val;}while(0)
 void ReadCmd(char *buf);
 void ExecCmd(char *buf);
 
@@ -6,14 +7,14 @@ void ReadCmd(char *buf)
 	static char chByteReceive;
 	static int  int32Len=0;;
 	while(1){
-		chByteReceive=GetChar();
-		int32Len++;
-		if ((0x0a== chByteReceive)&&(0x0d==(*buf))){
-			EatingTheSpace(buf,(int32Len-1));
-		    return;
-		}else{
+		  chByteReceive=UartGetChar(0);
+		  int32Len++;
+		  if ((0x0a== chByteReceive)&&(0x0d==(*buf))){
+			  AnalysisCMD(buf,(int32Len-1));
+		      return;
+		  }else{
 			*buf++=chByteReceive;
-		}
+		  }  
 	}
 }
 static StrCmp(char *str1,char *str2)
@@ -36,34 +37,56 @@ void ExecCmd(char *buf)
 	    }
 	}
 }
-static void StrMoveForward(char *buf,char len)
+static int AnalysisCMD(char *buf,int len)
 {
-	char *from;
-	char *to;
-	char i;
-	buf++;
-	to=buf;
-	from=buf+1;
-	while((' '=(*buf))||(0x09=(*buf))){
-		for ( i = 0 ; i <len ; i++ ){
-		    *to++=*from++;
-		}
-	}
-}
-static void EatingTheSpace(char *buf,char len)
-{
+	static enum{
+		Command,
+		Params,
+	}s_Analysis;
+	static enum{
+		SpaceInFront,
+		SpaceInBack,
+	}s_SpaceFlag;
+	int argc=0;
+	char ch=0;
+	char index=0;
+	s_Analysis=Command;
+	s_SpaceFlag=SpaceInFront;
 	while(len--){
-		if(((*buf)>='0')&&(((*buf)>='0')){
-			
-		}else if(((*buf)>='A')&&(((*buf)>='z')){
-		
-		}else{
-			if((' '=(*buf))||(0x09=(*buf))){
-				StrMoveForward(buf,len);
-			}
+		ch=*buf;
+		switch ( s_Analysis){
+		    case Command:
+		        if((' '==ch)||('\t'==ch)){
+					if(SpaceInFront!=s_SpaceFlag){
+						s_SpaceFlag=SpaceInFront;
+						chByteCommandLine[argc][index]='\0';//end Charater
+						argc++;
+				        SET_VALUE(index,0);
+						s_Analysis=Params;	
+					}
+					break;
+			    }
+				chByteCommandLine[argc][index++]=ch;
+				s_SpaceFlag=SpaceInBack;
+		        break;
+		    case Params:
+		        if((' '==ch)||('\t'==ch)){
+					if(SpaceInFront!=s_SpaceFlag){
+						s_SpaceFlag=SpaceInFront;
+						argc++;	
+						SET_VALUE(index,0);
+					}
+					break;
+			    }
+				chByteCommandLine[argc][index++]=ch;
+				s_SpaceFlag=SpaceInBack;
+		        break;
+		    default:
+		        break;
 		}
-		*buf++;
+		buf++;
 	}
+	return (argc+1);//the param is from 0 up to...
 }
 
 
