@@ -1,6 +1,10 @@
 #define SET_VALUE(var,val) do{var=val;}while(0)
 void ReadCmd(char *buf);
 void ExecCmd(char *buf);
+static StrCmp(char *str1,char *str2);
+
+
+static int s_g_argc=0;
 
 void ReadCmd(char *buf)
 {
@@ -10,11 +14,24 @@ void ReadCmd(char *buf)
 		  chByteReceive=UartGetChar(0);
 		  int32Len++;
 		  if ((0x0a== chByteReceive)&&(0x0d==(*buf))){
-			  AnalysisCMD(buf,(int32Len-1));
+			  s_g_argc=AnalysisCMD(buf,(int32Len-1));
 		      return;
 		  }else{
 			*buf++=chByteReceive;
+			UartPrintChar(0,chByteReceive);
 		  }  
+	}
+}
+void ExecCmd(char *buf)
+{
+	int i;
+	int argc=s_g_argc;
+	char * * argv=chByteCommandLine;
+	char *Name;
+	for ( i = 0 ;NULL!=SysCallTable[i].main; i++ ){
+	    if(TRUE==StrCmp(Name,SysCallTable[i].Name){
+			*(SysCallTable[i].main)(argc,argv);
+	    }
 	}
 }
 static StrCmp(char *str1,char *str2)
@@ -25,18 +42,10 @@ static StrCmp(char *str1,char *str2)
 	}
 	return (*str1-*str2);
 }
-void ExecCmd(char *buf)
-{
-	int i;
-	int argc;
-	char * * argv;
-	char *Name;
-	for ( i = 0 ;NULL!=SysCallTable[i].main; i++ ){
-	    if(TRUE==StrCmp(Name,SysCallTable[i].Name){
-			*(SysCallTable[i].main)(argc,argv);
-	    }
-	}
-}
+
+/*******************************************************
+         函 数 名  : AnalysisCMD,此函数已经验证
+*******************************************************/
 static int AnalysisCMD(char *buf,int len)
 {
 	static enum{
