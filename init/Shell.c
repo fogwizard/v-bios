@@ -1,3 +1,4 @@
+#include "Typedef.h"
 #define SET_VALUE(var,val) do{var=val;}while(0)
 void ReadCmd(char *buf);
 void ExecCmd(char *buf);
@@ -29,7 +30,7 @@ void ExecCmd(char *buf)
 	char * * argv=chByteCommandLine;
 	char *Name;
 	for ( i = 0 ;NULL!=SysCallTable[i].main; i++ ){
-	    if(TRUE==StrCmp(Name,SysCallTable[i].Name){
+	    if(False!=StrCmp(Name,SysCallTable[i].Name){
 			*(SysCallTable[i].main)(argc,argv);
 	    }
 	}

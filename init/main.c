@@ -28,6 +28,11 @@ static void InitUart0(void)
 {
 
 }
+static void InitEth(void)
+{
+
+}
+
 
 static void SysInit(void)
 {
@@ -35,6 +40,7 @@ static void SysInit(void)
 	InitInterrupt();
 	InitClock();
 	InitUart0();
+    InitEth();
 }
 static void VfsInit(void)
 {
