@@ -1,4 +1,11 @@
 #include "common.h"
+int ShowString(const char *dat)
+{
+	int i;
+	for(i=0;i<10;i++){
+
+	}
+}
 void THLoadBH(void)
 {
 	char ch;
@@ -17,16 +24,16 @@ void THLoadBH(void)
 		        LoadFromUart();
 		        break;
 		    default:
-				printf("Press 0 or 1 please\n");
+				ShowString("Press 0 or 1 please\n");
 				break;
 		}
 	}
 
 }
-#define THRunBH() do{*BHAddress();}while(0) 
+#define THRunBH() do{((void (*)())x)();}while(0) 
 void main(void)
 {
-	static void (*BHaddress)(void)=0x30100000;
+	long x=0x30100000;
 	THInitClock();
 	THInitUart();
 	THInitFlash();
