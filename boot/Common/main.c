@@ -6,6 +6,16 @@ int ShowString(const char *dat)
 
 	}
 }
+
+int LoadFromFlash(void)
+{
+
+}
+int LoadFromUart(void)
+{
+
+}
+
 void THLoadBH(void)
 {
 	char ch;
@@ -30,12 +40,18 @@ void THLoadBH(void)
 	}
 
 }
+
+void THInitClock(void);
+void THInitnUart(void);
+void THInitFlash(void);
+
+
 #define THRunBH() do{((void (*)())x)();}while(0) 
 void main(void)
 {
 	long x=0x30100000;
 	THInitClock();
-	THInitUart();
+	THInitnUart();
 	THInitFlash();
 	THLoadBH();
 	THRunBH();
