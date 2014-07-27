@@ -16,6 +16,10 @@ int LoadFromUart(void)
 
 }
 
+unsigned char UartGetChar(char n)
+{
+	return 'n';
+}
 void THLoadBH(void)
 {
 	char ch;
@@ -41,13 +45,19 @@ void THLoadBH(void)
 
 }
 
-void THInitClock(void);
-void THInitnUart(void);
-void THInitFlash(void);
+void THInitClock(void)
+{
+}
+void THInitnUart(void)
+{
+}
+void THInitFlash(void)
+{
+}
 
 
 #define THRunBH() do{((void (*)())x)();}while(0) 
-void main(void)
+int main(void)
 {
 	long x=0x30100000;
 	THInitClock();
@@ -55,4 +65,5 @@ void main(void)
 	THInitFlash();
 	THLoadBH();
 	THRunBH();
+	return 0;
 }
