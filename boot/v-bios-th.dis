@@ -1,0 +1,143 @@
+
+g-bios-th.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <ShowString>:
+   0:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+   4:	e28db000 	add	fp, sp, #0	; 0x0
+   8:	e24dd014 	sub	sp, sp, #20	; 0x14
+   c:	e50b0010 	str	r0, [fp, #-16]
+  10:	e3a03000 	mov	r3, #0	; 0x0
+  14:	e50b3008 	str	r3, [fp, #-8]
+  18:	ea000002 	b	28 <ShowString+0x28>
+  1c:	e51b3008 	ldr	r3, [fp, #-8]
+  20:	e2833001 	add	r3, r3, #1	; 0x1
+  24:	e50b3008 	str	r3, [fp, #-8]
+  28:	e51b3008 	ldr	r3, [fp, #-8]
+  2c:	e3530009 	cmp	r3, #9	; 0x9
+  30:	dafffff9 	ble	1c <ShowString+0x1c>
+  34:	e28bd000 	add	sp, fp, #0	; 0x0
+  38:	e8bd0800 	pop	{fp}
+  3c:	e12fff1e 	bx	lr
+
+00000040 <LoadFromFlash>:
+  40:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+  44:	e28db000 	add	fp, sp, #0	; 0x0
+  48:	e24dd00c 	sub	sp, sp, #12	; 0xc
+  4c:	e28bd000 	add	sp, fp, #0	; 0x0
+  50:	e8bd0800 	pop	{fp}
+  54:	e12fff1e 	bx	lr
+
+00000058 <LoadFromUart>:
+  58:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+  5c:	e28db000 	add	fp, sp, #0	; 0x0
+  60:	e24dd00c 	sub	sp, sp, #12	; 0xc
+  64:	e28bd000 	add	sp, fp, #0	; 0x0
+  68:	e8bd0800 	pop	{fp}
+  6c:	e12fff1e 	bx	lr
+
+00000070 <UartGetChar>:
+  70:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+  74:	e28db000 	add	fp, sp, #0	; 0x0
+  78:	e24dd00c 	sub	sp, sp, #12	; 0xc
+  7c:	e1a03000 	mov	r3, r0
+  80:	e54b3005 	strb	r3, [fp, #-5]
+  84:	e3a0306e 	mov	r3, #110	; 0x6e
+  88:	e1a00003 	mov	r0, r3
+  8c:	e28bd000 	add	sp, fp, #0	; 0x0
+  90:	e8bd0800 	pop	{fp}
+  94:	e12fff1e 	bx	lr
+
+00000098 <THLoadBH>:
+  98:	e92d4800 	push	{fp, lr}
+  9c:	e28db004 	add	fp, sp, #4	; 0x4
+  a0:	e24dd010 	sub	sp, sp, #16	; 0x10
+  a4:	e59f0060 	ldr	r0, [pc, #96]	; 10c <THLoadBH+0x74>
+  a8:	ebffffd4 	bl	0 <ShowString>
+  ac:	e59f005c 	ldr	r0, [pc, #92]	; 110 <THLoadBH+0x78>
+  b0:	ebffffd2 	bl	0 <ShowString>
+  b4:	e59f0058 	ldr	r0, [pc, #88]	; 114 <THLoadBH+0x7c>
+  b8:	ebffffd0 	bl	0 <ShowString>
+  bc:	e3a00000 	mov	r0, #0	; 0x0
+  c0:	ebffffea 	bl	70 <UartGetChar>
+  c4:	e1a03000 	mov	r3, r0
+  c8:	e54b3005 	strb	r3, [fp, #-5]
+  cc:	e55b3005 	ldrb	r3, [fp, #-5]
+  d0:	e50b3010 	str	r3, [fp, #-16]
+  d4:	e51b3010 	ldr	r3, [fp, #-16]
+  d8:	e3530030 	cmp	r3, #48	; 0x30
+  dc:	0a000003 	beq	f0 <THLoadBH+0x58>
+  e0:	e51b3010 	ldr	r3, [fp, #-16]
+  e4:	e3530031 	cmp	r3, #49	; 0x31
+  e8:	0a000002 	beq	f8 <THLoadBH+0x60>
+  ec:	ea000003 	b	100 <THLoadBH+0x68>
+  f0:	ebffffd2 	bl	40 <LoadFromFlash>
+  f4:	eafffff0 	b	bc <THLoadBH+0x24>
+  f8:	ebffffd6 	bl	58 <LoadFromUart>
+  fc:	eaffffee 	b	bc <THLoadBH+0x24>
+ 100:	e59f0010 	ldr	r0, [pc, #16]	; 118 <THLoadBH+0x80>
+ 104:	ebffffbd 	bl	0 <ShowString>
+ 108:	eaffffeb 	b	bc <THLoadBH+0x24>
+ 10c:	000001c0 	.word	0x000001c0
+ 110:	000001d4 	.word	0x000001d4
+ 114:	000001f4 	.word	0x000001f4
+ 118:	00000214 	.word	0x00000214
+
+0000011c <THInitClock>:
+ 11c:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+ 120:	e28db000 	add	fp, sp, #0	; 0x0
+ 124:	e28bd000 	add	sp, fp, #0	; 0x0
+ 128:	e8bd0800 	pop	{fp}
+ 12c:	e12fff1e 	bx	lr
+
+00000130 <THInitnUart>:
+ 130:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+ 134:	e28db000 	add	fp, sp, #0	; 0x0
+ 138:	e28bd000 	add	sp, fp, #0	; 0x0
+ 13c:	e8bd0800 	pop	{fp}
+ 140:	e12fff1e 	bx	lr
+
+00000144 <THInitFlash>:
+ 144:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+ 148:	e28db000 	add	fp, sp, #0	; 0x0
+ 14c:	e28bd000 	add	sp, fp, #0	; 0x0
+ 150:	e8bd0800 	pop	{fp}
+ 154:	e12fff1e 	bx	lr
+
+00000158 <main>:
+ 158:	e92d4800 	push	{fp, lr}
+ 15c:	e28db004 	add	fp, sp, #4	; 0x4
+ 160:	e24dd008 	sub	sp, sp, #8	; 0x8
+ 164:	e3a03203 	mov	r3, #805306368	; 0x30000000
+ 168:	e2833601 	add	r3, r3, #1048576	; 0x100000
+ 16c:	e50b3008 	str	r3, [fp, #-8]
+ 170:	ebffffe9 	bl	11c <THInitClock>
+ 174:	ebffffed 	bl	130 <THInitnUart>
+ 178:	ebfffff1 	bl	144 <THInitFlash>
+ 17c:	ebffffc5 	bl	98 <THLoadBH>
+ 180:	e51b3008 	ldr	r3, [fp, #-8]
+ 184:	e1a0e00f 	mov	lr, pc
+ 188:	e12fff13 	bx	r3
+ 18c:	e3a03000 	mov	r3, #0	; 0x0
+ 190:	e1a00003 	mov	r0, r3
+ 194:	e24bd004 	sub	sp, fp, #4	; 0x4
+ 198:	e8bd8800 	pop	{fp, pc}
+ 19c:	e3a0da01 	mov	sp, #4096	; 0x1000
+ 1a0:	eb000003 	bl	1b4 <AsmInitWatchDog>
+ 1a4:	eb000003 	bl	1b8 <AsmInitInterrupt>
+ 1a8:	eb000003 	bl	1bc <AsminitSDRAM>
+ 1ac:	ebffffe9 	bl	158 <main>
+
+000001b0 <loop>:
+ 1b0:	ebfffffe 	bl	1b0 <loop>
+
+000001b4 <AsmInitWatchDog>:
+ 1b4:	e1a0f00e 	mov	pc, lr
+
+000001b8 <AsmInitInterrupt>:
+ 1b8:	e1a0f00e 	mov	pc, lr
+
+000001bc <AsminitSDRAM>:
+ 1bc:	e1a0f00e 	mov	pc, lr
