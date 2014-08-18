@@ -1,4 +1,11 @@
 #include "common.h"
+#define Readl() 0x50
+#define Writel(addr,n) do{*((unsigned long *)addr)=n;}while(0)
+void SendByte(unsigned char n)
+{
+	while(Readl()&0x02);
+	Writel(0x50000020,n);
+}	
 int ShowString(const char *dat)
 {
 	int i;

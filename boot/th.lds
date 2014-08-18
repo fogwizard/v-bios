@@ -1,10 +1,10 @@
 ENTRY(TH_START)
-
 SECTIONS
 {
 	.text 0x0:
 	{ 
 		TH_START = .;
+		*(.text.TH_START)
 		*(.text)
 	}
 

@@ -24,4 +24,5 @@ TH:
 clean:
 	@echo   $(SourceOBJ)
 	rm -rf $(SourceOBJ)
+	@make -C boot clean
 disclean:
