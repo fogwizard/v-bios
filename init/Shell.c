@@ -1,103 +1,109 @@
 #include "Typedef.h"
+#include "shell.h"
+#include "SysCall.h"
+#include "util.h"
 #define SET_VALUE(var,val) do{var=val;}while(0)
-void ReadCmd(char *buf);
-void ExecCmd(char *buf);
-static StrCmp(char *str1,char *str2);
 
+int
+ReadCmd (char *buf, char *argv[]);
+int
+ExecCmd (int argc, char *argv[]);
 
-static int s_g_argc=0;
-
-void ReadCmd(char *buf)
+fsm_rt_t
+read_params(int argc)
 {
-	static char chByteReceive;
-	static int  int32Len=0;;
-	while(1){
-		  chByteReceive=UartGetChar(0);
-		  int32Len++;
-		  if ((0x0a== chByteReceive)&&(0x0d==(*buf))){
-			  s_g_argc=AnalysisCMD(buf,(int32Len-1));
-		      return;
-		  }else{
-			*buf++=chByteReceive;
-			UartPrintChar(0,chByteReceive);
-		  }  
+    char c;
+    int i=0;
+    do
+    {
+	c=UartGetChar(0);
+	chByteCommandLine[argc][i]=c;
+	if((0==i)&&(('\t'==c)||('\t'==c)))//spase in front
+	{
+	     continue;
 	}
-}
-void ExecCmd(char *buf)
-{
-	int i;
-	int argc=s_g_argc;
-	char * * argv=chByteCommandLine;
-	char *Name;
-	for ( i = 0 ;NULL!=SysCallTable[i].main; i++ ){
-	    if(False!=StrCmp(Name,SysCallTable[i].Name){
-			*(SysCallTable[i].main)(argc,argv);
+	else
+	{
+	    if(c!=KEY_ENTER)
+	    {
+		UartPrintChar(0,c);
+		i++;//for delete the enter key...
 	    }
 	}
-}
-static StrCmp(char *str1,char *str2)
-{
-	while((*str1)&&(*str2)&&(*str1==*str2)){
-		str1++;
-		str2++;
+	if((' '==c)||('\t'==c))//space in back
+	{
+	  chByteCommandLine[argc][i-1]='\0';//(i-1) is the space
+	  return fsm_rt_cpl;
 	}
-	return (*str1-*str2);
+    }while(c!=KEY_ENTER);
+    chByteCommandLine[argc][i]='\0';
+    return fsm_rt_err;
 }
 
-/*******************************************************
-         函 数 名  : AnalysisCMD,此函数已经验证
-*******************************************************/
-static int AnalysisCMD(char *buf,int len)
+int
+ReadCmd (char *buf, char *argv[])
 {
-	static enum{
-		Command,
-		Params,
-	}s_Analysis;
-	static enum{
-		SpaceInFront,
-		SpaceInBack,
-	}s_SpaceFlag;
-	int argc=0;
-	char ch=0;
-	char index=0;
-	s_Analysis=Command;
-	s_SpaceFlag=SpaceInFront;
-	while(len--){
-		ch=*buf;
-		switch ( s_Analysis){
-		    case Command:
-		        if((' '==ch)||('\t'==ch)){
-					if(SpaceInFront!=s_SpaceFlag){
-						s_SpaceFlag=SpaceInFront;
-						chByteCommandLine[argc][index]='\0';//end Charater
-						argc++;
-				        SET_VALUE(index,0);
-						s_Analysis=Params;	
-					}
-					break;
-			    }
-				chByteCommandLine[argc][index++]=ch;
-				s_SpaceFlag=SpaceInBack;
-		        break;
-		    case Params:
-		        if((' '==ch)||('\t'==ch)){
-					if(SpaceInFront!=s_SpaceFlag){
-						s_SpaceFlag=SpaceInFront;
-						argc++;	
-						SET_VALUE(index,0);
-					}
-					break;
-			    }
-				chByteCommandLine[argc][index++]=ch;
-				s_SpaceFlag=SpaceInBack;
-		        break;
-		    default:
-		        break;
-		}
-		buf++;
-	}
-	return (argc+1);//the param is from 0 up to...
+  int argc,r_s;
+  char  i;
+  enum\
+  {\
+    READ_START,\
+    READ_PARAMS,\
+    READ_FINISH,\
+  }s_state_read_cmd;
+  s_state_read_cmd=READ_START;
+  for (i = 0; i < CMD_ARG_MAX; ++i)//Init Pointer
+  {
+      argv[i] = chByteCommandLine[i];
+      chByteCommandLine[i][0]='\0';//end line
+  }
+  while (1)
+    {
+      switch (s_state_read_cmd)
+      {
+	case READ_START:
+	     argc=0;
+	     s_state_read_cmd=READ_PARAMS;
+	     break;
+	case READ_PARAMS:
+	      r_s=read_params(argc);
+	      if(fsm_rt_cpl==r_s)
+	      {
+		 s_state_read_cmd=READ_PARAMS;
+		 argc++;
+	      }
+	      else if(fsm_rt_err==r_s)
+	      {
+		   s_state_read_cmd=READ_FINISH;
+		   argc++;
+	      }
+	      break;
+	case READ_FINISH:
+	      UartPrintChar(0, '\r');
+	      UartPrintChar(0, '\n');
+	      return argc;
+	      break;
+      }
+    }
 }
-
+int
+ExecCmd (int argc, char *argv[])
+{
+  char *Name = argv[0];
+  int i;
+  TagSysCall *pCall;
+  printf("U input %s command\r\n",Name);
+  for (pCall = SYSCALL_BEGIN,i=0; pCall<SYSCALL_END; pCall++,i++)
+  {
+      printf("Support [%s]cmd\r\n",(*pCall).Name);
+      if (0==strcmp (Name,(*pCall).Name))
+	{
+	  (*pCall).main(argc,argv);
+	  return i;
+	}
+  }
+  printf("Command not find\r\n");
+  return -1;
+}
 
 

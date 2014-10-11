@@ -1,6 +1,2 @@
-typedef struct
-{
-	int (*main)(int argc,char **argv);
-	char *Name;
-}TagSysCall;
-TagSysCall SysCallTable[]={0};
+#include "Typedef.h"
+#include "SysCall.h"
