@@ -1,0 +1,1 @@
+extern bool init_flash(void);

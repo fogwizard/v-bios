@@ -4,8 +4,8 @@
 #include "stdio.h"
 static int main(int argc,char *argv[])
 {
-  printf("boot_linux.c is Running\r\n");
+  printf("ls.c is Running\r\n");
   return 0;
 }
 
-INSTALLAPP(boot,main);
+INSTALLAPP(ls,main);

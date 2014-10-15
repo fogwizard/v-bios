@@ -2,6 +2,9 @@
 #define	S3C2410_REG_H
 
 
+#define CONF_S3C2440
+
+
 // Memory Controller
 #define MEMCON_BASE     0x48000000
 #define BWSCON                0x00

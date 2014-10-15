@@ -4,25 +4,16 @@
 #include "util.h"
 #define THRunBH() do{((void (*)())BH_START_ADDRESS_MEM)();}while(0)
 
-void
-ShowString (const char *dat)
-{
-  while (*dat)
-    {
-      Uart0PrintChar(*dat++);
-    }
-}
+#define THINIT_FLASH() init_flash()
 
-int
-LoadFromFlash (void)
+
+int LoadFromFlash (void)
 {
   return 0;
 }
 
 
-
-int
-LoadFromUart (void)
+int LoadFromUart (void)
 {
   ULONG *p;
   v_bios_serial_load((void *)BH_START_ADDRESS_MEM);
@@ -33,8 +24,7 @@ LoadFromUart (void)
   }
   return 0;
 }
-void
-Delay (int t)
+void Delay (int t)
 {
   while (t--)
     ;
@@ -112,8 +102,7 @@ THInitSDRAM (void)
 
 
 
-int
-main (void)
+int main (void)
 {
   const char *banner = "V-bios Rev 0.0 \n\r";
   Delay (0xFFFF);
@@ -122,6 +111,7 @@ main (void)
   THInitnUart ();
   THInitFlash ();
   THInitSDRAM ();
+  THINIT_FLASH();
   THLoadBH ();
   THRunBH()
   ;

@@ -1,0 +1,113 @@
+
+buildin.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <main-0xc>:
+   0:	6e69616d 	.word	0x6e69616d
+   4:	00          	.byte	0x00
+   5:	00          	.byte	0x00
+   6:	0000      	.short	0x0000
+   8:	ff000008 	.word	0xff000008
+
+0000000c <main>:
+   c:	e1a0c00d 	mov	ip, sp
+  10:	e92dd800 	push	{fp, ip, lr, pc}
+  14:	e59f000c 	ldr	r0, [pc, #12]	; 28 <main+0x1c>
+  18:	e24cb004 	sub	fp, ip, #4	; 0x4
+  1c:	ebfffffe 	bl	0 <printf>
+  20:	e3a00000 	mov	r0, #0	; 0x0
+  24:	e89da800 	ldm	sp, {fp, sp, pc}
+  28:	00000000 	.word	0x00000000
+  2c:	6e69616d 	.word	0x6e69616d
+  30:	00736c5f 	.word	0x00736c5f
+  34:	ff000008 	.word	0xff000008
+
+00000038 <main_ls>:
+  38:	e1a0c00d 	mov	ip, sp
+  3c:	e92dd800 	push	{fp, ip, lr, pc}
+  40:	e59f000c 	ldr	r0, [pc, #12]	; 54 <main_ls+0x1c>
+  44:	e24cb004 	sub	fp, ip, #4	; 0x4
+  48:	ebfffffe 	bl	0 <printf>
+  4c:	e3a00000 	mov	r0, #0	; 0x0
+  50:	e89da800 	ldm	sp, {fp, sp, pc}
+  54:	00000000 	.word	0x00000000
+  58:	6e69616d 	.word	0x6e69616d
+  5c:	0064635f 	.word	0x0064635f
+  60:	ff000008 	.word	0xff000008
+
+00000064 <main_cd>:
+  64:	e1a0c00d 	mov	ip, sp
+  68:	e92dd800 	push	{fp, ip, lr, pc}
+  6c:	e59f000c 	ldr	r0, [pc, #12]	; 80 <main_cd+0x1c>
+  70:	e24cb004 	sub	fp, ip, #4	; 0x4
+  74:	ebfffffe 	bl	0 <printf>
+  78:	e3a00000 	mov	r0, #0	; 0x0
+  7c:	e89da800 	ldm	sp, {fp, sp, pc}
+  80:	00000000 	.word	0x00000000
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.rodata.str1.4>:
+   0:	746f6f62 	.word	0x746f6f62
+   4:	5f          	.byte	0x5f
+   5:	6c          	.byte	0x6c
+   6:	6e69      	.short	0x6e69
+   8:	632e7875 	.word	0x632e7875
+   c:	20736920 	.word	0x20736920
+  10:	6e6e7552 	.word	0x6e6e7552
+  14:	0d676e69 	.word	0x0d676e69
+  18:	0000000a 	.word	0x0000000a
+  1c:	00006463 	.word	0x00006463
+  20:	0000736c 	.word	0x0000736c
+  24:	746f6f62 	.word	0x746f6f62
+  28:	00000000 	.word	0x00000000
+
+Disassembly of section .APP:
+
+00000000 <cboot>:
+   0:	00000000 	.word	0x00000000
+   4:	1c          	.byte	0x1c
+   5:	00          	.byte	0x00
+	...
+
+00000008 <bboot>:
+   8:	00000000 	.word	0x00000000
+   c:	00000020 	.word	0x00000020
+
+00000010 <aboot>:
+  10:	00000000 	.word	0x00000000
+  14:	00000024 	.word	0x00000024
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00002941 	andeq	r2, r0, r1, asr #18
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000001f 	andeq	r0, r0, pc, lsl r0
+  10:	00543405 	subseq	r3, r4, r5, lsl #8
+  14:	01080206 	tsteq	r8, r6, lsl #4
+  18:	04120109 	ldreq	r0, [r2], #-265
+  1c:	01150114 	tsteq	r5, r4, lsl r1
+  20:	01180317 	tsteq	r8, r7, lsl r3
+  24:	021a0119 	andseq	r0, sl, #1073741830	; 0x40000006
+  28:	Address 0x00000028 is out of bounds.
+
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	5328203a 	teqpl	r8, #58	; 0x3a
+   8:	6372756f 	cmnvs	r2, #465567744	; 0x1bc00000
+   c:	20797265 	rsbscs	r7, r9, r5, ror #4
+  10:	202b2b47 	eorcs	r2, fp, r7, asr #22
+  14:	6574694c 	ldrbvs	r6, [r4, #-2380]!
+  18:	30303220 	eorscc	r3, r0, r0, lsr #4
+  1c:	2d317139 	ldfcss	f7, [r1, #-228]!
+  20:	29363731 	ldmdbcs	r6!, {r0, r4, r5, r8, r9, sl, ip, sp}
+  24:	332e3420 	teqcc	lr, #536870912	; 0x20000000
+  28:	Address 0x00000028 is out of bounds.
+

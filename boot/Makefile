@@ -1,6 +1,6 @@
 all: v-bios-th.elf v-bios-th.bin v-bios-th.dis
-src=head.s Common/main.c ../Drive/Uart/kermit.c ../Drive/Uart/Uart.c ../Drive/Misc/misc.c
-obj=head.o main.o kermit.o Uart.o misc.o
+src=head.s Common/main.c ../Drive/Uart/kermit.c ../Drive/Uart/Uart.c ../Drive/Misc/misc.c ../Drive/Flash/flash.c
+obj=head.o main.o kermit.o Uart.o misc.o flash.o
 
 $(obj): $(src)
 	$(CC) $(CCFLAG) -c $^ 

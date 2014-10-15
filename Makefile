@@ -16,7 +16,7 @@ CC=$(CROSS_COMPILE)gcc
 LD=$(CROSS_COMPILE)ld
 AS=$(CROSS_COMPILE)as
 LDFLAG=-m armelf_linux_eabi
-CCFLAG=-ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=$(CONFIG_BH_START_ADDRESS_MEM) -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -I $(TOP_DIR)/include
+CCFLAG=-ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=$(CONFIG_BH_START_ADDRESS_MEM) -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I $(TOP_DIR)/include
 export ARCH nCPU CROSS_COMPILE AS CC LD TOP_DIR CONFIG_TH_START_ADDRESS_MEM CONFIG_BH_START_ADDRESS_MEM LDFLAG CCFLAG buildin_obj
 BhSubDir=\
 arch \
@@ -35,11 +35,11 @@ BH: v-bios-bh.elf v-bios-bh.bin v-bios-bh.dis
 
 v-bios-bh.elf: 
 	@for dir in $(BhSubDir); do make -C $$dir all; done
-	$(LD) $(LDFLAG) -Tbh.lds -Ttext $(CONFIG_BH_START_ADDRESS_MEM) boot/head.o mm/buildin.o Core/buildin.o Drive/buildin.o init/buildin.o Lib/buildin.o -o $@
+	$(LD) $(LDFLAG) -T bh.lds -Ttext $(CONFIG_BH_START_ADDRESS_MEM) boot/head.o mm/buildin.o Core/buildin.o Drive/buildin.o init/buildin.o Lib/buildin.o App/buildin.o -o $@
 v-bios-bh.bin: v-bios-bh.elf
 	 $(CROSS_COMPILE)objcopy -O binary -S $< $@
 v-bios-bh.dis: v-bios-bh.elf
-	$(CROSS_COMPILE)objdump -d $< > $@
+	$(CROSS_COMPILE)objdump -D $< > $@
 
 clean:
 	@echo   $(SourceOBJ)

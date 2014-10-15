@@ -12,3 +12,10 @@ void Uart0PrintChar(BYTE n)
 	while(0==(0x04&(Readl(UART0_BASE+UTRSTAT))));
 	WriteByte(UART0_BASE+UTX,n);
 }
+void ShowString (const char *dat)
+{
+  while (*dat)
+    {
+      Uart0PrintChar(*dat++);
+    }
+}

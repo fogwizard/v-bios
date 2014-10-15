@@ -14,6 +14,7 @@ read_params(int argc)
 {
     char c;
     int i=0;
+    printf("<v-gios>");
     do
     {
 	c=UartGetChar(0);
@@ -92,10 +93,8 @@ ExecCmd (int argc, char *argv[])
   char *Name = argv[0];
   int i;
   TagSysCall *pCall;
-  printf("U input %s command\r\n",Name);
   for (pCall = SYSCALL_BEGIN,i=0; pCall<SYSCALL_END; pCall++,i++)
   {
-      printf("Support [%s]cmd\r\n",(*pCall).Name);
       if (0==strcmp (Name,(*pCall).Name))
 	{
 	  (*pCall).main(argc,argv);

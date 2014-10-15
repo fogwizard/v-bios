@@ -1,6 +1,8 @@
-typedef unsigned char BYTE,uchar,uint8_t;
-typedef unsigned int  bool,BOOL,WORD,uint,uint32_t,UINT32;
+typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;
+typedef unsigned int  WORD,uint,uint32_t,UINT32;
+typedef int  bool,BOOL,Bool;
 typedef unsigned long ULONG,ulong;
+
 typedef enum
 {
   fsm_rt_err=-1,
@@ -16,8 +18,13 @@ typedef union
   BYTE c[4];
 }UL,UI;
 
-#define NULL  (0)
-#define False (0)
-#define True  (!False)
 
+
+#define NULL  (0)
+#define false (0)
+#define true  (!False)
+#define TRUE  true 
+#define FALSE false
+#define True  true 
+#define False false
 

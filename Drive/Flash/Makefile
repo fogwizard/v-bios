@@ -1,6 +1,6 @@
-src+=boot_linux.c cd.c ls.c help.c
+src+=flash.c
 obj:=$(src:.c=.o)
-$(obj): $(src) 
+$(obj): $(src)
 	$(CC) -c $(CCFLAG) $^
 all: $(obj)
 	$(LD) -r $(LDFLAG) $^ -o buildin.o

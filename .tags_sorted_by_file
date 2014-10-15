@@ -1,0 +1,387 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+obj	App/Makefile	/^obj:=$(src:.c=.o)$/;"	m
+main	App/boot_linux.c	/^static int main(int argc,char *argv[])$/;"	f	file:
+main	App/cd.c	/^static int main(int argc,char *argv[])$/;"	f	file:
+ShowCommand	App/help.c	/^void ShowCommand(void)$/;"	f
+main	App/help.c	/^static int main(int argc,char *argv[])$/;"	f	file:
+main	App/ls.c	/^static int main(int argc,char *argv[])$/;"	f	file:
+obj	Core/Makefile	/^obj:=$(src:.c=.o)$/;"	m
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+obj	Drive/Flash/Makefile	/^obj:=$(src:.c=.o)$/;"	m
+init_flash	Drive/Flash/flash.c	/^bool init_flash(void)$/;"	f
+nand_read_byte	Drive/Flash/flash.c	/^static inline byte nand_read_byte(void)$/;"	f	file:
+nand_ready	Drive/Flash/flash.c	/^bool nand_ready(void)$/;"	f
+obj	Drive/Misc/Makefile	/^obj:=$(src:.c=.o)$/;"	m
+beep	Drive/Misc/misc.c	/^void beep(unsigned char ctl)$/;"	f
+obj	Drive/Uart/Makefile	/^obj:=$(src:.c=.o)$/;"	m
+ShowString	Drive/Uart/Uart.c	/^void ShowString (const char *dat)$/;"	f
+Uart0GetChar	Drive/Uart/Uart.c	/^char Uart0GetChar(void)$/;"	f
+Uart0PrintChar	Drive/Uart/Uart.c	/^void Uart0PrintChar(BYTE n)$/;"	f
+CaculateCheck	Drive/Uart/kermit.c	9;"	d	file:
+KermitGetChar	Drive/Uart/kermit.c	6;"	d	file:
+KermitPutChar	Drive/Uart/kermit.c	7;"	d	file:
+v_bios_serial_load	Drive/Uart/kermit.c	/^v_bios_serial_load(void *pLoadAddr)$/;"	f
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+obj	Lib/Makefile	/^obj   =arm\/buildin.o stdlib\/buildin.o$/;"	m
+subdir	Lib/Makefile	/^subdir=arm stdlib$/;"	m
+obj	Lib/arm/Makefile	/^obj:=$(src:.c=.o)$/;"	m
+obj_asm	Lib/arm/Makefile	/^obj_asm:=$(src_asm:.S=.o)$/;"	m
+__div0	Lib/arm/div0.c	/^void __div0(void)$/;"	f
+ENTRY	Lib/arm/lib1funcs.S	/^#define ENTRY(name) \\$/;"	d
+Ldiv0	Lib/arm/lib1funcs.S	/^Ldiv0:$/;"	l
+name	Lib/arm/lib1funcs.S	/^name:$/;"	l
+obj	Lib/stdlib/Makefile	/^obj:=$(src:.c=.o)$/;"	m
+LEFT	Lib/stdlib/stdio.c	15;"	d	file:
+LEFT	Lib/stdlib/stdio.c	6;"	d	file:
+NumToAscii	Lib/stdlib/stdio.c	/^static char *NumToAscii(char *pBuf,UINT32 nNum,int nWidth,int nBase,int nOutputStyle)$/;"	f	file:
+PLUS	Lib/stdlib/stdio.c	18;"	d	file:
+PLUS	Lib/stdlib/stdio.c	9;"	d	file:
+PrintBufMax	Lib/stdlib/stdio.c	13;"	d	file:
+SIGN	Lib/stdlib/stdio.c	16;"	d	file:
+SIGN	Lib/stdlib/stdio.c	7;"	d	file:
+SIGNINT	Lib/stdlib/stdio.c	11;"	d	file:
+SIGNINT	Lib/stdlib/stdio.c	20;"	d	file:
+SPACE	Lib/stdlib/stdio.c	17;"	d	file:
+SPACE	Lib/stdlib/stdio.c	8;"	d	file:
+ZERO	Lib/stdlib/stdio.c	10;"	d	file:
+ZERO	Lib/stdlib/stdio.c	19;"	d	file:
+printf	Lib/stdlib/stdio.c	/^int (printf)(const char *fmt, ...)$/;"	f
+vsprintf	Lib/stdlib/stdio.c	/^static int (vsprintf)(char *pchBuf, const char *pchFormat, int *pPara)$/;"	f	file:
+memset	Lib/stdlib/string.c	/^void *(memset)(void *s,int ch,int n)$/;"	f
+strcmp	Lib/stdlib/string.c	/^int (strcmp) (char *str1, char *str2)$/;"	f
+strlen	Lib/stdlib/string.c	/^int (strlen)(const char *fmt)$/;"	f
+ARCH	Makefile	/^ARCH=arm$/;"	m
+AS	Makefile	/^AS=$(CROSS_COMPILE)as$/;"	m
+BhSubDir	Makefile	/^BhSubDir=\\$/;"	m
+CC	Makefile	/^CC=$(CROSS_COMPILE)gcc$/;"	m
+CCFLAG	Makefile	/^CCFLAG=-ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=$(CONFIG_BH_START_ADDRESS_MEM) -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I $(TOP_DIR)\/include$/;"	m
+CONFIG_BH_START_ADDRESS_MEM	Makefile	/^CONFIG_BH_START_ADDRESS_MEM=0x33000000$/;"	m
+CONFIG_TH_START_ADDRESS_MEM	Makefile	/^CONFIG_TH_START_ADDRESS_MEM=0x00000000$/;"	m
+CROSS_COMPILE	Makefile	/^CROSS_COMPILE=arm-linux-$/;"	m
+LD	Makefile	/^LD=$(CROSS_COMPILE)ld$/;"	m
+LDFLAG	Makefile	/^LDFLAG=-m armelf_linux_eabi$/;"	m
+MENUCONFIG	Makefile	/^MENUCONFIG=.\/build\/menuconfig\/menuconfig$/;"	m
+SourceOBJ	Makefile	/^SourceOBJ=$(foreach dir,$(SubDirS),$(wildcard $(dir)*.o))$/;"	m
+SubDir	Makefile	/^SubDir =$(shell ls -R |grep \/)$/;"	m
+SubDirS	Makefile	/^SubDirS=$(subst :,\/,$(SubDir))$/;"	m
+TOP_DIR	Makefile	/^TOP_DIR=$(shell pwd)$/;"	m
+USER_HOME	Makefile	/^USER_HOME=$(shell echo $HOME)$/;"	m
+buildin_obj	Makefile	/^buildin_obj=buildin.o$/;"	m
+nCPU	Makefile	/^nCPU=s3c2440$/;"	m
+version	Makefile	/^version=0.0$/;"	m
+Delay	boot/Common/main.c	/^void Delay (int t)$/;"	f
+LoadFromFlash	boot/Common/main.c	/^int LoadFromFlash (void)$/;"	f
+LoadFromUart	boot/Common/main.c	/^int LoadFromUart (void)$/;"	f
+THINIT_FLASH	boot/Common/main.c	7;"	d	file:
+THInitClock	boot/Common/main.c	/^THInitClock (void)$/;"	f
+THInitFlash	boot/Common/main.c	/^THInitFlash (void)$/;"	f
+THInitSDRAM	boot/Common/main.c	/^THInitSDRAM (void)$/;"	f
+THInitnUart	boot/Common/main.c	/^THInitnUart (void)$/;"	f
+THLoadBH	boot/Common/main.c	/^THLoadBH (void)$/;"	f
+THRunBH	boot/Common/main.c	5;"	d	file:
+main	boot/Common/main.c	/^int main (void)$/;"	f
+obj	boot/Makefile	/^obj=head.o main.o kermit.o Uart.o misc.o flash.o$/;"	m
+src	boot/Makefile	/^src=head.s Common\/main.c ..\/Drive\/Uart\/kermit.c ..\/Drive\/Uart\/Uart.c ..\/Drive\/Misc\/misc.c ..\/Drive\/Flash\/flash.c$/;"	m
+AsmInitClock	boot/head.s	/^AsmInitClock:$/;"	l
+AsmInitUart	boot/head.s	/^AsmInitUart:$/;"	l
+AsmInitWatchDog	boot/head.s	/^AsmInitWatchDog:$/;"	l
+AsminitSDRAM	boot/head.s	/^AsminitSDRAM:$/;"	l
+BootLoaderMsg	boot/head.s	/^BootLoaderMsg:$/;"	l
+HandleDabt	boot/head.s	/^HandleDabt:$/;"	l
+HandleFiq	boot/head.s	/^HandleFiq:$/;"	l
+HandleIabt	boot/head.s	/^HandleIabt:$/;"	l
+HandleIrq	boot/head.s	/^HandleIrq:$/;"	l
+HandleReset	boot/head.s	/^HandleReset:$/;"	l
+HandleSwi	boot/head.s	/^HandleSwi:$/;"	l
+HandleUndefine	boot/head.s	/^HandleUndefine:$/;"	l
+Hang	boot/head.s	/^Hang:$/;"	l
+RamctlConst	boot/head.s	/^RamctlConst:$/;"	l
+TH_START	boot/head.s	/^TH_START:$/;"	l
+loop	boot/head.s	/^	loop: b loop$/;"	l
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+INSTALLAPP	include/SysCall.h	8;"	d
+Name	include/SysCall.h	/^	char *Name;$/;"	m	struct:__anon2
+TagSysCall	include/SysCall.h	/^}TagSysCall;$/;"	t	typeref:struct:__anon2
+main	include/SysCall.h	/^	int (*main)(int argc,char *argv[]);$/;"	m	struct:__anon2
+BOOL	include/Typedef.h	/^typedef int  bool,BOOL,Bool;$/;"	t
+BYTE	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
+Bool	include/Typedef.h	/^typedef int  bool,BOOL,Bool;$/;"	t
+Byte	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
+FALSE	include/Typedef.h	25;"	d
+False	include/Typedef.h	27;"	d
+NULL	include/Typedef.h	21;"	d
+TRUE	include/Typedef.h	24;"	d
+True	include/Typedef.h	26;"	d
+UI	include/Typedef.h	/^}UL,UI;$/;"	t	typeref:union:__anon4
+UINT32	include/Typedef.h	/^typedef unsigned int  WORD,uint,uint32_t,UINT32;$/;"	t
+UL	include/Typedef.h	/^}UL,UI;$/;"	t	typeref:union:__anon4
+ULONG	include/Typedef.h	/^typedef unsigned long ULONG,ulong;$/;"	t
+WORD	include/Typedef.h	/^typedef unsigned int  WORD,uint,uint32_t,UINT32;$/;"	t
+bool	include/Typedef.h	/^typedef int  bool,BOOL,Bool;$/;"	t
+byte	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
+c	include/Typedef.h	/^  BYTE c[4];$/;"	m	union:__anon4
+false	include/Typedef.h	22;"	d
+fsm_rt_cpl	include/Typedef.h	/^  fsm_rt_cpl=0,$/;"	e	enum:__anon3
+fsm_rt_err	include/Typedef.h	/^  fsm_rt_err=-1,$/;"	e	enum:__anon3
+fsm_rt_on_going	include/Typedef.h	/^  fsm_rt_on_going=1$/;"	e	enum:__anon3
+fsm_rt_t	include/Typedef.h	/^}fsm_rt_t;$/;"	t	typeref:enum:__anon3
+i	include/Typedef.h	/^  int  i;$/;"	m	union:__anon4
+l	include/Typedef.h	/^  long l;$/;"	m	union:__anon4
+true	include/Typedef.h	23;"	d
+uchar	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
+ui	include/Typedef.h	/^  unsigned int ui;$/;"	m	union:__anon4
+uint	include/Typedef.h	/^typedef unsigned int  WORD,uint,uint32_t,UINT32;$/;"	t
+uint32_t	include/Typedef.h	/^typedef unsigned int  WORD,uint,uint32_t,UINT32;$/;"	t
+uint8_t	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
+ul	include/Typedef.h	/^  unsigned long ul;$/;"	m	union:__anon4
+ulong	include/Typedef.h	/^typedef unsigned long ULONG,ulong;$/;"	t
+KERMIT_BUF_LEN	include/kermit.h	14;"	d
+KERMIT_KEY_SHARP	include/kermit.h	11;"	d
+KERMIT_KEY_SPASE	include/kermit.h	10;"	d
+KERMIT_KEY_TERM	include/kermit.h	12;"	d
+KERMIT_TYPE_ACK	include/kermit.h	6;"	d
+KERMIT_TYPE_BREAK	include/kermit.h	8;"	d
+KERMIT_TYPE_DATA	include/kermit.h	4;"	d
+KERMIT_TYPE_NACK	include/kermit.h	7;"	d
+KERMIT_TYPE_SEND	include/kermit.h	5;"	d
+KERM_DECODE	include/kermit.h	29;"	d
+KERM_ENCODE	include/kermit.h	28;"	d
+MARK_EXIT	include/kermit.h	2;"	d
+MARK_START	include/kermit.h	1;"	d
+TAG_KERMIT	include/kermit.h	/^}TAG_KERMIT;$/;"	t	typeref:struct:__anon1
+buf	include/kermit.h	/^  BYTE buf[KERMIT_BUF_LEN];$/;"	m	struct:__anon1
+check	include/kermit.h	/^  BYTE check;$/;"	m	struct:__anon1
+check_have_encode	include/kermit.h	/^  BYTE check_have_encode;$/;"	m	struct:__anon1
+len	include/kermit.h	/^  BYTE len;$/;"	m	struct:__anon1
+seq	include/kermit.h	/^  BYTE seq;$/;"	m	struct:__anon1
+spase	include/kermit.h	/^  WORD spase;$/;"	m	struct:__anon1
+type	include/kermit.h	/^  BYTE type;$/;"	m	struct:__anon1
+valid_data_len	include/kermit.h	/^  BYTE valid_data_len;$/;"	m	struct:__anon1
+BANKCON0	include/s3c24xxreg.h	11;"	d
+BANKCON1	include/s3c24xxreg.h	12;"	d
+BANKCON2	include/s3c24xxreg.h	13;"	d
+BANKCON3	include/s3c24xxreg.h	14;"	d
+BANKCON4	include/s3c24xxreg.h	15;"	d
+BANKCON5	include/s3c24xxreg.h	16;"	d
+BANKCON6	include/s3c24xxreg.h	17;"	d
+BANKCON7	include/s3c24xxreg.h	18;"	d
+BANKSIZE	include/s3c24xxreg.h	20;"	d
+BPP16_TFT	include/s3c24xxreg.h	164;"	d
+BPP24_TFT	include/s3c24xxreg.h	165;"	d
+BWSCON	include/s3c24xxreg.h	10;"	d
+CLOCK_BASE	include/s3c24xxreg.h	142;"	d
+CONF_S3C2440	include/s3c24xxreg.h	5;"	d
+DIVN	include/s3c24xxreg.h	146;"	d
+EINTMASK	include/s3c24xxreg.h	236;"	d
+EINTPEND	include/s3c24xxreg.h	237;"	d
+EXTINT0	include/s3c24xxreg.h	232;"	d
+EXTINT1	include/s3c24xxreg.h	233;"	d
+EXTINT2	include/s3c24xxreg.h	234;"	d
+GPF_CON	include/s3c24xxreg.h	222;"	d
+GPG_CON	include/s3c24xxreg.h	224;"	d
+GPG_DAT	include/s3c24xxreg.h	225;"	d
+GPG_UP	include/s3c24xxreg.h	226;"	d
+GPH_CON	include/s3c24xxreg.h	228;"	d
+GPH_DAT	include/s3c24xxreg.h	229;"	d
+GPH_UP	include/s3c24xxreg.h	230;"	d
+GPIO_BASE	include/s3c24xxreg.h	220;"	d
+HCLOCK	include/s3c24xxreg.h	168;"	d
+INTCON_BASE	include/s3c24xxreg.h	30;"	d
+INTMASK	include/s3c24xxreg.h	33;"	d
+INTMOD	include/s3c24xxreg.h	32;"	d
+INTOFFSET	include/s3c24xxreg.h	35;"	d
+INTPNG	include/s3c24xxreg.h	34;"	d
+IRQ_ADC	include/s3c24xxreg.h	130;"	d
+IRQ_BATT_FLT	include/s3c24xxreg.h	68;"	d
+IRQ_CAM	include/s3c24xxreg.h	67;"	d
+IRQ_DMA0	include/s3c24xxreg.h	78;"	d
+IRQ_DMA1	include/s3c24xxreg.h	79;"	d
+IRQ_DMA2	include/s3c24xxreg.h	80;"	d
+IRQ_DMA3	include/s3c24xxreg.h	81;"	d
+IRQ_EINT0	include/s3c24xxreg.h	60;"	d
+IRQ_EINT1	include/s3c24xxreg.h	61;"	d
+IRQ_EINT10	include/s3c24xxreg.h	101;"	d
+IRQ_EINT11	include/s3c24xxreg.h	102;"	d
+IRQ_EINT12	include/s3c24xxreg.h	103;"	d
+IRQ_EINT13	include/s3c24xxreg.h	104;"	d
+IRQ_EINT14	include/s3c24xxreg.h	105;"	d
+IRQ_EINT15	include/s3c24xxreg.h	106;"	d
+IRQ_EINT16	include/s3c24xxreg.h	107;"	d
+IRQ_EINT17	include/s3c24xxreg.h	108;"	d
+IRQ_EINT18	include/s3c24xxreg.h	109;"	d
+IRQ_EINT19	include/s3c24xxreg.h	110;"	d
+IRQ_EINT2	include/s3c24xxreg.h	62;"	d
+IRQ_EINT20	include/s3c24xxreg.h	111;"	d
+IRQ_EINT21	include/s3c24xxreg.h	112;"	d
+IRQ_EINT22	include/s3c24xxreg.h	113;"	d
+IRQ_EINT23	include/s3c24xxreg.h	114;"	d
+IRQ_EINT3	include/s3c24xxreg.h	63;"	d
+IRQ_EINT4	include/s3c24xxreg.h	95;"	d
+IRQ_EINT5	include/s3c24xxreg.h	96;"	d
+IRQ_EINT6	include/s3c24xxreg.h	97;"	d
+IRQ_EINT7	include/s3c24xxreg.h	98;"	d
+IRQ_EINT8	include/s3c24xxreg.h	99;"	d
+IRQ_EINT9	include/s3c24xxreg.h	100;"	d
+IRQ_EINT_4TO7	include/s3c24xxreg.h	64;"	d
+IRQ_EINT_8TO23	include/s3c24xxreg.h	65;"	d
+IRQ_IIC	include/s3c24xxreg.h	89;"	d
+IRQ_LCD	include/s3c24xxreg.h	77;"	d
+IRQ_LCD_FIFO	include/s3c24xxreg.h	116;"	d
+IRQ_LCD_FRAME	include/s3c24xxreg.h	117;"	d
+IRQ_NFCON	include/s3c24xxreg.h	86;"	d
+IRQ_RESERVED24	include/s3c24xxreg.h	85;"	d
+IRQ_RESERVED6	include/s3c24xxreg.h	66;"	d
+IRQ_RTC	include/s3c24xxreg.h	92;"	d
+IRQ_SDI	include/s3c24xxreg.h	82;"	d
+IRQ_SPI0	include/s3c24xxreg.h	83;"	d
+IRQ_SPI1	include/s3c24xxreg.h	91;"	d
+IRQ_TC	include/s3c24xxreg.h	129;"	d
+IRQ_TC_ADC	include/s3c24xxreg.h	93;"	d
+IRQ_TICK	include/s3c24xxreg.h	69;"	d
+IRQ_TIMER0	include/s3c24xxreg.h	71;"	d
+IRQ_TIMER1	include/s3c24xxreg.h	72;"	d
+IRQ_TIMER2	include/s3c24xxreg.h	73;"	d
+IRQ_TIMER3	include/s3c24xxreg.h	74;"	d
+IRQ_TIMER4	include/s3c24xxreg.h	75;"	d
+IRQ_UART0	include/s3c24xxreg.h	90;"	d
+IRQ_UART0_ERR	include/s3c24xxreg.h	121;"	d
+IRQ_UART0_RX	include/s3c24xxreg.h	119;"	d
+IRQ_UART0_TX	include/s3c24xxreg.h	120;"	d
+IRQ_UART1	include/s3c24xxreg.h	84;"	d
+IRQ_UART1_ERR	include/s3c24xxreg.h	124;"	d
+IRQ_UART1_RX	include/s3c24xxreg.h	122;"	d
+IRQ_UART1_TX	include/s3c24xxreg.h	123;"	d
+IRQ_UART2	include/s3c24xxreg.h	76;"	d
+IRQ_UART2_ERR	include/s3c24xxreg.h	127;"	d
+IRQ_UART2_RX	include/s3c24xxreg.h	125;"	d
+IRQ_UART3_TX	include/s3c24xxreg.h	126;"	d
+IRQ_USBD	include/s3c24xxreg.h	87;"	d
+IRQ_USBH	include/s3c24xxreg.h	88;"	d
+IRQ_WDT	include/s3c24xxreg.h	70;"	d
+LCDCON1	include/s3c24xxreg.h	151;"	d
+LCDCON2	include/s3c24xxreg.h	152;"	d
+LCDCON3	include/s3c24xxreg.h	153;"	d
+LCDCON4	include/s3c24xxreg.h	154;"	d
+LCDCON5	include/s3c24xxreg.h	155;"	d
+LCDINTMSK	include/s3c24xxreg.h	161;"	d
+LCDINTPND	include/s3c24xxreg.h	159;"	d
+LCDSADDR1	include/s3c24xxreg.h	156;"	d
+LCDSADDR2	include/s3c24xxreg.h	157;"	d
+LCDSADDR3	include/s3c24xxreg.h	158;"	d
+LCDSRCPND	include/s3c24xxreg.h	160;"	d
+LOCKTIME	include/s3c24xxreg.h	143;"	d
+MAX_IRQ_NUM	include/s3c24xxreg.h	132;"	d
+MEMCON_BASE	include/s3c24xxreg.h	9;"	d
+MPLLCON	include/s3c24xxreg.h	144;"	d
+MRSB6	include/s3c24xxreg.h	21;"	d
+MRSB7	include/s3c24xxreg.h	22;"	d
+NAND_CTRL_BASE	include/s3c24xxreg.h	173;"	d
+NF_ADDR	include/s3c24xxreg.h	178;"	d
+NF_ADDR	include/s3c24xxreg.h	185;"	d
+NF_CMMD	include/s3c24xxreg.h	177;"	d
+NF_CMMD	include/s3c24xxreg.h	184;"	d
+NF_CONF	include/s3c24xxreg.h	174;"	d
+NF_CONT	include/s3c24xxreg.h	176;"	d
+NF_DATA	include/s3c24xxreg.h	179;"	d
+NF_DATA	include/s3c24xxreg.h	186;"	d
+NF_EBLK	include/s3c24xxreg.h	182;"	d
+NF_ECC	include/s3c24xxreg.h	188;"	d
+NF_SBLK	include/s3c24xxreg.h	181;"	d
+NF_STAT	include/s3c24xxreg.h	180;"	d
+NF_STAT	include/s3c24xxreg.h	187;"	d
+PCLOCK_50M	include/s3c24xxreg.h	169;"	d
+PWM_BASE	include/s3c24xxreg.h	245;"	d
+REFRESH	include/s3c24xxreg.h	19;"	d
+RTCCNT	include/s3c24xxreg.h	243;"	d
+RTCCON	include/s3c24xxreg.h	242;"	d
+RTC_BASE	include/s3c24xxreg.h	241;"	d
+S3C2410_EINTMASK	include/s3c24xxreg.h	50;"	d
+S3C2410_EINTPEND	include/s3c24xxreg.h	51;"	d
+S3C2410_EINTREG	include/s3c24xxreg.h	39;"	d
+S3C2410_EXTINT_BOTHEDGE	include/s3c24xxreg.h	139;"	d
+S3C2410_EXTINT_FALLEDGE	include/s3c24xxreg.h	137;"	d
+S3C2410_EXTINT_HILEV	include/s3c24xxreg.h	136;"	d
+S3C2410_EXTINT_LOWLEV	include/s3c24xxreg.h	135;"	d
+S3C2410_EXTINT_RISEEDGE	include/s3c24xxreg.h	138;"	d
+S3C2410_INTMOD	include/s3c24xxreg.h	42;"	d
+S3C2410_INTMSK	include/s3c24xxreg.h	43;"	d
+S3C2410_INTOFFSET	include/s3c24xxreg.h	46;"	d
+S3C2410_INTPND	include/s3c24xxreg.h	45;"	d
+S3C2410_INTSUBMSK	include/s3c24xxreg.h	48;"	d
+S3C2410_IRQREG	include/s3c24xxreg.h	38;"	d
+S3C2410_PRIORITY	include/s3c24xxreg.h	44;"	d
+S3C2410_REG_H	include/s3c24xxreg.h	2;"	d
+S3C2410_SRCPND	include/s3c24xxreg.h	41;"	d
+S3C2410_SUBSRCPND	include/s3c24xxreg.h	47;"	d
+S3C2412_EINTMASK	include/s3c24xxreg.h	53;"	d
+S3C2412_EINTPEND	include/s3c24xxreg.h	54;"	d
+S3C24XX_GPBCON	include/s3c24xxreg.h	253;"	d
+S3C24XX_GPBDAT	include/s3c24xxreg.h	254;"	d
+S3C24XX_GPBUP	include/s3c24xxreg.h	255;"	d
+S3C24XX_GPCCON	include/s3c24xxreg.h	257;"	d
+S3C24XX_GPCDAT	include/s3c24xxreg.h	258;"	d
+S3C24XX_GPCUP	include/s3c24xxreg.h	259;"	d
+S3C24XX_GPDCON	include/s3c24xxreg.h	261;"	d
+S3C24XX_GPDDAT	include/s3c24xxreg.h	262;"	d
+S3C24XX_GPDUP	include/s3c24xxreg.h	263;"	d
+S3C24XX_IRQ	include/s3c24xxreg.h	58;"	d
+S3C24XX_LCD_BASE	include/s3c24xxreg.h	150;"	d
+SDRAM_BASE	include/s3c24xxreg.h	25;"	d
+SDRAM_SIZE	include/s3c24xxreg.h	26;"	d
+SRCPNG	include/s3c24xxreg.h	31;"	d
+SUBMASK	include/s3c24xxreg.h	36;"	d
+TCFG0	include/s3c24xxreg.h	246;"	d
+TCFG1	include/s3c24xxreg.h	247;"	d
+TCMPB	include/s3c24xxreg.h	250;"	d
+TCNTB	include/s3c24xxreg.h	249;"	d
+TCNTO	include/s3c24xxreg.h	251;"	d
+TCON	include/s3c24xxreg.h	248;"	d
+TCONSEL	include/s3c24xxreg.h	162;"	d
+UART0_BASE	include/s3c24xxreg.h	193;"	d
+UART1_BASE	include/s3c24xxreg.h	194;"	d
+UART2_BASE	include/s3c24xxreg.h	195;"	d
+UBRDIV	include/s3c24xxreg.h	207;"	d
+UCON	include/s3c24xxreg.h	198;"	d
+UERSTAT	include/s3c24xxreg.h	202;"	d
+UFCON	include/s3c24xxreg.h	199;"	d
+UFSTAT	include/s3c24xxreg.h	203;"	d
+ULCON	include/s3c24xxreg.h	197;"	d
+UMCON	include/s3c24xxreg.h	200;"	d
+UMSTAT	include/s3c24xxreg.h	204;"	d
+UPLLCON	include/s3c24xxreg.h	145;"	d
+URX	include/s3c24xxreg.h	206;"	d
+UTRSTAT	include/s3c24xxreg.h	201;"	d
+UTX	include/s3c24xxreg.h	205;"	d
+WATCHDOG_BASE	include/s3c24xxreg.h	213;"	d
+WTCNT	include/s3c24xxreg.h	216;"	d
+WTCON	include/s3c24xxreg.h	214;"	d
+WTDATA	include/s3c24xxreg.h	215;"	d
+UartGetChar	include/shell.h	1;"	d
+UartPrintChar	include/shell.h	2;"	d
+ISDIGIT	include/string.h	1;"	d
+CMD_ARG_MAX	include/util.h	8;"	d
+KEY_ENTER	include/util.h	9;"	d
+ReadByte	include/util.h	3;"	d
+Readl	include/util.h	2;"	d
+WRITESHORT	include/util.h	6;"	d
+WriteByte	include/util.h	5;"	d
+Writel	include/util.h	4;"	d
+obj	init/Makefile	/^obj:=$(src:.c=.o)$/;"	m
+ExecCmd	init/Shell.c	/^ExecCmd (int argc, char *argv[])$/;"	f
+ReadCmd	init/Shell.c	/^ReadCmd (char *buf, char *argv[])$/;"	f
+SET_VALUE	init/Shell.c	5;"	d	file:
+read_params	init/Shell.c	/^read_params(int argc)$/;"	f
+DisableWatchDog	init/main.c	/^static void DisableWatchDog(void)$/;"	f	file:
+ExecShell	init/main.c	/^static void ExecShell(void)$/;"	f	file:
+InitClock	init/main.c	/^static void InitClock(void)$/;"	f	file:
+InitEth	init/main.c	/^static void InitEth(void)$/;"	f	file:
+InitInterrupt	init/main.c	/^static void InitInterrupt(void)$/;"	f	file:
+InitUart0	init/main.c	/^static void InitUart0(void)$/;"	f	file:
+SysInit	init/main.c	/^static void SysInit(void)$/;"	f	file:
+VfsInit	init/main.c	/^static void VfsInit(void)$/;"	f	file:
+chByteCommandLine	init/main.c	/^char chByteCommandLine[CMD_ARG_MAX][32];$/;"	v
+main	init/main.c	/^int main(void)$/;"	f
+obj	mm/Makefile	/^obj:=$(src:.c=.o)$/;"	m
+mm_manage	mm/malloc.c	/^BYTE mm_manage(void)$/;"	f

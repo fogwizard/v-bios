@@ -1,0 +1,52 @@
+make[1]: Entering directory `/home/fog/v-bios/v-bios/boot'
+arm-linux-gcc -ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=0x33000000 -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I /home/fog/v-bios/v-bios/include -c head.s Common/main.c ../Drive/Uart/kermit.c ../Drive/Uart/Uart.c ../Drive/Misc/misc.c 
+arm-linux-ld -m armelf_linux_eabi -Tth.lds  head.o main.o kermit.o Uart.o misc.o -o v-bios-th.elf
+arm-linux-objcopy -O binary -S v-bios-th.elf v-bios-th.bin
+arm-linux-objdump -d v-bios-th.elf > v-bios-th.dis
+make[1]: Leaving directory `/home/fog/v-bios/v-bios/boot'
+
+make[1]: Entering directory `/home/fog/v-bios/v-bios/arch'
+Nothing will be done
+make[1]: Leaving directory `/home/fog/v-bios/v-bios/arch'
+make[1]: Entering directory `/home/fog/v-bios/v-bios/mm'
+arm-linux-gcc -c -ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=0x33000000 -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I /home/fog/v-bios/v-bios/include malloc.c
+arm-linux-ld -m armelf_linux_eabi -r malloc.o -o buildin.o
+make[1]: Leaving directory `/home/fog/v-bios/v-bios/mm'
+make[1]: Entering directory `/home/fog/v-bios/v-bios/Core'
+arm-linux-gcc -c -ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=0x33000000 -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I /home/fog/v-bios/v-bios/include SysCall.c
+arm-linux-ld -r -m armelf_linux_eabi SysCall.o -o buildin.o
+make[1]: Leaving directory `/home/fog/v-bios/v-bios/Core'
+make[1]: Entering directory `/home/fog/v-bios/v-bios/Drive'
+make[2]: Entering directory `/home/fog/v-bios/v-bios/Drive/Uart'
+arm-linux-gcc -c -ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=0x33000000 -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I /home/fog/v-bios/v-bios/include kermit.c Uart.c
+arm-linux-ld -r -m armelf_linux_eabi kermit.o Uart.o -o buildin.o
+make[2]: Leaving directory `/home/fog/v-bios/v-bios/Drive/Uart'
+make[2]: Entering directory `/home/fog/v-bios/v-bios/Drive/Misc'
+arm-linux-gcc -ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=0x33000000 -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I /home/fog/v-bios/v-bios/include -c misc.c 
+arm-linux-ld -m armelf_linux_eabi -r misc.o -o buildin.o
+make[2]: Leaving directory `/home/fog/v-bios/v-bios/Drive/Misc'
+arm-linux-ld -r -m armelf_linux_eabi Uart/buildin.o Misc/buildin.o -o buildin.o
+make[1]: Leaving directory `/home/fog/v-bios/v-bios/Drive'
+make[1]: Entering directory `/home/fog/v-bios/v-bios/init'
+arm-linux-gcc -c -ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=0x33000000 -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I /home/fog/v-bios/v-bios/include main.c Shell.c
+arm-linux-ld -r -m armelf_linux_eabi main.o Shell.o -o buildin.o
+make[1]: Leaving directory `/home/fog/v-bios/v-bios/init'
+make[1]: Entering directory `/home/fog/v-bios/v-bios/Lib'
+make[2]: Entering directory `/home/fog/v-bios/v-bios/Lib/arm'
+arm-linux-gcc -c -ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=0x33000000 -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I /home/fog/v-bios/v-bios/include -D__ASSEMBLY__ lib1funcs.S -o lib1funcs.o
+arm-linux-gcc -c -ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=0x33000000 -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I /home/fog/v-bios/v-bios/include div0.c -o div0.o
+arm-linux-ld -m armelf_linux_eabi -r lib1funcs.o div0.o -o buildin.o
+make[2]: Leaving directory `/home/fog/v-bios/v-bios/Lib/arm'
+make[2]: Entering directory `/home/fog/v-bios/v-bios/Lib/stdlib'
+arm-linux-gcc -c -ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=0x33000000 -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I /home/fog/v-bios/v-bios/include stdio.c stdlib.c string.c
+arm-linux-ld -m armelf_linux_eabi -r stdio.o stdlib.o string.o -o buildin.o
+make[2]: Leaving directory `/home/fog/v-bios/v-bios/Lib/stdlib'
+arm-linux-ld -m armelf_linux_eabi -r arm/buildin.o stdlib/buildin.o -o buildin.o
+make[1]: Leaving directory `/home/fog/v-bios/v-bios/Lib'
+make[1]: Entering directory `/home/fog/v-bios/v-bios/App'
+arm-linux-gcc -c -ffreestanding -nostdinc -nostdlib -fno-builtin -DBH_START_ADDRESS_MEM=0x33000000 -DVBIOS_VER_MAJOR=0 -DVBIOS_VER_MINOR=0 -mno-thumb-interwork  -march=armv4t -mabi=aapcs-linux -O2 -mpoke-function-name -I /home/fog/v-bios/v-bios/include boot_linux.c
+arm-linux-ld -r -m armelf_linux_eabi boot_linux.o -o buildin.o
+make[1]: Leaving directory `/home/fog/v-bios/v-bios/App'
+arm-linux-ld -m armelf_linux_eabi -T bh.lds -Ttext 0x33000000 boot/head.o mm/buildin.o Core/buildin.o Drive/buildin.o init/buildin.o Lib/buildin.o -o v-bios-bh.elf
+arm-linux-objcopy -O binary -S v-bios-bh.elf v-bios-bh.bin
+arm-linux-objdump -d v-bios-bh.elf > v-bios-bh.dis
