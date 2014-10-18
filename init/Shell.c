@@ -9,17 +9,15 @@ ReadCmd (char *buf, char *argv[]);
 int
 ExecCmd (int argc, char *argv[]);
 
-fsm_rt_t
-read_params(int argc)
+fsm_rt_t read_params(int argc)
 {
     char c;
     int i=0;
-    printf("<v-gios>");
     do
     {
 	c=UartGetChar(0);
 	chByteCommandLine[argc][i]=c;
-	if((0==i)&&(('\t'==c)||('\t'==c)))//spase in front
+	if((0==i)&&((' '==c)||('\t'==c)))//spase in front
 	{
 	     continue;
 	}
@@ -27,8 +25,21 @@ read_params(int argc)
 	{
 	    if(c!=KEY_ENTER)
 	    {
-		UartPrintChar(0,c);
-		i++;//for delete the enter key...
+    		UartPrintChar(0,c);
+            if(0x08==c)
+            {
+                UartPrintChar(0,' ');
+                UartPrintChar(0,c);
+                i--;
+                if(i<0)
+                {
+                    i=0;//return fsm_rt_back;
+                }
+            }
+            else
+            {
+                i++;//for delete the enter key...
+            }
 	    }
 	}
 	if((' '==c)||('\t'==c))//space in back
@@ -41,8 +52,7 @@ read_params(int argc)
     return fsm_rt_err;
 }
 
-int
-ReadCmd (char *buf, char *argv[])
+int ReadCmd (char *buf, char *argv[])
 {
   int argc,r_s;
   char  i;
@@ -58,6 +68,7 @@ ReadCmd (char *buf, char *argv[])
       argv[i] = chByteCommandLine[i];
       chByteCommandLine[i][0]='\0';//end line
   }
+  printf("<v-gios>");
   while (1)
     {
       switch (s_state_read_cmd)
@@ -70,13 +81,18 @@ ReadCmd (char *buf, char *argv[])
 	      r_s=read_params(argc);
 	      if(fsm_rt_cpl==r_s)
 	      {
-		 s_state_read_cmd=READ_PARAMS;
-		 argc++;
+    		 s_state_read_cmd=READ_PARAMS;
+    		 argc++;
 	      }
+          else if(fsm_rt_back==r_s)//Now Not Support Back
+          {
+             argc--;
+             s_state_read_cmd=(argc>0)?READ_PARAMS:READ_START;
+          }
 	      else if(fsm_rt_err==r_s)
 	      {
-		   s_state_read_cmd=READ_FINISH;
-		   argc++;
+    		   s_state_read_cmd=READ_FINISH;
+    		   argc++;
 	      }
 	      break;
 	case READ_FINISH:
@@ -87,8 +103,7 @@ ReadCmd (char *buf, char *argv[])
       }
     }
 }
-int
-ExecCmd (int argc, char *argv[])
+int ExecCmd (int argc, char *argv[])
 {
   char *Name = argv[0];
   int i;

@@ -1,6 +1,7 @@
 #include "Typedef.h"
 #include "plamform.h"
 #include "util.h"
+#include "flash.h"
 static void SysInit(void); 
 static void VfsInit(void); 
 static void ExecShell(void); 
@@ -42,6 +43,7 @@ static void SysInit(void)
 	InitClock();
 	InitUart0();
    	InitEth();
+   	init_flash();
 }
 static void VfsInit(void)
 {
@@ -51,6 +53,7 @@ static void ExecShell(void)
 {
 	int argc=0;
 	char *argv[CMD_ARG_MAX];
+	printf("PageSize=%d,BlockSize=%d\r\n",g_tFlashObj.PageSize,g_tFlashObj.BlockSize);
 	printf("Botton Half Running\r\n");
 	printf("Support %d Args\r\n",CMD_ARG_MAX);
 	while(1)

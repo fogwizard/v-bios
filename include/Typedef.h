@@ -1,5 +1,5 @@
 typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;
-typedef unsigned int  WORD,uint,uint32_t,UINT32;
+typedef unsigned int  WORD,uint,uint32_t,UINT32,size_t;
 typedef int  bool,BOOL,Bool;
 typedef unsigned long ULONG,ulong;
 
@@ -7,7 +7,8 @@ typedef enum
 {
   fsm_rt_err=-1,
   fsm_rt_cpl=0,
-  fsm_rt_on_going=1
+  fsm_rt_on_going=1,
+  fsm_rt_back
 }fsm_rt_t;
 typedef union
 {
@@ -18,6 +19,28 @@ typedef union
   BYTE c[4];
 }UL,UI;
 
+typedef struct 
+{
+	UINT32 PageSize;
+	UINT32 BlockSize;
+	UINT32 DataRegister;
+	UINT32 AddressRegister;
+	UINT32 CommandRegister;
+}flash_attribute_t;
+
+typedef struct 
+{
+  char *name;
+  UINT32 start_addr;
+  UINT32 len;
+}parttition_info_t;
+
+typedef struct 
+{
+    parttition_info_t th;
+    parttition_info_t bh;
+    parttition_info_t kl;
+}parttition_table_t;
 
 
 #define NULL  (0)

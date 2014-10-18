@@ -8,8 +8,7 @@
 
 #define CaculateCheck(n) (KERMIT_KEY_SPASE+(0x3f&(n+(0x03&(n>>6)))))
 
-void
-v_bios_serial_load(void *pLoadAddr)
+void v_bios_serial_load(void *pLoadAddr)
 {
   enum{MARK,LEN,SEQ,KTYPE,KDATA,CHECK,ACK,NOACK,WRITEFILE,FINISH}s_state_recv=MARK;
   TAG_KERMIT kermit;

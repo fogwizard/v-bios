@@ -40,7 +40,9 @@ v-bios-bh.bin: v-bios-bh.elf
 	 $(CROSS_COMPILE)objcopy -O binary -S $< $@
 v-bios-bh.dis: v-bios-bh.elf
 	$(CROSS_COMPILE)objdump -D $< > $@
-
+	sudo cp v-bios-bh.bin        /media/sf_upfile/
+	sudo cp ./boot/v-bios-th.bin /media/sf_upfile/
+	
 clean:
 	@echo   $(SourceOBJ)
 	rm -rf $(SourceOBJ)

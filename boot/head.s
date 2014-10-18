@@ -1,8 +1,7 @@
 .global TH_START
-.global SendByte
 TH_START:
 	b HandleReset
-	.word HandleUndefine
+	.word 0x68622d76
 	.word HandleSwi
 	.word HandleIabt
 	.word HandleDabt
@@ -79,7 +78,7 @@ AsminitSDRAM:
 	bne 2b
 	bx lr
 
-HandleUndefine:
+HandleUndefine: /*Now Use To The Magic*/
 	b Hang;
 HandleSwi:
 	b Hang;

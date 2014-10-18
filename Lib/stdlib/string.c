@@ -40,3 +40,36 @@ void *(memset)(void *s,int ch,int n)
 		*dest++=c;
 	}
 }
+int (memcmp)(const void *s1,const void *s2,size_t n)
+{
+    const unsigned char *source=(unsigned char *)(s1);
+    const unsigned char *dest=(unsigned char *)(s2);
+    if((NULL==s1)||(NULL==s2))
+    {
+        return -1;/*Err*/
+    }
+    for (;n>0;--n)
+    {
+        if((*source)!=(*dest))
+        {
+            return (*source-*dest);
+        }
+        ++source;
+        ++dest;
+    }
+    return 0;
+}
+void * (memcpy)(void *s1,const void *s2,size_t n)
+{
+    const unsigned char *source=(unsigned char *)(s2);
+          unsigned char *dest=(unsigned char *)(s1);
+    if((NULL==s1)||(NULL==s2))
+    {
+        return NULL;/*Err*/
+    }
+    for (;n>0;--n)
+    {
+        *dest++=*source++;
+    }
+    return s1;
+}
