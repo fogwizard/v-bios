@@ -2,6 +2,8 @@
 #include "plamform.h"
 #include "util.h"
 #include "flash.h"
+#include "SysCall.h"
+
 static void SysInit(void); 
 static void VfsInit(void); 
 static void ExecShell(void); 
@@ -34,6 +36,16 @@ static void InitEth(void)
 {
 
 }
+static bool do_init_call(void)
+{
+  TagInitCall *pCall;
+  for (pCall = INIT_CALL_BEGIN; pCall<INIT_CALL_END; pCall++)
+  {
+	  (*pCall).init();
+  }
+  return true;
+}
+
 
 
 static void SysInit(void)
@@ -44,6 +56,7 @@ static void SysInit(void)
 	InitUart0();
    	InitEth();
    	init_flash();
+   	do_init_call();
 }
 static void VfsInit(void)
 {

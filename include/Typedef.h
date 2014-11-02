@@ -1,7 +1,9 @@
 typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;
-typedef unsigned int  WORD,uint,uint32_t,UINT32,size_t;
+typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;
 typedef int  bool,BOOL,Bool;
 typedef unsigned long ULONG,ulong;
+typedef unsigned short uint16;
+typedef short int16;
 
 typedef enum
 {
@@ -50,4 +52,6 @@ typedef struct
 #define FALSE false
 #define True  true 
 #define False false
+
+#define __VOLATILE__ volatile
 

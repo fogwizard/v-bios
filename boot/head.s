@@ -1,7 +1,7 @@
 .global TH_START
 TH_START:
 	b HandleReset
-	.word 0x68622d76
+	.word 0x47420168
 	.word HandleSwi
 	.word HandleIabt
 	.word HandleDabt
@@ -92,8 +92,6 @@ HandleFiq:
 	b Hang;
 Hang:
 	b Hang;
-BootLoaderMsg:
-	.ascii "Welcome to me,I am v-bios\r\n\0"
 RamctlConst:
 	.word 0x220dd000
 	.word 0x00000700

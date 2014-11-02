@@ -2,38 +2,57 @@
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 obj	App/Makefile	/^obj:=$(src:.c=.o)$/;"	m
-main	App/boot_linux.c	/^static int main(int argc,char *argv[])$/;"	f	file:
+main	App/boot_linux.c	/^static int main(int argc, char *argv[])$/;"	f	file:
+set_tag_cmdline	App/boot_linux.c	/^atag *set_tag_cmdline(atag * tAddr,char *buf)$/;"	f
+set_tag_core	App/boot_linux.c	/^atag *set_tag_core(atag *tAddr)$/;"	f
+set_tag_mem	App/boot_linux.c	/^atag *set_tag_mem(atag * tAddr)$/;"	f
+set_tag_none	App/boot_linux.c	/^atag *set_tag_none(atag * tAddr)$/;"	f
+set_tag_serial	App/boot_linux.c	/^atag *set_tag_serial(atag * tAddr)$/;"	f
+show_tag	App/boot_linux.c	/^atag *show_tag(atag * tAddr)$/;"	f
 main	App/cd.c	/^static int main(int argc,char *argv[])$/;"	f	file:
 main	App/flashrw.c	/^static int main(int argc,char *argv[])$/;"	f	file:
 usase	App/flashrw.c	/^bool usase(void)$/;"	f
 ShowCommand	App/help.c	/^void ShowCommand(void)$/;"	f
 main	App/help.c	/^static int main(int argc,char *argv[])$/;"	f	file:
+main	App/load.c	/^static int main(int argc, char *argv[])$/;"	f	file:
+usase	App/load.c	/^static void usase(void)$/;"	f	file:
 main	App/ls.c	/^static int main(int argc, char *argv[])$/;"	f	file:
 test	App/ls.c	/^bool test(parttition_info_t * pPartion)$/;"	f
+main	App/md.c	/^static int main(int argc, char *argv[])$/;"	f	file:
+usase	App/md.c	/^static void usase(void)$/;"	f	file:
+main	App/reboot.c	/^static int main(int argc,char *argv[])$/;"	f	file:
+FILENAME_MAX	App/tftp.c	18;"	d	file:
+dst	App/tftp.c	/^   unsigned short dst;$/;"	m	struct:__anon1	file:
+ip_to_long	App/tftp.c	/^static bool ip_to_long(long *nip,char *args)$/;"	f	file:
+long_to_ip	App/tftp.c	/^static bool   long_to_ip(long nip,char *args)$/;"	f	file:
+main	App/tftp.c	/^static int main(int argc,char * argv[])$/;"	f	file:
+sock	App/tftp.c	/^}sock;$/;"	t	typeref:struct:__anon1	file:
+src	App/tftp.c	/^   unsigned short src;$/;"	m	struct:__anon1	file:
+tftp_aqst_file	App/tftp.c	/^static bool tftp_aqst_file(sock *pSock)$/;"	f	file:
+tftp_recv_file	App/tftp.c	/^static bool tftp_recv_file(sock *pSock,void *addr)$/;"	f	file:
+usage	App/tftp.c	/^static usage(void)$/;"	f	file:
 obj	Core/Makefile	/^obj:=$(src:.c=.o)$/;"	m
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 obj	Drive/Flash/Makefile	/^obj:=$(src:.c=.o)$/;"	m
-c_VbiosMagic	Drive/Flash/flash.c	/^const char c_VbiosMagic[]="v-bh";\/\/0x762D6268$/;"	v
 c_chHex2dec	Drive/Flash/flash.c	/^static const byte c_chHex2dec[]=\\$/;"	v	file:
 c_chNandIds	Drive/Flash/flash.c	/^static const byte c_chNandIds[]=\\$/;"	v	file:
-c_tPart	Drive/Flash/flash.c	/^const    partition_table_t c_tPart=\\$/;"	v
+c_tPart	Drive/Flash/flash.c	/^volatile const    parttition_table_t c_tPart=\\$/;"	v
 check_bh_in_flash	Drive/Flash/flash.c	/^bool check_bh_in_flash(UINT32 addr)$/;"	f
 erase_block	Drive/Flash/flash.c	/^bool erase_block(UINT32 BlockNum,UINT32 Len)$/;"	f
 find_ids	Drive/Flash/flash.c	/^static bool find_ids(byte chDeviceId)$/;"	f	file:
-g_tFlashObj	Drive/Flash/flash.c	/^volatile flash_attribute_t g_tFlashObj;$/;"	v
+g_tFlashObj	Drive/Flash/flash.c	/^volatile flash_attribute_t  g_tFlashObj;$/;"	v
 hex2str	Drive/Flash/flash.c	/^static void hex2str(byte *Buf,byte chData)$/;"	f	file:
 init_flash	Drive/Flash/flash.c	/^bool init_flash(void)$/;"	f
 is_large_page	Drive/Flash/flash.c	/^static bool is_large_page(void)$/;"	f	file:
 is_power2	Drive/Flash/flash.c	/^static bool is_power2(UINT32 n)$/;"	f	file:
-nand_cmd	Drive/Flash/flash.c	/^static void nand_cmd(UINT32 nCmd, int nPageIndex, int nPageOffset)$/;"	f	file:
 nand_read_byte	Drive/Flash/flash.c	/^static inline byte nand_read_byte(void)$/;"	f	file:
 nand_ready	Drive/Flash/flash.c	/^static bool nand_ready(void)$/;"	f	file:
 nand_write_addr	Drive/Flash/flash.c	/^static inline void nand_write_addr(byte dat)$/;"	f	file:
 nand_write_byte	Drive/Flash/flash.c	/^static inline void nand_write_byte(byte dat)$/;"	f	file:
 nand_write_cmd	Drive/Flash/flash.c	/^static inline void nand_write_cmd(byte dat)$/;"	f	file:
 read_one_byte_from_flash	Drive/Flash/flash.c	/^byte read_one_byte_from_flash(UINT32 addr)$/;"	f
-v_bios_flash_download	Drive/Flash/flash.c	/^bool v_bios_flash_download(parttition_info_t * pPartion,void *p)$/;"	f
-v_bios_flash_load	Drive/Flash/flash.c	/^bool v_bios_flash_load(parttition_info_t * pPartion,void *p)$/;"	f
+v_bios_flash_download	Drive/Flash/flash.c	/^bool v_bios_flash_download(void *p)$/;"	f
+v_bios_flash_load	Drive/Flash/flash.c	/^bool v_bios_flash_load(void *p)$/;"	f
 write_one_byte_to_flash	Drive/Flash/flash.c	/^bool write_one_byte_to_flash(UINT32 addr,byte dat)$/;"	f
 obj	Drive/Misc/Makefile	/^obj:=$(src:.c=.o)$/;"	m
 beep	Drive/Misc/misc.c	/^void beep(unsigned char ctl)$/;"	f
@@ -77,6 +96,7 @@ memcmp	Lib/stdlib/string.c	/^int (memcmp)(const void *s1,const void *s2,size_t n
 memcpy	Lib/stdlib/string.c	/^void * (memcpy)(void *s1,const void *s2,size_t n)$/;"	f
 memset	Lib/stdlib/string.c	/^void *(memset)(void *s,int ch,int n)$/;"	f
 strcmp	Lib/stdlib/string.c	/^int (strcmp) (char *str1, char *str2)$/;"	f
+strcpy	Lib/stdlib/string.c	/^char * (strcpy)(char *dest,const char *source)$/;"	f
 strlen	Lib/stdlib/string.c	/^int (strlen)(const char *fmt)$/;"	f
 ARCH	Makefile	/^ARCH=arm$/;"	m
 AS	Makefile	/^AS=$(CROSS_COMPILE)as$/;"	m
@@ -100,23 +120,20 @@ version	Makefile	/^version=0.0$/;"	m
 Delay	boot/Common/main.c	/^void Delay (int t)$/;"	f
 LoadFromFlash	boot/Common/main.c	/^bool LoadFromFlash (void)$/;"	f
 LoadFromUart	boot/Common/main.c	/^bool LoadFromUart (void)$/;"	f
-THINIT_FLASH	boot/Common/main.c	9;"	d	file:
+THINIT_FLASH	boot/Common/main.c	11;"	d	file:
 THInitClock	boot/Common/main.c	/^THInitClock (void)$/;"	f
 THInitFlash	boot/Common/main.c	/^THInitFlash (void)$/;"	f
 THInitSDRAM	boot/Common/main.c	/^THInitSDRAM (void)$/;"	f
 THInitnUart	boot/Common/main.c	/^THInitnUart (void)$/;"	f
 THLoadBH	boot/Common/main.c	/^void THLoadBH (void)$/;"	f
-THRUNBH	boot/Common/main.c	8;"	d	file:
-check_bh_in_ram	boot/Common/main.c	/^static bool check_bh_in_ram(byte *c)$/;"	f	file:
+THRUNBH	boot/Common/main.c	10;"	d	file:
+check_bh_in_ram	boot/Common/main.c	/^static bool check_bh_in_ram(byte c[])$/;"	f	file:
 main	boot/Common/main.c	/^int main (void)$/;"	f
 th_run_bh	boot/Common/main.c	/^bool th_run_bh(void)$/;"	f
-obj	boot/Makefile	/^obj=head.o main.o kermit.o Uart.o misc.o flash.o$/;"	m
-src	boot/Makefile	/^src=head.s Common\/main.c ..\/Drive\/Uart\/kermit.c ..\/Drive\/Uart\/Uart.c ..\/Drive\/Misc\/misc.c ..\/Drive\/Flash\/flash.c$/;"	m
 AsmInitClock	boot/head.s	/^AsmInitClock:$/;"	l
 AsmInitUart	boot/head.s	/^AsmInitUart:$/;"	l
 AsmInitWatchDog	boot/head.s	/^AsmInitWatchDog:$/;"	l
 AsminitSDRAM	boot/head.s	/^AsminitSDRAM:$/;"	l
-BootLoaderMsg	boot/head.s	/^BootLoaderMsg:$/;"	l
 HandleDabt	boot/head.s	/^HandleDabt:$/;"	l
 HandleFiq	boot/head.s	/^HandleFiq:$/;"	l
 HandleIabt	boot/head.s	/^HandleIabt:$/;"	l
@@ -130,57 +147,275 @@ TH_START	boot/head.s	/^TH_START:$/;"	l
 loop	boot/head.s	/^	loop: b loop$/;"	l
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 INSTALLAPP	include/SysCall.h	8;"	d
-Name	include/SysCall.h	/^	char *Name;$/;"	m	struct:__anon2
-TagSysCall	include/SysCall.h	/^}TagSysCall;$/;"	t	typeref:struct:__anon2
-main	include/SysCall.h	/^	int (*main)(int argc,char *argv[]);$/;"	m	struct:__anon2
-AddressRegister	include/Typedef.h	/^	UINT32 AddressRegister;$/;"	m	struct:__anon5
+Name	include/SysCall.h	/^	char *Name;$/;"	m	struct:__anon16
+TagSysCall	include/SysCall.h	/^}TagSysCall;$/;"	t	typeref:struct:__anon16
+main	include/SysCall.h	/^	int (*main)(int argc,char *argv[]);$/;"	m	struct:__anon16
+AddressRegister	include/Typedef.h	/^	UINT32 AddressRegister;$/;"	m	struct:__anon19
 BOOL	include/Typedef.h	/^typedef int  bool,BOOL,Bool;$/;"	t
 BYTE	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
-BlockSize	include/Typedef.h	/^	UINT32 BlockSize;$/;"	m	struct:__anon5
+BlockSize	include/Typedef.h	/^	UINT32 BlockSize;$/;"	m	struct:__anon19
 Bool	include/Typedef.h	/^typedef int  bool,BOOL,Bool;$/;"	t
 Byte	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
-CommandRegister	include/Typedef.h	/^	UINT32 CommandRegister;$/;"	m	struct:__anon5
-DataRegister	include/Typedef.h	/^	UINT32 DataRegister;$/;"	m	struct:__anon5
-FALSE	include/Typedef.h	50;"	d
-False	include/Typedef.h	52;"	d
-NULL	include/Typedef.h	46;"	d
-PageSize	include/Typedef.h	/^	UINT32 PageSize;$/;"	m	struct:__anon5
-TRUE	include/Typedef.h	49;"	d
-True	include/Typedef.h	51;"	d
-UI	include/Typedef.h	/^}UL,UI;$/;"	t	typeref:union:__anon4
-UINT32	include/Typedef.h	/^typedef unsigned int  WORD,uint,uint32_t,UINT32,size_t;$/;"	t
-UL	include/Typedef.h	/^}UL,UI;$/;"	t	typeref:union:__anon4
+CommandRegister	include/Typedef.h	/^	UINT32 CommandRegister;$/;"	m	struct:__anon19
+DataRegister	include/Typedef.h	/^	UINT32 DataRegister;$/;"	m	struct:__anon19
+FALSE	include/Typedef.h	52;"	d
+False	include/Typedef.h	54;"	d
+NULL	include/Typedef.h	48;"	d
+PageSize	include/Typedef.h	/^	UINT32 PageSize;$/;"	m	struct:__anon19
+TRUE	include/Typedef.h	51;"	d
+True	include/Typedef.h	53;"	d
+UI	include/Typedef.h	/^}UL,UI;$/;"	t	typeref:union:__anon18
+UINT32	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
+UL	include/Typedef.h	/^}UL,UI;$/;"	t	typeref:union:__anon18
 ULONG	include/Typedef.h	/^typedef unsigned long ULONG,ulong;$/;"	t
-WORD	include/Typedef.h	/^typedef unsigned int  WORD,uint,uint32_t,UINT32,size_t;$/;"	t
-bh	include/Typedef.h	/^    parttition_info_t bh;$/;"	m	struct:__anon7
+WORD	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
+__VOLATILE__	include/Typedef.h	56;"	d
+bh	include/Typedef.h	/^    parttition_info_t bh;$/;"	m	struct:__anon21
 bool	include/Typedef.h	/^typedef int  bool,BOOL,Bool;$/;"	t
 byte	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
-c	include/Typedef.h	/^  BYTE c[4];$/;"	m	union:__anon4
-false	include/Typedef.h	47;"	d
-flash_attribute_t	include/Typedef.h	/^}flash_attribute_t;$/;"	t	typeref:struct:__anon5
-fsm_rt_back	include/Typedef.h	/^  fsm_rt_back$/;"	e	enum:__anon3
-fsm_rt_cpl	include/Typedef.h	/^  fsm_rt_cpl=0,$/;"	e	enum:__anon3
-fsm_rt_err	include/Typedef.h	/^  fsm_rt_err=-1,$/;"	e	enum:__anon3
-fsm_rt_on_going	include/Typedef.h	/^  fsm_rt_on_going=1,$/;"	e	enum:__anon3
-fsm_rt_t	include/Typedef.h	/^}fsm_rt_t;$/;"	t	typeref:enum:__anon3
-i	include/Typedef.h	/^  int  i;$/;"	m	union:__anon4
-kl	include/Typedef.h	/^    parttition_info_t kl;$/;"	m	struct:__anon7
-l	include/Typedef.h	/^  long l;$/;"	m	union:__anon4
-len	include/Typedef.h	/^  UINT32 len;$/;"	m	struct:__anon6
-name	include/Typedef.h	/^  char *name;$/;"	m	struct:__anon6
-parttition_info_t	include/Typedef.h	/^}parttition_info_t;$/;"	t	typeref:struct:__anon6
-parttition_table_t	include/Typedef.h	/^}parttition_table_t;$/;"	t	typeref:struct:__anon7
-size_t	include/Typedef.h	/^typedef unsigned int  WORD,uint,uint32_t,UINT32,size_t;$/;"	t
-start_addr	include/Typedef.h	/^  UINT32 start_addr;$/;"	m	struct:__anon6
-th	include/Typedef.h	/^    parttition_info_t th;$/;"	m	struct:__anon7
-true	include/Typedef.h	48;"	d
+c	include/Typedef.h	/^  BYTE c[4];$/;"	m	union:__anon18
+false	include/Typedef.h	49;"	d
+flash_attribute_t	include/Typedef.h	/^}flash_attribute_t;$/;"	t	typeref:struct:__anon19
+fsm_rt_back	include/Typedef.h	/^  fsm_rt_back$/;"	e	enum:__anon17
+fsm_rt_cpl	include/Typedef.h	/^  fsm_rt_cpl=0,$/;"	e	enum:__anon17
+fsm_rt_err	include/Typedef.h	/^  fsm_rt_err=-1,$/;"	e	enum:__anon17
+fsm_rt_on_going	include/Typedef.h	/^  fsm_rt_on_going=1,$/;"	e	enum:__anon17
+fsm_rt_t	include/Typedef.h	/^}fsm_rt_t;$/;"	t	typeref:enum:__anon17
+i	include/Typedef.h	/^  int  i;$/;"	m	union:__anon18
+int16	include/Typedef.h	/^typedef short int16;$/;"	t
+kl	include/Typedef.h	/^    parttition_info_t kl;$/;"	m	struct:__anon21
+l	include/Typedef.h	/^  long l;$/;"	m	union:__anon18
+len	include/Typedef.h	/^  UINT32 len;$/;"	m	struct:__anon20
+name	include/Typedef.h	/^  char *name;$/;"	m	struct:__anon20
+parttition_info_t	include/Typedef.h	/^}parttition_info_t;$/;"	t	typeref:struct:__anon20
+parttition_table_t	include/Typedef.h	/^}parttition_table_t;$/;"	t	typeref:struct:__anon21
+size_t	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
+start_addr	include/Typedef.h	/^  UINT32 start_addr;$/;"	m	struct:__anon20
+th	include/Typedef.h	/^    parttition_info_t th;$/;"	m	struct:__anon21
+true	include/Typedef.h	50;"	d
 uchar	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
-ui	include/Typedef.h	/^  unsigned int ui;$/;"	m	union:__anon4
-uint	include/Typedef.h	/^typedef unsigned int  WORD,uint,uint32_t,UINT32,size_t;$/;"	t
-uint32_t	include/Typedef.h	/^typedef unsigned int  WORD,uint,uint32_t,UINT32,size_t;$/;"	t
+ui	include/Typedef.h	/^  unsigned int ui;$/;"	m	union:__anon18
+uint	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
+uint16	include/Typedef.h	/^typedef unsigned short uint16;$/;"	t
+uint32	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
+uint32_t	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
 uint8_t	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
-ul	include/Typedef.h	/^  unsigned long ul;$/;"	m	union:__anon4
+ul	include/Typedef.h	/^  unsigned long ul;$/;"	m	union:__anon18
 ulong	include/Typedef.h	/^typedef unsigned long ULONG,ulong;$/;"	t
+word	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
+ATAG_CMDLINE	include/atag.h	89;"	d
+ATAG_CORE	include/atag.h	12;"	d
+ATAG_INITRD	include/atag.h	49;"	d
+ATAG_INITRD2	include/atag.h	50;"	d
+ATAG_MEM	include/atag.h	20;"	d
+ATAG_MEMCLK	include/atag.h	95;"	d
+ATAG_NONE	include/atag.h	5;"	d
+ATAG_RAMDISK	include/atag.h	41;"	d
+ATAG_REVISION	include/atag.h	64;"	d
+ATAG_SERIAL	include/atag.h	57;"	d
+ATAG_VIDEOLFB	include/atag.h	70;"	d
+ATAG_VIDEOTEXT	include/atag.h	27;"	d
+KERNEL_OFFSET	include/atag.h	3;"	d
+MACHINE_ID	include/atag.h	1;"	d
+MEM_BASE	include/atag.h	2;"	d
+atag	include/atag.h	/^}atag;$/;"	t	typeref:struct:__anon13
+c	include/atag.h	/^    char c[8];$/;"	m	struct:__anon11
+chBluePos	include/atag.h	/^    byte   chBluePos;$/;"	m	struct:__anon10
+chBlueSize	include/atag.h	/^    byte   chBlueSize;$/;"	m	struct:__anon10
+chBx	include/atag.h	/^    byte   chBx;$/;"	m	struct:__anon5
+chBy	include/atag.h	/^    byte   chBy;$/;"	m	struct:__anon5
+chGreenPos	include/atag.h	/^    byte   chGreenPos;$/;"	m	struct:__anon10
+chGreenSize	include/atag.h	/^    byte   chGreenSize;$/;"	m	struct:__anon10
+chIsVGA	include/atag.h	/^    byte   chIsVGA;$/;"	m	struct:__anon5
+chRedPos	include/atag.h	/^    byte   chRedPos;$/;"	m	struct:__anon10
+chRedSize	include/atag.h	/^    byte   chRedSize;$/;"	m	struct:__anon10
+chRsvdPos	include/atag.h	/^    byte   chRsvdPos;$/;"	m	struct:__anon10
+chRsvdSize	include/atag.h	/^    byte   chRsvdSize;$/;"	m	struct:__anon10
+chVideoCols	include/atag.h	/^    byte   chVideoCols;$/;"	m	struct:__anon5
+chVideoLine	include/atag.h	/^    byte   chVideoLine;$/;"	m	struct:__anon5
+chVideoMode	include/atag.h	/^    byte   chVideoMode;$/;"	m	struct:__anon5
+hwFbBase	include/atag.h	/^    uint32 hwFbBase;$/;"	m	struct:__anon10
+hwFbDepth	include/atag.h	/^    uint16 hwFbDepth;$/;"	m	struct:__anon10
+hwFbHeight	include/atag.h	/^    uint16 hwFbHeight;$/;"	m	struct:__anon10
+hwFbLineLength	include/atag.h	/^    uint16 hwFbLineLength;$/;"	m	struct:__anon10
+hwFbSize	include/atag.h	/^    uint32 hwFbSize; $/;"	m	struct:__anon10
+hwFbWidth	include/atag.h	/^    uint16 hwFbWidth; $/;"	m	struct:__anon10
+hwVideoEgaBx	include/atag.h	/^    uint16 hwVideoEgaBx;$/;"	m	struct:__anon5
+hwVideoPage	include/atag.h	/^    uint16 hwVideoPage;$/;"	m	struct:__anon5
+hwVideoPoints	include/atag.h	/^    uint16 hwVideoPoints;$/;"	m	struct:__anon5
+tCmdline	include/atag.h	/^        tag_cmdline   tCmdline;$/;"	m	union:__anon13::__anon14
+tCore	include/atag.h	/^        tag_core      tCore;$/;"	m	union:__anon13::__anon14
+tHeader	include/atag.h	/^    tag_header tHeader;$/;"	m	struct:__anon13
+tInitrd	include/atag.h	/^        tag_initrd    tInitrd;$/;"	m	union:__anon13::__anon14
+tMem	include/atag.h	/^        tag_mem       tMem;$/;"	m	union:__anon13::__anon14
+tRamdisk	include/atag.h	/^        tag_ramdisk   tRamdisk;$/;"	m	union:__anon13::__anon14
+tRevision	include/atag.h	/^        tag_revision  tRevision;$/;"	m	union:__anon13::__anon14
+tSerial	include/atag.h	/^        tag_serial    tSerial;$/;"	m	union:__anon13::__anon14
+tTagType	include/atag.h	/^    }tTagType;$/;"	m	struct:__anon13	typeref:union:__anon13::__anon14
+tVideoLfb	include/atag.h	/^        tag_videolfb  tVideoLfb;$/;"	m	union:__anon13::__anon14
+tVideoText	include/atag.h	/^        tag_vidiotext tVideoText;$/;"	m	union:__anon13::__anon14
+tag_cmdline	include/atag.h	/^}tag_cmdline;$/;"	t	typeref:struct:__anon11
+tag_core	include/atag.h	/^}tag_core;$/;"	t	typeref:struct:__anon3
+tag_header	include/atag.h	/^}tag_header;$/;"	t	typeref:struct:__anon2
+tag_initrd	include/atag.h	/^}tag_initrd;$/;"	t	typeref:struct:__anon7
+tag_mem	include/atag.h	/^}tag_mem;$/;"	t	typeref:struct:__anon4
+tag_memclk	include/atag.h	/^}tag_memclk;$/;"	t	typeref:struct:__anon12
+tag_ramdisk	include/atag.h	/^}tag_ramdisk;$/;"	t	typeref:struct:__anon6
+tag_revision	include/atag.h	/^}tag_revision;$/;"	t	typeref:struct:__anon9
+tag_serial	include/atag.h	/^}tag_serial;$/;"	t	typeref:struct:__anon8
+tag_videolfb	include/atag.h	/^}tag_videolfb;$/;"	t	typeref:struct:__anon10
+tag_vidiotext	include/atag.h	/^}tag_vidiotext;$/;"	t	typeref:struct:__anon5
+wFlag	include/atag.h	/^    UINT32 wFlag;$/;"	m	struct:__anon2
+wFlag	include/atag.h	/^    UINT32 wFlag;$/;"	m	struct:__anon3
+wFlags	include/atag.h	/^    UINT32 wFlags;$/;"	m	struct:__anon6
+wHigh	include/atag.h	/^    UINT32 wHigh;$/;"	m	struct:__anon8
+wLow	include/atag.h	/^    UINT32 wLow;$/;"	m	struct:__anon8
+wMemClk	include/atag.h	/^    UINT32 wMemClk;$/;"	m	struct:__anon12
+wPageSize	include/atag.h	/^    UINT32 wPageSize;$/;"	m	struct:__anon3
+wRev	include/atag.h	/^    UINT32 wRev;$/;"	m	struct:__anon9
+wRootDev	include/atag.h	/^    UINT32 wRootDev;$/;"	m	struct:__anon3
+wSize	include/atag.h	/^    UINT32 wSize;$/;"	m	struct:__anon2
+wSize	include/atag.h	/^    UINT32 wSize;$/;"	m	struct:__anon4
+wSize	include/atag.h	/^    UINT32 wSize;$/;"	m	struct:__anon6
+wSize	include/atag.h	/^    UINT32 wSize;$/;"	m	struct:__anon7
+wStart	include/atag.h	/^    UINT32 wStart;$/;"	m	struct:__anon4
+wStart	include/atag.h	/^    UINT32 wStart;$/;"	m	struct:__anon6
+wStart	include/atag.h	/^    UINT32 wStart;$/;"	m	struct:__anon7
+E2BIG	include/errno-base.h	10;"	d
+EACCES	include/errno-base.h	16;"	d
+EAGAIN	include/errno-base.h	14;"	d
+EBADF	include/errno-base.h	12;"	d
+EBUSY	include/errno-base.h	19;"	d
+ECHILD	include/errno-base.h	13;"	d
+EDOM	include/errno-base.h	36;"	d
+EEXIST	include/errno-base.h	20;"	d
+EFAULT	include/errno-base.h	17;"	d
+EFBIG	include/errno-base.h	30;"	d
+EINTR	include/errno-base.h	7;"	d
+EINVAL	include/errno-base.h	25;"	d
+EIO	include/errno-base.h	8;"	d
+EISDIR	include/errno-base.h	24;"	d
+EMFILE	include/errno-base.h	27;"	d
+EMLINK	include/errno-base.h	34;"	d
+ENFILE	include/errno-base.h	26;"	d
+ENODEV	include/errno-base.h	22;"	d
+ENOENT	include/errno-base.h	5;"	d
+ENOEXEC	include/errno-base.h	11;"	d
+ENOMEM	include/errno-base.h	15;"	d
+ENOSPC	include/errno-base.h	31;"	d
+ENOTBLK	include/errno-base.h	18;"	d
+ENOTDIR	include/errno-base.h	23;"	d
+ENOTTY	include/errno-base.h	28;"	d
+ENXIO	include/errno-base.h	9;"	d
+EPERM	include/errno-base.h	4;"	d
+EPIPE	include/errno-base.h	35;"	d
+ERANGE	include/errno-base.h	37;"	d
+EROFS	include/errno-base.h	33;"	d
+ESPIPE	include/errno-base.h	32;"	d
+ESRCH	include/errno-base.h	6;"	d
+ETXTBSY	include/errno-base.h	29;"	d
+EXDEV	include/errno-base.h	21;"	d
+_ASM_GENERIC_ERRNO_BASE_H	include/errno-base.h	2;"	d
+EADDRINUSE	include/errno.h	71;"	d
+EADDRNOTAVAIL	include/errno.h	72;"	d
+EADV	include/errno.h	41;"	d
+EAFNOSUPPORT	include/errno.h	70;"	d
+EALREADY	include/errno.h	87;"	d
+EBADE	include/errno.h	23;"	d
+EBADFD	include/errno.h	50;"	d
+EBADMSG	include/errno.h	47;"	d
+EBADR	include/errno.h	24;"	d
+EBADRQC	include/errno.h	27;"	d
+EBADSLT	include/errno.h	28;"	d
+EBFONT	include/errno.h	32;"	d
+ECANCELED	include/errno.h	99;"	d
+ECHRNG	include/errno.h	15;"	d
+ECOMM	include/errno.h	43;"	d
+ECONNABORTED	include/errno.h	76;"	d
+ECONNREFUSED	include/errno.h	84;"	d
+ECONNRESET	include/errno.h	77;"	d
+EDEADLK	include/errno.h	6;"	d
+EDEADLOCK	include/errno.h	30;"	d
+EDESTADDRREQ	include/errno.h	62;"	d
+EDOTDOT	include/errno.h	46;"	d
+EDQUOT	include/errno.h	95;"	d
+EHOSTDOWN	include/errno.h	85;"	d
+EHOSTUNREACH	include/errno.h	86;"	d
+EHWPOISON	include/errno.h	111;"	d
+EIDRM	include/errno.h	14;"	d
+EILSEQ	include/errno.h	57;"	d
+EINPROGRESS	include/errno.h	88;"	d
+EISCONN	include/errno.h	79;"	d
+EISNAM	include/errno.h	93;"	d
+EKEYEXPIRED	include/errno.h	101;"	d
+EKEYREJECTED	include/errno.h	103;"	d
+EKEYREVOKED	include/errno.h	102;"	d
+EL2HLT	include/errno.h	22;"	d
+EL2NSYNC	include/errno.h	16;"	d
+EL3HLT	include/errno.h	17;"	d
+EL3RST	include/errno.h	18;"	d
+ELIBACC	include/errno.h	52;"	d
+ELIBBAD	include/errno.h	53;"	d
+ELIBEXEC	include/errno.h	56;"	d
+ELIBMAX	include/errno.h	55;"	d
+ELIBSCN	include/errno.h	54;"	d
+ELNRNG	include/errno.h	19;"	d
+ELOOP	include/errno.h	11;"	d
+EMEDIUMTYPE	include/errno.h	98;"	d
+EMSGSIZE	include/errno.h	63;"	d
+EMULTIHOP	include/errno.h	45;"	d
+ENAMETOOLONG	include/errno.h	7;"	d
+ENAVAIL	include/errno.h	92;"	d
+ENETDOWN	include/errno.h	73;"	d
+ENETRESET	include/errno.h	75;"	d
+ENETUNREACH	include/errno.h	74;"	d
+ENOANO	include/errno.h	26;"	d
+ENOBUFS	include/errno.h	78;"	d
+ENOCSI	include/errno.h	21;"	d
+ENODATA	include/errno.h	34;"	d
+ENOKEY	include/errno.h	100;"	d
+ENOLCK	include/errno.h	8;"	d
+ENOLINK	include/errno.h	40;"	d
+ENOMEDIUM	include/errno.h	97;"	d
+ENOMSG	include/errno.h	13;"	d
+ENONET	include/errno.h	37;"	d
+ENOPKG	include/errno.h	38;"	d
+ENOPROTOOPT	include/errno.h	65;"	d
+ENOSR	include/errno.h	36;"	d
+ENOSTR	include/errno.h	33;"	d
+ENOSYS	include/errno.h	9;"	d
+ENOTCONN	include/errno.h	80;"	d
+ENOTEMPTY	include/errno.h	10;"	d
+ENOTNAM	include/errno.h	91;"	d
+ENOTRECOVERABLE	include/errno.h	107;"	d
+ENOTSOCK	include/errno.h	61;"	d
+ENOTUNIQ	include/errno.h	49;"	d
+EOPNOTSUPP	include/errno.h	68;"	d
+EOVERFLOW	include/errno.h	48;"	d
+EOWNERDEAD	include/errno.h	106;"	d
+EPFNOSUPPORT	include/errno.h	69;"	d
+EPROTO	include/errno.h	44;"	d
+EPROTONOSUPPORT	include/errno.h	66;"	d
+EPROTOTYPE	include/errno.h	64;"	d
+EREMCHG	include/errno.h	51;"	d
+EREMOTE	include/errno.h	39;"	d
+EREMOTEIO	include/errno.h	94;"	d
+ERESTART	include/errno.h	58;"	d
+ERFKILL	include/errno.h	109;"	d
+ESHUTDOWN	include/errno.h	81;"	d
+ESOCKTNOSUPPORT	include/errno.h	67;"	d
+ESRMNT	include/errno.h	42;"	d
+ESTALE	include/errno.h	89;"	d
+ESTRPIPE	include/errno.h	59;"	d
+ETIME	include/errno.h	35;"	d
+ETIMEDOUT	include/errno.h	83;"	d
+ETOOMANYREFS	include/errno.h	82;"	d
+EUCLEAN	include/errno.h	90;"	d
+EUNATCH	include/errno.h	20;"	d
+EUSERS	include/errno.h	60;"	d
+EWOULDBLOCK	include/errno.h	12;"	d
+EXFULL	include/errno.h	25;"	d
+_ASM_GENERIC_ERRNO_H	include/errno.h	2;"	d
 NAND_CMMD_CACHEDPROG	include/flash.h	19;"	d
 NAND_CMMD_DEPLETE1	include/flash.h	22;"	d
 NAND_CMMD_DEPLETE2	include/flash.h	23;"	d
@@ -221,15 +456,15 @@ KERM_DECODE	include/kermit.h	29;"	d
 KERM_ENCODE	include/kermit.h	28;"	d
 MARK_EXIT	include/kermit.h	2;"	d
 MARK_START	include/kermit.h	1;"	d
-TAG_KERMIT	include/kermit.h	/^}TAG_KERMIT;$/;"	t	typeref:struct:__anon1
-buf	include/kermit.h	/^  BYTE buf[KERMIT_BUF_LEN];$/;"	m	struct:__anon1
-check	include/kermit.h	/^  BYTE check;$/;"	m	struct:__anon1
-check_have_encode	include/kermit.h	/^  BYTE check_have_encode;$/;"	m	struct:__anon1
-len	include/kermit.h	/^  BYTE len;$/;"	m	struct:__anon1
-seq	include/kermit.h	/^  BYTE seq;$/;"	m	struct:__anon1
-spase	include/kermit.h	/^  WORD spase;$/;"	m	struct:__anon1
-type	include/kermit.h	/^  BYTE type;$/;"	m	struct:__anon1
-valid_data_len	include/kermit.h	/^  BYTE valid_data_len;$/;"	m	struct:__anon1
+TAG_KERMIT	include/kermit.h	/^}TAG_KERMIT;$/;"	t	typeref:struct:__anon15
+buf	include/kermit.h	/^  BYTE buf[KERMIT_BUF_LEN];$/;"	m	struct:__anon15
+check	include/kermit.h	/^  BYTE check;$/;"	m	struct:__anon15
+check_have_encode	include/kermit.h	/^  BYTE check_have_encode;$/;"	m	struct:__anon15
+len	include/kermit.h	/^  BYTE len;$/;"	m	struct:__anon15
+seq	include/kermit.h	/^  BYTE seq;$/;"	m	struct:__anon15
+spase	include/kermit.h	/^  WORD spase;$/;"	m	struct:__anon15
+type	include/kermit.h	/^  BYTE type;$/;"	m	struct:__anon15
+valid_data_len	include/kermit.h	/^  BYTE valid_data_len;$/;"	m	struct:__anon15
 BANKCON0	include/s3c24xxreg.h	9;"	d
 BANKCON1	include/s3c24xxreg.h	10;"	d
 BANKCON2	include/s3c24xxreg.h	11;"	d
@@ -451,6 +686,7 @@ InitUart0	init/main.c	/^static void InitUart0(void)$/;"	f	file:
 SysInit	init/main.c	/^static void SysInit(void)$/;"	f	file:
 VfsInit	init/main.c	/^static void VfsInit(void)$/;"	f	file:
 chByteCommandLine	init/main.c	/^char chByteCommandLine[CMD_ARG_MAX][32];$/;"	v
+do_init_call	init/main.c	/^static bool do_init_call(void)$/;"	f	file:
 main	init/main.c	/^int main(void)$/;"	f
 obj	mm/Makefile	/^obj:=$(src:.c=.o)$/;"	m
 mm_manage	mm/malloc.c	/^BYTE mm_manage(void)$/;"	f

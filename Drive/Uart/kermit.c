@@ -11,10 +11,10 @@
 void v_bios_serial_load(void *pLoadAddr)
 {
   enum{MARK,LEN,SEQ,KTYPE,KDATA,CHECK,ACK,NOACK,WRITEFILE,FINISH}s_state_recv=MARK;
-  TAG_KERMIT kermit;
+  volatile TAG_KERMIT kermit;
   BYTE buf[6];
   BYTE c,i,check_sum;
-  BYTE *paddr=(BYTE *)pLoadAddr;
+  volatile BYTE *paddr=(BYTE *)pLoadAddr;
   while(1)
     {
       switch (s_state_recv)

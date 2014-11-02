@@ -25,5 +25,12 @@ SECTIONS
 		. = ALIGN(4);
 		SYSCALL_END = .;
 	}
+	.INITSECT ALIGN(4):
+	{
+		INIT_CALL_BEGIN = .;
+		*(.INITSECT)
+		. = ALIGN(4);
+		INIT_CALL_END = .;
+	}
 	_end = .;
 }

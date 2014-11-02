@@ -5,7 +5,7 @@
 #include "flash.h"
 
 volatile flash_attribute_t  g_tFlashObj;
-const    parttition_table_t c_tPart=\
+volatile const    parttition_table_t c_tPart=\
 {
 	{
 		"Top Harf"   ,KB(0x0),KB(4)
@@ -18,7 +18,6 @@ const    parttition_table_t c_tPart=\
 	}
 };
 
-const char c_VbiosMagic[]="v-bh";//0x762D6268
 
 static const byte c_chNandIds[]=\
 {
@@ -29,7 +28,6 @@ static const byte c_chHex2dec[]=\
 {
 	'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','0'
 };
-
 
 static bool nand_ready(void);
 
@@ -64,39 +62,7 @@ static inline void nand_write_addr(byte dat)
 	WriteByte(g_tFlashObj.AddressRegister,dat);
 }
 
-static void nand_cmd(UINT32 nCmd, int nPageIndex, int nPageOffset)
-{
-	nand_write_cmd(nCmd);
 
-	if (nPageOffset != -1)
-	{
-		nand_write_addr(nPageOffset & 0xff);
-
-		if (is_large_page())
-			nand_write_addr((nPageOffset >> 8) & 0xff);
-	}
-
-	if (nPageIndex != -1)
-	{
-		nand_write_addr(nPageIndex & 0xff);
-		nand_write_addr((nPageIndex >> 8) & 0xff);
-		
-		// if ((nPageIndex >> 16) & 0xff)	 // fixme
-			nand_write_addr((nPageIndex >> 16) & 0xff);
-	}
-
-	switch (nCmd)
-	{
-	case NAND_CMMD_READ0:
-		if (ss_large_page())
-			nand_write_cmd(NAND_CMMD_READSTART);
-		break;
-
-	default:
-		break;
-	}
-	nand_ready();
-}
 static bool is_power2(UINT32 n)
 {
 	return (0==(n&(n-1)))?true:false;
@@ -236,48 +202,56 @@ bool erase_block(UINT32 BlockNum,UINT32 Len)
 bool check_bh_in_flash(UINT32 addr)
 {
 	byte c[4]={0};
+	byte i;
+	static const byte c_chMagic[4]={0x68,0x01,0x42,0x47};//0x47420168
 	c[0]=read_one_byte_from_flash(addr+4);//flag
 	c[1]=read_one_byte_from_flash(addr+5);//flag
 	c[2]=read_one_byte_from_flash(addr+6);//flag
 	c[3]=read_one_byte_from_flash(addr+7);//flag
-	if((c[0]==c_VbiosMagic[0])&&(c[1]==c_VbiosMagic[1]))
+	for (i = 0; i < 4; ++i)
 	{
-		if((c[2]==c_VbiosMagic[2])&&(c[3]==c_VbiosMagic[3]))
+		if(c[i]!=c_chMagic[i])
 		{
-			return true;
+			return false;
 		}
 	}
-	return false;
+	return true;
 }
 
-bool v_bios_flash_load(parttition_info_t * pPartion,void *p)
+bool v_bios_flash_load(void *p)
 {
 	UINT32 i;
 	UINT32 wReadAddr;
 	UINT32 wDataLen;
 	byte *pLoadAddr=(byte *)p;
-	wReadAddr=pPartion->start_addr; // debug for address & Len
-	wDataLen =pPartion->len;  	    //default 10K
+	wReadAddr=c_tPart.bh.start_addr; // debug for address & Len
+	wDataLen =c_tPart.bh.len;  	    //default 10K
 	for (i = 0; i < wDataLen; ++i)
 	{
 		*pLoadAddr++=read_one_byte_from_flash((wReadAddr+i));
 	}
 	return check_bh_in_flash(wReadAddr);
 }
-bool v_bios_flash_download(parttition_info_t * pPartion,void *p)
+bool v_bios_flash_download(void *p)
 {
 	UINT32 i;
 	UINT32 wWriteBase;
 	UINT32 wDataLen;
+	byte c;
 	byte *pLoadAddr=(byte *)p;
-	wWriteBase =pPartion->start_addr;
-	wDataLen   =pPartion->len;
+	wWriteBase =c_tPart.bh.start_addr;
+	wDataLen   =c_tPart.bh.len;
 	//erase_block(0,1);//erase 256KB for bh where th is 4K,don't do that,bacause the the ops is block
 	if(check_bh_in_flash(wWriteBase))
 	{
 		return false;
 	}
-	beep(1);
+	ShowString("Press 0 to download\r\n");
+	if('0'!=Uart0GetChar())
+	{
+		return true;
+	}
+	beep(1);//Now Start DownLoad
 	for (i = 0; i <wDataLen; ++i)
 	{
 		write_one_byte_to_flash((wWriteBase+i),*pLoadAddr);

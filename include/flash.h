@@ -33,14 +33,12 @@
 #define NAND_CMMD_NONE		-1
 
 extern volatile flash_attribute_t g_tFlashObj;
-extern const    parttition_table_t c_tPart;
-
-extern const char c_VbiosMagic[];//magic
+extern volatile const parttition_table_t c_tPart;
 
 extern bool init_flash(void);
 
-extern v_bios_flash_load    (parttition_info_t * pPartion,void *);
-extern v_bios_flash_download(parttition_info_t * pPartion,void *);
+extern v_bios_flash_load    (void *);
+extern v_bios_flash_download(void *);
 extern byte read_one_byte_from_flash(UINT32 addr);
 extern bool write_one_byte_to_flash(UINT32 addr,byte dat);
 

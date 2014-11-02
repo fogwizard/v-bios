@@ -2,31 +2,36 @@
 #include "s3c24xxreg.h"
 #include "Uart.h"
 #include "util.h"
-#include "flash.h"
+//#include "flash.h" don't include the file because reloadable
+
+extern bool init_flash(void);
 
 
-#define THRUNBH() th_run_bh()
+#define THRUNBH()      th_run_bh()
 #define THINIT_FLASH() init_flash()
 
 bool th_run_bh(void);
 
-static bool check_bh_in_ram(byte *c)
+
+static bool check_bh_in_ram(byte c[])
 {
-  if((c[0]==c_VbiosMagic[0])&&(c[1]==c_VbiosMagic[1]))
-  {
-    if((c[2]==c_VbiosMagic[2])&&(c[3]==c_VbiosMagic[3]))
+    byte i;
+    static const byte c_chMagic[4]={0x68,0x01,0x42,0x47};
+    for (i = 0; i < 4; ++i)
     {
-      return true;
+        if (c[i] != c_chMagic[i])
+        {
+            return false;
+        }
     }
-  }
-  return false;
+    return true;;
 }
 
 bool LoadFromFlash (void)
 {
     byte *p;
     p = (byte *)BH_START_ADDRESS_MEM;
-    v_bios_flash_load((parttition_info_t *)&c_tPart.bh, (void *)BH_START_ADDRESS_MEM);
+    v_bios_flash_load((void *)BH_START_ADDRESS_MEM);
     return check_bh_in_ram(&p[4]);
 }
 
@@ -42,13 +47,13 @@ bool LoadFromUart (void)
     v_bios_serial_load((void *)BH_START_ADDRESS_MEM);
     Delay(0xffffff);
     p = (byte *)BH_START_ADDRESS_MEM;
-    if (false==check_bh_in_ram((byte *)(&p[4]))) //Wrong BH
+    if (false == check_bh_in_ram((byte *)(&p[4]))) //Wrong BH
     {
         ShowString("\r\nWrong Botton Harf!\r\n");
         return false;
     }
     ShowString("\r\nDetect Botton Magic!\r\n");
-    v_bios_flash_download((parttition_info_t *)&c_tPart.bh, (void *)BH_START_ADDRESS_MEM);
+    v_bios_flash_download((void *)BH_START_ADDRESS_MEM);
     return true;
 }
 
@@ -63,7 +68,7 @@ void THLoadBH (void)
         {
         case '0':
             Uart0PrintChar('0');
-            if(LoadFromFlash())
+            if (LoadFromFlash())
             {
                 Delay(0xffff);
                 THRUNBH();
@@ -73,7 +78,7 @@ void THLoadBH (void)
             break;
         case '1':
             Uart0PrintChar('1');
-            if(LoadFromUart ())
+            if (LoadFromUart ())
             {
                 THRUNBH();
             }

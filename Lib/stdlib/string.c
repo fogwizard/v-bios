@@ -30,6 +30,20 @@ int (strcmp) (char *str1, char *str2)
     }
   return (*str1 - *str2);
 }
+char * (strcpy)(char *dest,const char *source)
+{
+    char *to=dest;
+    if((NULL==dest)||(NULL==source))
+    {
+        return NULL;
+    }
+    while(*source)
+    {
+        *to++=*source++;
+    }
+    *to='\0';
+    return dest;
+}
 void *(memset)(void *s,int ch,int n)
 {
 	unsigned char *dest=(unsigned char *)s;

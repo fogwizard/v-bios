@@ -6,3 +6,12 @@ typedef struct
 extern TagSysCall SYSCALL_BEGIN[],SYSCALL_END[];
 
 #define INSTALLAPP(name,func) static __attribute__((__used__)) __attribute__((section(".APP"))) TagSysCall App_##name={func,#name};
+
+
+typedef struct
+{
+    int (*init)(void);
+}TagInitCall;
+extern TagInitCall INIT_CALL_BEGIN[],INIT_CALL_END[];
+
+#define INSTALLDEVICE(name,func) static __attribute__((__used__)) __attribute__((section(".INITSECT"))) TagInitCall Drive_##name={func,#name};
