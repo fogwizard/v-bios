@@ -1,0 +1,10 @@
+prefix=/opt/EmbedSky/Qte/tslib-1.4.1/__install
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: tslib
+Description: Touchscreen Access Library
+Version: 0.0.2
+Libs: -L${libdir} -lts
+Cflags: -I${includedir}

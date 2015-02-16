@@ -1,0 +1,11 @@
+prefix=/opt/EmbedSky/crosstools_3.4.5_softfloat/gcc-3.4.5-glibc-2.3.6/arm-linux/arm-linux
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: uuid
+Description: Universally unique id library
+Version: 1.41.5
+Requires: 
+Cflags: -I${includedir}/uuid
+Libs: -L${libdir} -luuid

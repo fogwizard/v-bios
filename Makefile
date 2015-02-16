@@ -41,7 +41,7 @@ v-bios-bh.bin: v-bios-bh.elf
 	 $(CROSS_COMPILE)objcopy -O binary -S $< $@
 v-bios-bh.dis: v-bios-bh.elf
 	$(CROSS_COMPILE)objdump -D $< > $@
-	echo "123456" | sudo -S cp v-bios-bh.bin ./boot/v-bios-th.bin  /media/sf_upfile/
+	echo "123456" | sudo -S cp v-bios-bh.bin ./boot/v-bios-th.bin  ./out/
 	
 clean:
 	@echo   $(SourceOBJ)
