@@ -21,17 +21,22 @@ test	App/ls.c	/^bool test(parttition_info_t * pPartion)$/;"	f
 main	App/md.c	/^static int main(int argc, char *argv[])$/;"	f	file:
 usase	App/md.c	/^static void usase(void)$/;"	f	file:
 main	App/reboot.c	/^static int main(int argc,char *argv[])$/;"	f	file:
-FILENAME_MAX	App/tftp.c	18;"	d	file:
-dst	App/tftp.c	/^   unsigned short dst;$/;"	m	struct:__anon1	file:
-ip_to_long	App/tftp.c	/^static bool ip_to_long(long *nip,char *args)$/;"	f	file:
-long_to_ip	App/tftp.c	/^static bool   long_to_ip(long nip,char *args)$/;"	f	file:
+FILENAME_MAX	App/tftp.c	13;"	d	file:
+ack_pack	App/tftp.c	/^static bool ack_pack(tag_sock *pSock,int fd)$/;"	f	file:
+ip_to_long	App/tftp.c	/^static bool ip_to_long(UINT32 *nip,char *args)$/;"	f	file:
+long_to_ip	App/tftp.c	/^static bool   long_to_ip(UINT32 nip,char *args)$/;"	f	file:
 main	App/tftp.c	/^static int main(int argc,char * argv[])$/;"	f	file:
-sock	App/tftp.c	/^}sock;$/;"	t	typeref:struct:__anon1	file:
-src	App/tftp.c	/^   unsigned short src;$/;"	m	struct:__anon1	file:
-tftp_aqst_file	App/tftp.c	/^static bool tftp_aqst_file(sock *pSock)$/;"	f	file:
-tftp_recv_file	App/tftp.c	/^static bool tftp_recv_file(sock *pSock,void *addr)$/;"	f	file:
+tftp_aqst_file	App/tftp.c	/^static bool tftp_aqst_file(tag_sock *pSock,int fd)$/;"	f	file:
+tftp_recv_file	App/tftp.c	/^static bool tftp_recv_file(tag_sock *pSock,void *addr,int fd)$/;"	f	file:
 usage	App/tftp.c	/^static usage(void)$/;"	f	file:
 obj	Core/Makefile	/^obj:=$(src:.c=.o)$/;"	m
+NET_ETH_MAX	Core/net_core.c	8;"	d	file:
+net_ops_desc	Core/net_core.c	/^tag_file_ops *net_ops_desc[NET_ETH_MAX]={0};$/;"	v
+recvfrom	Core/net_core.c	/^bool recvfrom(fd)$/;"	f
+regist_net_device	Core/net_core.c	/^bool regist_net_device(int MastID,tag_file_ops *ops)$/;"	f
+sendto	Core/net_core.c	/^bool sendto(fd)$/;"	f
+sock_alloc	Core/net_core.c	/^int  sock_alloc(void)$/;"	f
+sock_close	Core/net_core.c	/^bool sock_close(int fd)$/;"	f
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 obj	Drive/Flash/Makefile	/^obj:=$(src:.c=.o)$/;"	m
 c_chHex2dec	Drive/Flash/flash.c	/^static const byte c_chHex2dec[]=\\$/;"	v	file:
@@ -56,6 +61,13 @@ v_bios_flash_load	Drive/Flash/flash.c	/^bool v_bios_flash_load(void *p)$/;"	f
 write_one_byte_to_flash	Drive/Flash/flash.c	/^bool write_one_byte_to_flash(UINT32 addr,byte dat)$/;"	f
 obj	Drive/Misc/Makefile	/^obj:=$(src:.c=.o)$/;"	m
 beep	Drive/Misc/misc.c	/^void beep(unsigned char ctl)$/;"	f
+obj	Drive/Net/Makefile	/^obj:=$(src:.c=.o)$/;"	m
+cs8900_init	Drive/Net/cs8900.c	/^static bool cs8900_init(void)$/;"	f	file:
+cs8900_recv	Drive/Net/cs8900.c	/^static bool cs8900_recv(void)$/;"	f	file:
+cs8900_send	Drive/Net/cs8900.c	/^static bool cs8900_send(void)$/;"	f	file:
+eth0	Drive/Net/cs8900.c	/^static tag_net_device eth0=\\$/;"	v	file:
+ops	Drive/Net/cs8900.c	/^static tag_file_ops ops=\\$/;"	v	file:
+rst_cs8900	Drive/Net/cs8900.c	/^bool rst_cs8900(void)$/;"	f
 obj	Drive/Uart/Makefile	/^obj:=$(src:.c=.o)$/;"	m
 ShowString	Drive/Uart/Uart.c	/^void ShowString (const char *dat)$/;"	f
 Uart0GetChar	Drive/Uart/Uart.c	/^char Uart0GetChar(void)$/;"	f
@@ -147,62 +159,70 @@ TH_START	boot/head.s	/^TH_START:$/;"	l
 loop	boot/head.s	/^	loop: b loop$/;"	l
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 INSTALLAPP	include/SysCall.h	8;"	d
-Name	include/SysCall.h	/^	char *Name;$/;"	m	struct:__anon16
-TagSysCall	include/SysCall.h	/^}TagSysCall;$/;"	t	typeref:struct:__anon16
-main	include/SysCall.h	/^	int (*main)(int argc,char *argv[]);$/;"	m	struct:__anon16
-AddressRegister	include/Typedef.h	/^	UINT32 AddressRegister;$/;"	m	struct:__anon19
-BOOL	include/Typedef.h	/^typedef int  bool,BOOL,Bool;$/;"	t
+INSTALLDEVICE	include/SysCall.h	17;"	d
+INSTALLINIT	include/SysCall.h	18;"	d
+Name	include/SysCall.h	/^	char *Name;$/;"	m	struct:__anon26
+TagInitCall	include/SysCall.h	/^}TagInitCall;$/;"	t	typeref:struct:__anon27
+TagSysCall	include/SysCall.h	/^}TagSysCall;$/;"	t	typeref:struct:__anon26
+init	include/SysCall.h	/^    bool (*init)(void);$/;"	m	struct:__anon27
+main	include/SysCall.h	/^	int (*main)(int argc,char *argv[]);$/;"	m	struct:__anon26
+AddressRegister	include/Typedef.h	/^	UINT32 AddressRegister;$/;"	m	struct:__anon30
+BOOL	include/Typedef.h	/^typedef int  bool,BOOL,Bool,__s32;$/;"	t
 BYTE	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
-BlockSize	include/Typedef.h	/^	UINT32 BlockSize;$/;"	m	struct:__anon19
-Bool	include/Typedef.h	/^typedef int  bool,BOOL,Bool;$/;"	t
+BlockSize	include/Typedef.h	/^	UINT32 BlockSize;$/;"	m	struct:__anon30
+Bool	include/Typedef.h	/^typedef int  bool,BOOL,Bool,__s32;$/;"	t
 Byte	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
-CommandRegister	include/Typedef.h	/^	UINT32 CommandRegister;$/;"	m	struct:__anon19
-DataRegister	include/Typedef.h	/^	UINT32 DataRegister;$/;"	m	struct:__anon19
+CommandRegister	include/Typedef.h	/^	UINT32 CommandRegister;$/;"	m	struct:__anon30
+DataRegister	include/Typedef.h	/^	UINT32 DataRegister;$/;"	m	struct:__anon30
 FALSE	include/Typedef.h	52;"	d
 False	include/Typedef.h	54;"	d
 NULL	include/Typedef.h	48;"	d
-PageSize	include/Typedef.h	/^	UINT32 PageSize;$/;"	m	struct:__anon19
+PageSize	include/Typedef.h	/^	UINT32 PageSize;$/;"	m	struct:__anon30
 TRUE	include/Typedef.h	51;"	d
 True	include/Typedef.h	53;"	d
-UI	include/Typedef.h	/^}UL,UI;$/;"	t	typeref:union:__anon18
-UINT32	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
-UL	include/Typedef.h	/^}UL,UI;$/;"	t	typeref:union:__anon18
+UI	include/Typedef.h	/^}UL,UI;$/;"	t	typeref:union:__anon29
+UINT32	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t,__u32,u32;$/;"	t
+UL	include/Typedef.h	/^}UL,UI;$/;"	t	typeref:union:__anon29
 ULONG	include/Typedef.h	/^typedef unsigned long ULONG,ulong;$/;"	t
-WORD	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
+WORD	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t,__u32,u32;$/;"	t
 __VOLATILE__	include/Typedef.h	56;"	d
-bh	include/Typedef.h	/^    parttition_info_t bh;$/;"	m	struct:__anon21
-bool	include/Typedef.h	/^typedef int  bool,BOOL,Bool;$/;"	t
+__s32	include/Typedef.h	/^typedef int  bool,BOOL,Bool,__s32;$/;"	t
+__u32	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t,__u32,u32;$/;"	t
+bh	include/Typedef.h	/^    parttition_info_t bh;$/;"	m	struct:__anon32
+bool	include/Typedef.h	/^typedef int  bool,BOOL,Bool,__s32;$/;"	t
 byte	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
-c	include/Typedef.h	/^  BYTE c[4];$/;"	m	union:__anon18
+c	include/Typedef.h	/^  BYTE c[4];$/;"	m	union:__anon29
 false	include/Typedef.h	49;"	d
-flash_attribute_t	include/Typedef.h	/^}flash_attribute_t;$/;"	t	typeref:struct:__anon19
-fsm_rt_back	include/Typedef.h	/^  fsm_rt_back$/;"	e	enum:__anon17
-fsm_rt_cpl	include/Typedef.h	/^  fsm_rt_cpl=0,$/;"	e	enum:__anon17
-fsm_rt_err	include/Typedef.h	/^  fsm_rt_err=-1,$/;"	e	enum:__anon17
-fsm_rt_on_going	include/Typedef.h	/^  fsm_rt_on_going=1,$/;"	e	enum:__anon17
-fsm_rt_t	include/Typedef.h	/^}fsm_rt_t;$/;"	t	typeref:enum:__anon17
-i	include/Typedef.h	/^  int  i;$/;"	m	union:__anon18
+flash_attribute_t	include/Typedef.h	/^}flash_attribute_t;$/;"	t	typeref:struct:__anon30
+fsm_rt_back	include/Typedef.h	/^  fsm_rt_back$/;"	e	enum:__anon28
+fsm_rt_cpl	include/Typedef.h	/^  fsm_rt_cpl=0,$/;"	e	enum:__anon28
+fsm_rt_err	include/Typedef.h	/^  fsm_rt_err=-1,$/;"	e	enum:__anon28
+fsm_rt_on_going	include/Typedef.h	/^  fsm_rt_on_going=1,$/;"	e	enum:__anon28
+fsm_rt_t	include/Typedef.h	/^}fsm_rt_t;$/;"	t	typeref:enum:__anon28
+i	include/Typedef.h	/^  int  i;$/;"	m	union:__anon29
 int16	include/Typedef.h	/^typedef short int16;$/;"	t
-kl	include/Typedef.h	/^    parttition_info_t kl;$/;"	m	struct:__anon21
-l	include/Typedef.h	/^  long l;$/;"	m	union:__anon18
-len	include/Typedef.h	/^  UINT32 len;$/;"	m	struct:__anon20
-name	include/Typedef.h	/^  char *name;$/;"	m	struct:__anon20
-parttition_info_t	include/Typedef.h	/^}parttition_info_t;$/;"	t	typeref:struct:__anon20
-parttition_table_t	include/Typedef.h	/^}parttition_table_t;$/;"	t	typeref:struct:__anon21
-size_t	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
-start_addr	include/Typedef.h	/^  UINT32 start_addr;$/;"	m	struct:__anon20
-th	include/Typedef.h	/^    parttition_info_t th;$/;"	m	struct:__anon21
+kl	include/Typedef.h	/^    parttition_info_t kl;$/;"	m	struct:__anon32
+l	include/Typedef.h	/^  long l;$/;"	m	union:__anon29
+len	include/Typedef.h	/^  UINT32 len;$/;"	m	struct:__anon31
+name	include/Typedef.h	/^  char *name;$/;"	m	struct:__anon31
+parttition_info_t	include/Typedef.h	/^}parttition_info_t;$/;"	t	typeref:struct:__anon31
+parttition_table_t	include/Typedef.h	/^}parttition_table_t;$/;"	t	typeref:struct:__anon32
+size_t	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t,__u32,u32;$/;"	t
+start_addr	include/Typedef.h	/^  UINT32 start_addr;$/;"	m	struct:__anon31
+th	include/Typedef.h	/^    parttition_info_t th;$/;"	m	struct:__anon32
 true	include/Typedef.h	50;"	d
+u16	include/Typedef.h	/^typedef unsigned short uint16,u16;$/;"	t
+u32	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t,__u32,u32;$/;"	t
 uchar	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
-ui	include/Typedef.h	/^  unsigned int ui;$/;"	m	union:__anon18
-uint	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
-uint16	include/Typedef.h	/^typedef unsigned short uint16;$/;"	t
-uint32	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
-uint32_t	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
+ui	include/Typedef.h	/^  unsigned int ui;$/;"	m	union:__anon29
+uint	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t,__u32,u32;$/;"	t
+uint16	include/Typedef.h	/^typedef unsigned short uint16,u16;$/;"	t
+uint32	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t,__u32,u32;$/;"	t
+uint32_t	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t,__u32,u32;$/;"	t
 uint8_t	include/Typedef.h	/^typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;$/;"	t
-ul	include/Typedef.h	/^  unsigned long ul;$/;"	m	union:__anon18
+ul	include/Typedef.h	/^  unsigned long ul;$/;"	m	union:__anon29
 ulong	include/Typedef.h	/^typedef unsigned long ULONG,ulong;$/;"	t
-word	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;$/;"	t
+word	include/Typedef.h	/^typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t,__u32,u32;$/;"	t
 ATAG_CMDLINE	include/atag.h	89;"	d
 ATAG_CORE	include/atag.h	12;"	d
 ATAG_INITRD	include/atag.h	49;"	d
@@ -218,69 +238,69 @@ ATAG_VIDEOTEXT	include/atag.h	27;"	d
 KERNEL_OFFSET	include/atag.h	3;"	d
 MACHINE_ID	include/atag.h	1;"	d
 MEM_BASE	include/atag.h	2;"	d
-atag	include/atag.h	/^}atag;$/;"	t	typeref:struct:__anon13
-c	include/atag.h	/^    char c[8];$/;"	m	struct:__anon11
-chBluePos	include/atag.h	/^    byte   chBluePos;$/;"	m	struct:__anon10
-chBlueSize	include/atag.h	/^    byte   chBlueSize;$/;"	m	struct:__anon10
-chBx	include/atag.h	/^    byte   chBx;$/;"	m	struct:__anon5
-chBy	include/atag.h	/^    byte   chBy;$/;"	m	struct:__anon5
-chGreenPos	include/atag.h	/^    byte   chGreenPos;$/;"	m	struct:__anon10
-chGreenSize	include/atag.h	/^    byte   chGreenSize;$/;"	m	struct:__anon10
-chIsVGA	include/atag.h	/^    byte   chIsVGA;$/;"	m	struct:__anon5
-chRedPos	include/atag.h	/^    byte   chRedPos;$/;"	m	struct:__anon10
-chRedSize	include/atag.h	/^    byte   chRedSize;$/;"	m	struct:__anon10
-chRsvdPos	include/atag.h	/^    byte   chRsvdPos;$/;"	m	struct:__anon10
-chRsvdSize	include/atag.h	/^    byte   chRsvdSize;$/;"	m	struct:__anon10
-chVideoCols	include/atag.h	/^    byte   chVideoCols;$/;"	m	struct:__anon5
-chVideoLine	include/atag.h	/^    byte   chVideoLine;$/;"	m	struct:__anon5
-chVideoMode	include/atag.h	/^    byte   chVideoMode;$/;"	m	struct:__anon5
-hwFbBase	include/atag.h	/^    uint32 hwFbBase;$/;"	m	struct:__anon10
-hwFbDepth	include/atag.h	/^    uint16 hwFbDepth;$/;"	m	struct:__anon10
-hwFbHeight	include/atag.h	/^    uint16 hwFbHeight;$/;"	m	struct:__anon10
-hwFbLineLength	include/atag.h	/^    uint16 hwFbLineLength;$/;"	m	struct:__anon10
-hwFbSize	include/atag.h	/^    uint32 hwFbSize; $/;"	m	struct:__anon10
-hwFbWidth	include/atag.h	/^    uint16 hwFbWidth; $/;"	m	struct:__anon10
-hwVideoEgaBx	include/atag.h	/^    uint16 hwVideoEgaBx;$/;"	m	struct:__anon5
-hwVideoPage	include/atag.h	/^    uint16 hwVideoPage;$/;"	m	struct:__anon5
-hwVideoPoints	include/atag.h	/^    uint16 hwVideoPoints;$/;"	m	struct:__anon5
-tCmdline	include/atag.h	/^        tag_cmdline   tCmdline;$/;"	m	union:__anon13::__anon14
-tCore	include/atag.h	/^        tag_core      tCore;$/;"	m	union:__anon13::__anon14
-tHeader	include/atag.h	/^    tag_header tHeader;$/;"	m	struct:__anon13
-tInitrd	include/atag.h	/^        tag_initrd    tInitrd;$/;"	m	union:__anon13::__anon14
-tMem	include/atag.h	/^        tag_mem       tMem;$/;"	m	union:__anon13::__anon14
-tRamdisk	include/atag.h	/^        tag_ramdisk   tRamdisk;$/;"	m	union:__anon13::__anon14
-tRevision	include/atag.h	/^        tag_revision  tRevision;$/;"	m	union:__anon13::__anon14
-tSerial	include/atag.h	/^        tag_serial    tSerial;$/;"	m	union:__anon13::__anon14
-tTagType	include/atag.h	/^    }tTagType;$/;"	m	struct:__anon13	typeref:union:__anon13::__anon14
-tVideoLfb	include/atag.h	/^        tag_videolfb  tVideoLfb;$/;"	m	union:__anon13::__anon14
-tVideoText	include/atag.h	/^        tag_vidiotext tVideoText;$/;"	m	union:__anon13::__anon14
-tag_cmdline	include/atag.h	/^}tag_cmdline;$/;"	t	typeref:struct:__anon11
-tag_core	include/atag.h	/^}tag_core;$/;"	t	typeref:struct:__anon3
-tag_header	include/atag.h	/^}tag_header;$/;"	t	typeref:struct:__anon2
-tag_initrd	include/atag.h	/^}tag_initrd;$/;"	t	typeref:struct:__anon7
-tag_mem	include/atag.h	/^}tag_mem;$/;"	t	typeref:struct:__anon4
-tag_memclk	include/atag.h	/^}tag_memclk;$/;"	t	typeref:struct:__anon12
-tag_ramdisk	include/atag.h	/^}tag_ramdisk;$/;"	t	typeref:struct:__anon6
-tag_revision	include/atag.h	/^}tag_revision;$/;"	t	typeref:struct:__anon9
-tag_serial	include/atag.h	/^}tag_serial;$/;"	t	typeref:struct:__anon8
-tag_videolfb	include/atag.h	/^}tag_videolfb;$/;"	t	typeref:struct:__anon10
-tag_vidiotext	include/atag.h	/^}tag_vidiotext;$/;"	t	typeref:struct:__anon5
+atag	include/atag.h	/^}atag;$/;"	t	typeref:struct:__anon12
+c	include/atag.h	/^    char c[8];$/;"	m	struct:__anon10
+chBluePos	include/atag.h	/^    byte   chBluePos;$/;"	m	struct:__anon9
+chBlueSize	include/atag.h	/^    byte   chBlueSize;$/;"	m	struct:__anon9
+chBx	include/atag.h	/^    byte   chBx;$/;"	m	struct:__anon4
+chBy	include/atag.h	/^    byte   chBy;$/;"	m	struct:__anon4
+chGreenPos	include/atag.h	/^    byte   chGreenPos;$/;"	m	struct:__anon9
+chGreenSize	include/atag.h	/^    byte   chGreenSize;$/;"	m	struct:__anon9
+chIsVGA	include/atag.h	/^    byte   chIsVGA;$/;"	m	struct:__anon4
+chRedPos	include/atag.h	/^    byte   chRedPos;$/;"	m	struct:__anon9
+chRedSize	include/atag.h	/^    byte   chRedSize;$/;"	m	struct:__anon9
+chRsvdPos	include/atag.h	/^    byte   chRsvdPos;$/;"	m	struct:__anon9
+chRsvdSize	include/atag.h	/^    byte   chRsvdSize;$/;"	m	struct:__anon9
+chVideoCols	include/atag.h	/^    byte   chVideoCols;$/;"	m	struct:__anon4
+chVideoLine	include/atag.h	/^    byte   chVideoLine;$/;"	m	struct:__anon4
+chVideoMode	include/atag.h	/^    byte   chVideoMode;$/;"	m	struct:__anon4
+hwFbBase	include/atag.h	/^    uint32 hwFbBase;$/;"	m	struct:__anon9
+hwFbDepth	include/atag.h	/^    uint16 hwFbDepth;$/;"	m	struct:__anon9
+hwFbHeight	include/atag.h	/^    uint16 hwFbHeight;$/;"	m	struct:__anon9
+hwFbLineLength	include/atag.h	/^    uint16 hwFbLineLength;$/;"	m	struct:__anon9
+hwFbSize	include/atag.h	/^    uint32 hwFbSize; $/;"	m	struct:__anon9
+hwFbWidth	include/atag.h	/^    uint16 hwFbWidth; $/;"	m	struct:__anon9
+hwVideoEgaBx	include/atag.h	/^    uint16 hwVideoEgaBx;$/;"	m	struct:__anon4
+hwVideoPage	include/atag.h	/^    uint16 hwVideoPage;$/;"	m	struct:__anon4
+hwVideoPoints	include/atag.h	/^    uint16 hwVideoPoints;$/;"	m	struct:__anon4
+tCmdline	include/atag.h	/^        tag_cmdline   tCmdline;$/;"	m	union:__anon12::__anon13
+tCore	include/atag.h	/^        tag_core      tCore;$/;"	m	union:__anon12::__anon13
+tHeader	include/atag.h	/^    tag_header tHeader;$/;"	m	struct:__anon12
+tInitrd	include/atag.h	/^        tag_initrd    tInitrd;$/;"	m	union:__anon12::__anon13
+tMem	include/atag.h	/^        tag_mem       tMem;$/;"	m	union:__anon12::__anon13
+tRamdisk	include/atag.h	/^        tag_ramdisk   tRamdisk;$/;"	m	union:__anon12::__anon13
+tRevision	include/atag.h	/^        tag_revision  tRevision;$/;"	m	union:__anon12::__anon13
+tSerial	include/atag.h	/^        tag_serial    tSerial;$/;"	m	union:__anon12::__anon13
+tTagType	include/atag.h	/^    }tTagType;$/;"	m	struct:__anon12	typeref:union:__anon12::__anon13
+tVideoLfb	include/atag.h	/^        tag_videolfb  tVideoLfb;$/;"	m	union:__anon12::__anon13
+tVideoText	include/atag.h	/^        tag_vidiotext tVideoText;$/;"	m	union:__anon12::__anon13
+tag_cmdline	include/atag.h	/^}tag_cmdline;$/;"	t	typeref:struct:__anon10
+tag_core	include/atag.h	/^}tag_core;$/;"	t	typeref:struct:__anon2
+tag_header	include/atag.h	/^}tag_header;$/;"	t	typeref:struct:__anon1
+tag_initrd	include/atag.h	/^}tag_initrd;$/;"	t	typeref:struct:__anon6
+tag_mem	include/atag.h	/^}tag_mem;$/;"	t	typeref:struct:__anon3
+tag_memclk	include/atag.h	/^}tag_memclk;$/;"	t	typeref:struct:__anon11
+tag_ramdisk	include/atag.h	/^}tag_ramdisk;$/;"	t	typeref:struct:__anon5
+tag_revision	include/atag.h	/^}tag_revision;$/;"	t	typeref:struct:__anon8
+tag_serial	include/atag.h	/^}tag_serial;$/;"	t	typeref:struct:__anon7
+tag_videolfb	include/atag.h	/^}tag_videolfb;$/;"	t	typeref:struct:__anon9
+tag_vidiotext	include/atag.h	/^}tag_vidiotext;$/;"	t	typeref:struct:__anon4
+wFlag	include/atag.h	/^    UINT32 wFlag;$/;"	m	struct:__anon1
 wFlag	include/atag.h	/^    UINT32 wFlag;$/;"	m	struct:__anon2
-wFlag	include/atag.h	/^    UINT32 wFlag;$/;"	m	struct:__anon3
-wFlags	include/atag.h	/^    UINT32 wFlags;$/;"	m	struct:__anon6
-wHigh	include/atag.h	/^    UINT32 wHigh;$/;"	m	struct:__anon8
-wLow	include/atag.h	/^    UINT32 wLow;$/;"	m	struct:__anon8
-wMemClk	include/atag.h	/^    UINT32 wMemClk;$/;"	m	struct:__anon12
-wPageSize	include/atag.h	/^    UINT32 wPageSize;$/;"	m	struct:__anon3
-wRev	include/atag.h	/^    UINT32 wRev;$/;"	m	struct:__anon9
-wRootDev	include/atag.h	/^    UINT32 wRootDev;$/;"	m	struct:__anon3
-wSize	include/atag.h	/^    UINT32 wSize;$/;"	m	struct:__anon2
-wSize	include/atag.h	/^    UINT32 wSize;$/;"	m	struct:__anon4
+wFlags	include/atag.h	/^    UINT32 wFlags;$/;"	m	struct:__anon5
+wHigh	include/atag.h	/^    UINT32 wHigh;$/;"	m	struct:__anon7
+wLow	include/atag.h	/^    UINT32 wLow;$/;"	m	struct:__anon7
+wMemClk	include/atag.h	/^    UINT32 wMemClk;$/;"	m	struct:__anon11
+wPageSize	include/atag.h	/^    UINT32 wPageSize;$/;"	m	struct:__anon2
+wRev	include/atag.h	/^    UINT32 wRev;$/;"	m	struct:__anon8
+wRootDev	include/atag.h	/^    UINT32 wRootDev;$/;"	m	struct:__anon2
+wSize	include/atag.h	/^    UINT32 wSize;$/;"	m	struct:__anon1
+wSize	include/atag.h	/^    UINT32 wSize;$/;"	m	struct:__anon3
+wSize	include/atag.h	/^    UINT32 wSize;$/;"	m	struct:__anon5
 wSize	include/atag.h	/^    UINT32 wSize;$/;"	m	struct:__anon6
-wSize	include/atag.h	/^    UINT32 wSize;$/;"	m	struct:__anon7
-wStart	include/atag.h	/^    UINT32 wStart;$/;"	m	struct:__anon4
+wStart	include/atag.h	/^    UINT32 wStart;$/;"	m	struct:__anon3
+wStart	include/atag.h	/^    UINT32 wStart;$/;"	m	struct:__anon5
 wStart	include/atag.h	/^    UINT32 wStart;$/;"	m	struct:__anon6
-wStart	include/atag.h	/^    UINT32 wStart;$/;"	m	struct:__anon7
 E2BIG	include/errno-base.h	10;"	d
 EACCES	include/errno-base.h	16;"	d
 EAGAIN	include/errno-base.h	14;"	d
@@ -443,6 +463,88 @@ NAND_CMMD_STATUS_ERROR3	include/flash.h	29;"	d
 NAND_CMMD_STATUS_MULTI	include/flash.h	24;"	d
 NAND_CMMD_STATUS_MULTI	include/flash.h	9;"	d
 NAND_CMMD_STATUS_RESET	include/flash.h	30;"	d
+IPCB	include/ip.h	61;"	d
+IPSKB_FORWARDED	include/ip.h	40;"	d
+IPSKB_FRAG_COMPLETE	include/ip.h	43;"	d
+IPSKB_REROUTED	include/ip.h	44;"	d
+IPSKB_XFRM_TRANSFORMED	include/ip.h	42;"	d
+IPSKB_XFRM_TUNNEL_SIZE	include/ip.h	41;"	d
+IP_ADD_STATS	include/ip.h	177;"	d
+IP_ADD_STATS_BH	include/ip.h	178;"	d
+IP_CE	include/ip.h	76;"	d
+IP_DEFRAG_AF_PACKET	include/ip.h	/^	IP_DEFRAG_AF_PACKET,$/;"	e	enum:ip_defrag_users
+IP_DEFRAG_CALL_RA_CHAIN	include/ip.h	/^	IP_DEFRAG_CALL_RA_CHAIN,$/;"	e	enum:ip_defrag_users
+IP_DEFRAG_CONNTRACK_BRIDGE_IN	include/ip.h	/^	IP_DEFRAG_CONNTRACK_BRIDGE_IN,$/;"	e	enum:ip_defrag_users
+IP_DEFRAG_CONNTRACK_IN	include/ip.h	/^	IP_DEFRAG_CONNTRACK_IN,$/;"	e	enum:ip_defrag_users
+IP_DEFRAG_CONNTRACK_OUT	include/ip.h	/^	IP_DEFRAG_CONNTRACK_OUT,$/;"	e	enum:ip_defrag_users
+IP_DEFRAG_LOCAL_DELIVER	include/ip.h	/^	IP_DEFRAG_LOCAL_DELIVER,$/;"	e	enum:ip_defrag_users
+IP_DEFRAG_MACVLAN	include/ip.h	/^	IP_DEFRAG_MACVLAN,$/;"	e	enum:ip_defrag_users
+IP_DEFRAG_VS_FWD	include/ip.h	/^	IP_DEFRAG_VS_FWD,$/;"	e	enum:ip_defrag_users
+IP_DEFRAG_VS_IN	include/ip.h	/^	IP_DEFRAG_VS_IN,$/;"	e	enum:ip_defrag_users
+IP_DEFRAG_VS_OUT	include/ip.h	/^	IP_DEFRAG_VS_OUT,$/;"	e	enum:ip_defrag_users
+IP_DF	include/ip.h	77;"	d
+IP_FRAG_TIME	include/ip.h	81;"	d
+IP_INC_STATS	include/ip.h	175;"	d
+IP_INC_STATS_BH	include/ip.h	176;"	d
+IP_MF	include/ip.h	78;"	d
+IP_OFFSET	include/ip.h	79;"	d
+IP_REPLY_ARG_NOSRCCHECK	include/ip.h	158;"	d
+IP_UPD_PO_STATS	include/ip.h	179;"	d
+IP_UPD_PO_STATS_BH	include/ip.h	180;"	d
+NET_ADD_STATS_BH	include/ip.h	184;"	d
+NET_ADD_STATS_USER	include/ip.h	185;"	d
+NET_INC_STATS	include/ip.h	181;"	d
+NET_INC_STATS_BH	include/ip.h	182;"	d
+NET_INC_STATS_USER	include/ip.h	183;"	d
+_IP_H	include/ip.h	23;"	d
+__IP_DEFRAG_CONNTRACK_BRIDGE_IN	include/ip.h	/^	__IP_DEFRAG_CONNTRACK_BRIDGE_IN = IP_DEFRAG_CONNTRACK_BRIDGE_IN + USHRT_MAX,$/;"	e	enum:ip_defrag_users
+__IP_DEFRAG_CONNTRACK_IN_END	include/ip.h	/^	__IP_DEFRAG_CONNTRACK_IN_END	= IP_DEFRAG_CONNTRACK_IN + USHRT_MAX,$/;"	e	enum:ip_defrag_users
+__IP_DEFRAG_CONNTRACK_OUT_END	include/ip.h	/^	__IP_DEFRAG_CONNTRACK_OUT_END	= IP_DEFRAG_CONNTRACK_OUT + USHRT_MAX,$/;"	e	enum:ip_defrag_users
+addr	include/ip.h	/^	__be32			addr;$/;"	m	struct:ipcm_cookie
+bound_dev_if	include/ip.h	/^	int	    bound_dev_if;$/;"	m	struct:ip_reply_arg
+csum	include/ip.h	/^	__wsum 	    csum;$/;"	m	struct:ip_reply_arg
+csumoffset	include/ip.h	/^	int	    csumoffset; \/* u16 offset of csum in iov[0].iov_base *\/$/;"	m	struct:ip_reply_arg
+destructor	include/ip.h	/^		void			(*destructor)(struct sock *);$/;"	m	union:ip_ra_chain::__anon15
+flags	include/ip.h	/^	int	    flags;$/;"	m	struct:ip_reply_arg
+flags	include/ip.h	/^	unsigned char		flags;$/;"	m	struct:inet_skb_parm
+frag_max_size	include/ip.h	/^	u16			frag_max_size;$/;"	m	struct:inet_skb_parm
+inet_is_reserved_local_port	include/ip.h	/^static inline int inet_is_reserved_local_port(int port)$/;"	f
+inet_reset_saddr	include/ip.h	/^static __inline__ void inet_reset_saddr(struct sock *sk)$/;"	f
+inet_skb_parm	include/ip.h	/^struct inet_skb_parm {$/;"	s
+iov	include/ip.h	/^	struct kvec iov[1];   $/;"	m	struct:ip_reply_arg	typeref:struct:ip_reply_arg::kvec
+ip_check_defrag	include/ip.h	/^static inline struct sk_buff *ip_check_defrag(struct sk_buff *skb, u32 user)$/;"	f
+ip_decrease_ttl	include/ip.h	/^int ip_decrease_ttl(struct iphdr *iph)$/;"	f
+ip_defrag_users	include/ip.h	/^enum ip_defrag_users {$/;"	g
+ip_dont_fragment	include/ip.h	/^int ip_dont_fragment(struct sock *sk, struct dst_entry *dst)$/;"	f
+ip_eth_mc_map	include/ip.h	/^static inline void ip_eth_mc_map(__be32 naddr, char *buf)$/;"	f
+ip_finish_skb	include/ip.h	/^static inline struct sk_buff *ip_finish_skb(struct sock *sk, struct flowi4 *fl4)$/;"	f
+ip_hdrlen	include/ip.h	/^static inline unsigned int ip_hdrlen(const struct sk_buff *skb)$/;"	f
+ip_ib_mc_map	include/ip.h	/^static inline void ip_ib_mc_map(__be32 naddr, const unsigned char *broadcast, char *buf)$/;"	f
+ip_ipgre_mc_map	include/ip.h	/^static inline void ip_ipgre_mc_map(__be32 naddr, const unsigned char *broadcast, char *buf)$/;"	f
+ip_is_fragment	include/ip.h	/^static inline bool ip_is_fragment(const struct iphdr *iph)$/;"	f
+ip_ra_chain	include/ip.h	/^struct ip_ra_chain {$/;"	s
+ip_reply_arg	include/ip.h	/^struct ip_reply_arg {$/;"	s
+ip_reply_arg_flowi_flags	include/ip.h	/^static inline __u8 ip_reply_arg_flowi_flags(const struct ip_reply_arg *arg)$/;"	f
+ip_select_ident	include/ip.h	/^static inline void ip_select_ident(struct sk_buff *skb, struct dst_entry *dst, struct sock *sk)$/;"	f
+ip_select_ident_more	include/ip.h	/^static inline void ip_select_ident_more(struct sk_buff *skb, struct dst_entry *dst, struct sock *sk, int more)$/;"	f
+ipcm_cookie	include/ip.h	/^struct ipcm_cookie {$/;"	s
+ipv4_config	include/ip.h	/^struct ipv4_config {$/;"	s
+local_ports	include/ip.h	/^extern struct local_ports {$/;"	s
+lock	include/ip.h	/^	seqlock_t	lock;$/;"	m	struct:local_ports
+log_martians	include/ip.h	/^	int	log_martians;$/;"	m	struct:ipv4_config
+next	include/ip.h	/^	struct ip_ra_chain __rcu *next;$/;"	m	struct:ip_ra_chain	typeref:struct:ip_ra_chain::__rcu
+no_pmtu_disc	include/ip.h	/^	int	no_pmtu_disc;$/;"	m	struct:ipv4_config
+oif	include/ip.h	/^	int			oif;$/;"	m	struct:ipcm_cookie
+opt	include/ip.h	/^	struct ip_options	opt;		\/* Compiled IP options		*\/$/;"	m	struct:inet_skb_parm	typeref:struct:inet_skb_parm::ip_options
+opt	include/ip.h	/^	struct ip_options_rcu	*opt;$/;"	m	struct:ipcm_cookie	typeref:struct:ipcm_cookie::ip_options_rcu
+range	include/ip.h	/^	int		range[2];$/;"	m	struct:local_ports
+rcu	include/ip.h	/^	struct rcu_head		rcu;$/;"	m	struct:ip_ra_chain	typeref:struct:ip_ra_chain::rcu_head
+saved_sk	include/ip.h	/^		struct sock		*saved_sk;$/;"	m	union:ip_ra_chain::__anon15	typeref:struct:ip_ra_chain::__anon15::sock
+sk	include/ip.h	/^	struct sock		*sk;$/;"	m	struct:ip_ra_chain	typeref:struct:ip_ra_chain::sock
+sk_mc_loop	include/ip.h	/^static inline int sk_mc_loop(struct sock *sk)$/;"	f
+snmp_fold_field64	include/ip.h	/^static inline u64 snmp_fold_field64(void __percpu *mib[], int offt, size_t syncp_off)$/;"	f
+tos	include/ip.h	/^	u8  	    tos;$/;"	m	struct:ip_reply_arg
+tx_flags	include/ip.h	/^	__u8			tx_flags;$/;"	m	struct:ipcm_cookie
 KERMIT_BUF_LEN	include/kermit.h	14;"	d
 KERMIT_KEY_SHARP	include/kermit.h	11;"	d
 KERMIT_KEY_SPASE	include/kermit.h	10;"	d
@@ -456,15 +558,76 @@ KERM_DECODE	include/kermit.h	29;"	d
 KERM_ENCODE	include/kermit.h	28;"	d
 MARK_EXIT	include/kermit.h	2;"	d
 MARK_START	include/kermit.h	1;"	d
-TAG_KERMIT	include/kermit.h	/^}TAG_KERMIT;$/;"	t	typeref:struct:__anon15
-buf	include/kermit.h	/^  BYTE buf[KERMIT_BUF_LEN];$/;"	m	struct:__anon15
-check	include/kermit.h	/^  BYTE check;$/;"	m	struct:__anon15
-check_have_encode	include/kermit.h	/^  BYTE check_have_encode;$/;"	m	struct:__anon15
-len	include/kermit.h	/^  BYTE len;$/;"	m	struct:__anon15
-seq	include/kermit.h	/^  BYTE seq;$/;"	m	struct:__anon15
-spase	include/kermit.h	/^  WORD spase;$/;"	m	struct:__anon15
-type	include/kermit.h	/^  BYTE type;$/;"	m	struct:__anon15
-valid_data_len	include/kermit.h	/^  BYTE valid_data_len;$/;"	m	struct:__anon15
+TAG_KERMIT	include/kermit.h	/^}TAG_KERMIT;$/;"	t	typeref:struct:__anon14
+buf	include/kermit.h	/^  BYTE buf[KERMIT_BUF_LEN];$/;"	m	struct:__anon14
+check	include/kermit.h	/^  BYTE check;$/;"	m	struct:__anon14
+check_have_encode	include/kermit.h	/^  BYTE check_have_encode;$/;"	m	struct:__anon14
+len	include/kermit.h	/^  BYTE len;$/;"	m	struct:__anon14
+seq	include/kermit.h	/^  BYTE seq;$/;"	m	struct:__anon14
+spase	include/kermit.h	/^  WORD spase;$/;"	m	struct:__anon14
+type	include/kermit.h	/^  BYTE type;$/;"	m	struct:__anon14
+valid_data_len	include/kermit.h	/^  BYTE valid_data_len;$/;"	m	struct:__anon14
+Nip	include/net.h	/^    UINT32 Nip;\/\/ip addr$/;"	m	struct:__anon35
+RegisterLen	include/net.h	/^    UINT32 RegisterLen;$/;"	m	struct:__anon35
+RegisterStart	include/net.h	/^    UINT32 RegisterStart;$/;"	m	struct:__anon35
+Sip	include/net.h	/^    UINT32 Sip;\/\/server ip addr$/;"	m	struct:__anon35
+mac	include/net.h	/^    byte mac[6];$/;"	m	struct:__anon35
+read	include/net.h	/^    bool (*read)(void);$/;"	m	struct:__anon34
+recvfrom	include/net.h	/^    bool (*recvfrom)(void);$/;"	m	struct:__anon34
+sendto	include/net.h	/^    bool (*sendto)(void);$/;"	m	struct:__anon34
+set_ip_addr	include/net.h	/^    bool (*set_ip_addr)(void);$/;"	m	struct:__anon34
+set_mac_addr	include/net.h	/^    bool (*set_mac_addr)(void);$/;"	m	struct:__anon34
+set_svr_addr	include/net.h	/^    bool (*set_svr_addr)(void);$/;"	m	struct:__anon34
+sk_ack_backlog	include/net.h	/^    unsigned short      sk_ack_backlog;$/;"	m	struct:sock
+sk_bind_node	include/net.h	20;"	d
+sk_bound_dev_if	include/net.h	19;"	d
+sk_classid	include/net.h	/^    u32         sk_classid;$/;"	m	struct:sock
+sk_data_ready	include/net.h	/^    void            (*sk_data_ready)(struct sock *sk, int bytes);$/;"	m	struct:sock
+sk_destruct	include/net.h	/^    void                    (*sk_destruct)(struct sock *sk);$/;"	m	struct:sock
+sk_dontcopy_begin	include/net.h	12;"	d
+sk_dontcopy_end	include/net.h	13;"	d
+sk_err	include/net.h	/^    int         sk_err,$/;"	m	struct:sock
+sk_err_soft	include/net.h	/^                sk_err_soft;$/;"	m	struct:sock
+sk_error_report	include/net.h	/^    void            (*sk_error_report)(struct sock *sk);$/;"	m	struct:sock
+sk_family	include/net.h	15;"	d
+sk_flags	include/net.h	/^    unsigned long       sk_flags;$/;"	m	struct:sock
+sk_gso_max_segs	include/net.h	/^    u16         sk_gso_max_segs;$/;"	m	struct:sock
+sk_gso_max_size	include/net.h	/^    unsigned int        sk_gso_max_size;$/;"	m	struct:sock
+sk_gso_type	include/net.h	/^    int         sk_gso_type;$/;"	m	struct:sock
+sk_hash	include/net.h	14;"	d
+sk_lingertime	include/net.h	/^    unsigned long           sk_lingertime;$/;"	m	struct:sock
+sk_mark	include/net.h	/^    __u32           sk_mark;$/;"	m	struct:sock
+sk_max_ack_backlog	include/net.h	/^    unsigned short      sk_max_ack_backlog;$/;"	m	struct:sock
+sk_net	include/net.h	22;"	d
+sk_node	include/net.h	7;"	d
+sk_nulls_node	include/net.h	8;"	d
+sk_peek_off	include/net.h	/^    __s32           sk_peek_off;$/;"	m	struct:sock
+sk_peer_cred	include/net.h	/^    const struct cred   *sk_peer_cred;$/;"	m	struct:sock	typeref:struct:sock::cred
+sk_peer_pid	include/net.h	/^    struct pid      *sk_peer_pid;$/;"	m	struct:sock	typeref:struct:sock::pid
+sk_priority	include/net.h	/^    __u32           sk_priority;$/;"	m	struct:sock
+sk_prot	include/net.h	21;"	d
+sk_protinfo	include/net.h	/^    void            *sk_protinfo;$/;"	m	struct:sock
+sk_rcvbuf	include/net.h	/^    int         sk_rcvbuf;$/;"	m	struct:sock
+sk_rcvlowat	include/net.h	/^    int         sk_rcvlowat;$/;"	m	struct:sock
+sk_rcvtimeo	include/net.h	/^    long            sk_rcvtimeo;$/;"	m	struct:sock
+sk_refcnt	include/net.h	9;"	d
+sk_reuse	include/net.h	17;"	d
+sk_reuseport	include/net.h	18;"	d
+sk_sndbuf	include/net.h	/^    int         sk_sndbuf;$/;"	m	struct:sock
+sk_sndtimeo	include/net.h	/^    long            sk_sndtimeo;$/;"	m	struct:sock
+sk_socket	include/net.h	/^    struct socket       *sk_socket;$/;"	m	struct:sock	typeref:struct:sock::socket
+sk_state	include/net.h	16;"	d
+sk_state_change	include/net.h	/^    void            (*sk_state_change)(struct sock *sk);$/;"	m	struct:sock
+sk_tx_queue_mapping	include/net.h	10;"	d
+sk_user_data	include/net.h	/^    void            *sk_user_data;$/;"	m	struct:sock
+sk_wmem_queued	include/net.h	/^    int         sk_wmem_queued;$/;"	m	struct:sock
+sk_write_pending	include/net.h	/^    int         sk_write_pending;$/;"	m	struct:sock
+sk_write_space	include/net.h	/^    void            (*sk_write_space)(struct sock *sk);$/;"	m	struct:sock
+sock	include/net.h	/^typedef struct sock{$/;"	s
+tag_file_ops	include/net.h	/^}tag_file_ops;$/;"	t	typeref:struct:__anon34
+tag_net_device	include/net.h	/^}tag_net_device;$/;"	t	typeref:struct:__anon35
+tag_sock	include/net.h	/^}tag_sock;$/;"	t	typeref:struct:sock
+write	include/net.h	/^    bool (*write)(void);$/;"	m	struct:__anon34
 BANKCON0	include/s3c24xxreg.h	9;"	d
 BANKCON1	include/s3c24xxreg.h	10;"	d
 BANKCON2	include/s3c24xxreg.h	11;"	d
@@ -660,7 +823,466 @@ WTCON	include/s3c24xxreg.h	206;"	d
 WTDATA	include/s3c24xxreg.h	207;"	d
 UartGetChar	include/shell.h	1;"	d
 UartPrintChar	include/shell.h	2;"	d
+FLAGS_TS_OR_DROPS	include/sock.h	2163;"	d
+LIMIT_NETDEBUG	include/sock.h	2258;"	d
+MEMCG_SOCK_ACTIVATED	include/sock.h	/^	MEMCG_SOCK_ACTIVATED,$/;"	e	enum:cg_proto_flags
+MEMCG_SOCK_ACTIVE	include/sock.h	/^	MEMCG_SOCK_ACTIVE,$/;"	e	enum:cg_proto_flags
+NETDEBUG	include/sock.h	2255;"	d
+PROT_SOCK	include/sock.h	1298;"	d
+RCV_SHUTDOWN	include/sock.h	1301;"	d
+SEND_SHUTDOWN	include/sock.h	1302;"	d
+SHUTDOWN_MASK	include/sock.h	1300;"	d
+SK_CAN_REUSE	include/sock.h	414;"	d
+SK_FORCE_REUSE	include/sock.h	415;"	d
+SK_MEM_QUANTUM	include/sock.h	1353;"	d
+SK_MEM_QUANTUM_SHIFT	include/sock.h	1354;"	d
+SK_MEM_RECV	include/sock.h	1356;"	d
+SK_MEM_SEND	include/sock.h	1355;"	d
+SK_NO_REUSE	include/sock.h	413;"	d
+SOCKET_I	include/sock.h	/^static inline struct socket *SOCKET_I(struct inode *inode)$/;"	f
+SOCK_BINDADDR_LOCK	include/sock.h	1306;"	d
+SOCK_BINDPORT_LOCK	include/sock.h	1307;"	d
+SOCK_BROADCAST	include/sock.h	/^	SOCK_BROADCAST,$/;"	e	enum:sock_flags
+SOCK_DBG	include/sock.h	/^	SOCK_DBG, \/* %SO_DEBUG setting *\/$/;"	e	enum:sock_flags
+SOCK_DEAD	include/sock.h	/^	SOCK_DEAD,$/;"	e	enum:sock_flags
+SOCK_DEBUG	include/sock.h	/^void SOCK_DEBUG(const struct sock *sk, const char *msg, ...)$/;"	f
+SOCK_DEBUG	include/sock.h	96;"	d
+SOCK_DEBUGGING	include/sock.h	94;"	d
+SOCK_DESTROY	include/sock.h	/^	SOCK_DESTROY,$/;"	e	enum:sock_flags
+SOCK_DESTROY_TIME	include/sock.h	1295;"	d
+SOCK_DONE	include/sock.h	/^	SOCK_DONE,$/;"	e	enum:sock_flags
+SOCK_FASYNC	include/sock.h	/^	SOCK_FASYNC, \/* fasync() active *\/$/;"	e	enum:sock_flags
+SOCK_FILTER_LOCKED	include/sock.h	/^	SOCK_FILTER_LOCKED, \/* Filter cannot be changed anymore *\/$/;"	e	enum:sock_flags
+SOCK_INODE	include/sock.h	/^static inline struct inode *SOCK_INODE(struct socket *socket)$/;"	f
+SOCK_KEEPOPEN	include/sock.h	/^	SOCK_KEEPOPEN,$/;"	e	enum:sock_flags
+SOCK_LINGER	include/sock.h	/^	SOCK_LINGER,$/;"	e	enum:sock_flags
+SOCK_LOCALROUTE	include/sock.h	/^	SOCK_LOCALROUTE, \/* route locally only, %SO_DONTROUTE setting *\/$/;"	e	enum:sock_flags
+SOCK_MEMALLOC	include/sock.h	/^	SOCK_MEMALLOC, \/* VM depends on this socket for swapping *\/$/;"	e	enum:sock_flags
+SOCK_MIN_RCVBUF	include/sock.h	2056;"	d
+SOCK_MIN_SNDBUF	include/sock.h	2051;"	d
+SOCK_NOFCS	include/sock.h	/^	SOCK_NOFCS, \/* Tell NIC not to do the Ethernet FCS.$/;"	e	enum:sock_flags
+SOCK_QUEUE_SHRUNK	include/sock.h	/^	SOCK_QUEUE_SHRUNK, \/* write queue has been shrunk recently *\/$/;"	e	enum:sock_flags
+SOCK_RCVBUF_LOCK	include/sock.h	1305;"	d
+SOCK_RCVTSTAMP	include/sock.h	/^	SOCK_RCVTSTAMP, \/* %SO_TIMESTAMP setting *\/$/;"	e	enum:sock_flags
+SOCK_RCVTSTAMPNS	include/sock.h	/^	SOCK_RCVTSTAMPNS, \/* %SO_TIMESTAMPNS setting *\/$/;"	e	enum:sock_flags
+SOCK_RXQ_OVFL	include/sock.h	/^	SOCK_RXQ_OVFL,$/;"	e	enum:sock_flags
+SOCK_SELECT_ERR_QUEUE	include/sock.h	/^	SOCK_SELECT_ERR_QUEUE, \/* Wake select on error queue *\/$/;"	e	enum:sock_flags
+SOCK_SNDBUF_LOCK	include/sock.h	1304;"	d
+SOCK_TIMESTAMP	include/sock.h	/^	SOCK_TIMESTAMP,$/;"	e	enum:sock_flags
+SOCK_TIMESTAMPING_RAW_HARDWARE	include/sock.h	/^	SOCK_TIMESTAMPING_RAW_HARDWARE, \/* %SOF_TIMESTAMPING_RAW_HARDWARE *\/$/;"	e	enum:sock_flags
+SOCK_TIMESTAMPING_RX_HARDWARE	include/sock.h	/^	SOCK_TIMESTAMPING_RX_HARDWARE,  \/* %SOF_TIMESTAMPING_RX_HARDWARE *\/$/;"	e	enum:sock_flags
+SOCK_TIMESTAMPING_RX_SOFTWARE	include/sock.h	/^	SOCK_TIMESTAMPING_RX_SOFTWARE,  \/* %SOF_TIMESTAMPING_RX_SOFTWARE *\/$/;"	e	enum:sock_flags
+SOCK_TIMESTAMPING_SOFTWARE	include/sock.h	/^	SOCK_TIMESTAMPING_SOFTWARE,     \/* %SOF_TIMESTAMPING_SOFTWARE *\/$/;"	e	enum:sock_flags
+SOCK_TIMESTAMPING_SYS_HARDWARE	include/sock.h	/^	SOCK_TIMESTAMPING_SYS_HARDWARE, \/* %SOF_TIMESTAMPING_SYS_HARDWARE *\/$/;"	e	enum:sock_flags
+SOCK_TIMESTAMPING_TX_HARDWARE	include/sock.h	/^	SOCK_TIMESTAMPING_TX_HARDWARE,  \/* %SOF_TIMESTAMPING_TX_HARDWARE *\/$/;"	e	enum:sock_flags
+SOCK_TIMESTAMPING_TX_SOFTWARE	include/sock.h	/^	SOCK_TIMESTAMPING_TX_SOFTWARE,  \/* %SOF_TIMESTAMPING_TX_SOFTWARE *\/$/;"	e	enum:sock_flags
+SOCK_URGINLINE	include/sock.h	/^	SOCK_URGINLINE,$/;"	e	enum:sock_flags
+SOCK_USE_WRITE_QUEUE	include/sock.h	/^	SOCK_USE_WRITE_QUEUE, \/* whether to call sk->sk_write_space in sock_wfree *\/$/;"	e	enum:sock_flags
+SOCK_WIFI_STATUS	include/sock.h	/^	SOCK_WIFI_STATUS, \/* push wifi status to userspace *\/$/;"	e	enum:sock_flags
+SOCK_ZAPPED	include/sock.h	/^	SOCK_ZAPPED,$/;"	e	enum:sock_flags
+SOCK_ZEROCOPY	include/sock.h	/^	SOCK_ZEROCOPY, \/* buffers from userspace *\/$/;"	e	enum:sock_flags
+_SOCK_H	include/sock.h	41;"	d
+__addrpair	include/sock.h	/^typedef __u64 __bitwise __addrpair;$/;"	t
+__portpair	include/sock.h	/^typedef __u32 __bitwise __portpair;$/;"	t
+__sk_add_backlog	include/sock.h	/^static inline void __sk_add_backlog(struct sock *sk, struct sk_buff *skb)$/;"	f
+__sk_add_node	include/sock.h	/^static inline void __sk_add_node(struct sock *sk, struct hlist_head *list)$/;"	f
+__sk_common	include/sock.h	/^	struct sock_common	__sk_common;$/;"	m	struct:sock	typeref:struct:sock::sock_common
+__sk_del_bind_node	include/sock.h	/^static inline void __sk_del_bind_node(struct sock *sk)$/;"	f
+__sk_del_node	include/sock.h	/^static inline void __sk_del_node(struct sock *sk)$/;"	f
+__sk_del_node_init	include/sock.h	/^static inline bool __sk_del_node_init(struct sock *sk)$/;"	f
+__sk_dst_get	include/sock.h	/^__sk_dst_get(struct sock *sk)$/;"	f
+__sk_dst_reset	include/sock.h	/^__sk_dst_reset(struct sock *sk)$/;"	f
+__sk_dst_set	include/sock.h	/^__sk_dst_set(struct sock *sk, struct dst_entry *dst)$/;"	f
+__sk_head	include/sock.h	/^static inline struct sock *__sk_head(const struct hlist_head *head)$/;"	f
+__sk_nulls_add_node_rcu	include/sock.h	/^static inline void __sk_nulls_add_node_rcu(struct sock *sk, struct hlist_nulls_head *list)$/;"	f
+__sk_nulls_del_node_init_rcu	include/sock.h	/^static inline bool __sk_nulls_del_node_init_rcu(struct sock *sk)$/;"	f
+__sk_nulls_head	include/sock.h	/^static inline struct sock *__sk_nulls_head(const struct hlist_nulls_head *head)$/;"	f
+__sk_prot_rehash	include/sock.h	/^static inline void __sk_prot_rehash(struct sock *sk)$/;"	f
+__sock_put	include/sock.h	/^static inline void __sock_put(struct sock *sk)$/;"	f
+accept	include/sock.h	/^	struct sock *		(*accept)(struct sock *sk, int flags, int *err);$/;"	m	struct:proto	typeref:struct:proto::accept
+async_msg	include/sock.h	/^	struct msghdr		*msg, async_msg;$/;"	m	struct:sock_iocb	typeref:struct:sock_iocb::
+backlog_rcv	include/sock.h	/^	int			(*backlog_rcv) (struct sock *sk,$/;"	m	struct:proto
+bh_lock_sock	include/sock.h	1474;"	d
+bh_lock_sock_nested	include/sock.h	1475;"	d
+bh_unlock_sock	include/sock.h	1478;"	d
+bind	include/sock.h	/^	int			(*bind)(struct sock *sk,$/;"	m	struct:proto
+cg_proto	include/sock.h	/^struct cg_proto {$/;"	s
+cg_proto_flags	include/sock.h	/^enum cg_proto_flags {$/;"	g
+clear_sk	include/sock.h	/^	void			(*clear_sk)(struct sock *sk, int size);$/;"	m	struct:proto
+close	include/sock.h	/^	void			(*close)(struct sock *sk,$/;"	m	struct:proto
+compat_getsockopt	include/sock.h	/^	int			(*compat_getsockopt)(struct sock *sk,$/;"	m	struct:proto
+compat_ioctl	include/sock.h	/^	int			(*compat_ioctl)(struct sock *sk,$/;"	m	struct:proto
+compat_setsockopt	include/sock.h	/^	int			(*compat_setsockopt)(struct sock *sk,$/;"	m	struct:proto
+connect	include/sock.h	/^	int			(*connect)(struct sock *sk,$/;"	m	struct:proto
+dep_map	include/sock.h	/^	struct lockdep_map dep_map;$/;"	m	struct:__anon16	typeref:struct:__anon16::lockdep_map
+destroy	include/sock.h	/^	void			(*destroy)(struct sock *sk);$/;"	m	struct:proto
+destroy_cgroup	include/sock.h	/^	void			(*destroy_cgroup)(struct mem_cgroup *memcg);$/;"	m	struct:proto
+disconnect	include/sock.h	/^	int			(*disconnect)(struct sock *sk, int flags);$/;"	m	struct:proto
+dst_negative_advice	include/sock.h	/^static inline void dst_negative_advice(struct sock *sk)$/;"	f
+enter_memory_pressure	include/sock.h	/^	void			(*enter_memory_pressure)(struct sock *sk);$/;"	m	struct:cg_proto
+enter_memory_pressure	include/sock.h	/^	void			(*enter_memory_pressure)(struct sock *sk);$/;"	m	struct:proto
+flags	include/sock.h	/^	int			flags;$/;"	m	struct:sock_iocb
+flags	include/sock.h	/^	unsigned long		flags;$/;"	m	struct:cg_proto
+get_port	include/sock.h	/^	int			(*get_port)(struct sock *sk, unsigned short snum);$/;"	m	struct:proto
+getsockopt	include/sock.h	/^	int			(*getsockopt)(struct sock *sk, int level,$/;"	m	struct:proto
+gfp_any	include/sock.h	/^static inline gfp_t gfp_any(void)$/;"	f
+h	include/sock.h	/^	} h;$/;"	m	struct:proto	typeref:union:proto::__anon25
+hash	include/sock.h	/^	void			(*hash)(struct sock *sk);$/;"	m	struct:proto
+hashinfo	include/sock.h	/^		struct inet_hashinfo	*hashinfo;$/;"	m	union:proto::__anon25	typeref:struct:proto::__anon25::inet_hashinfo
+head	include/sock.h	/^		struct sk_buff	*head;$/;"	m	struct:sock::__anon24	typeref:struct:sock::__anon24::sk_buff
+init	include/sock.h	/^	int			(*init)(struct sock *sk);$/;"	m	struct:proto
+init_cgroup	include/sock.h	/^	int			(*init_cgroup)(struct mem_cgroup *memcg,$/;"	m	struct:proto
+inuse_idx	include/sock.h	/^	unsigned int		inuse_idx;$/;"	m	struct:proto
+ioctl	include/sock.h	/^	int			(*ioctl)(struct sock *sk, int cmd,$/;"	m	struct:proto
+kiocb	include/sock.h	/^	struct kiocb		*kiocb;$/;"	m	struct:sock_iocb	typeref:struct:sock_iocb::kiocb
+kiocb_to_siocb	include/sock.h	/^static inline struct sock_iocb *kiocb_to_siocb(struct kiocb *iocb)$/;"	f
+len	include/sock.h	/^		int		len;$/;"	m	struct:sock::__anon24
+list	include/sock.h	/^	struct list_head	list;$/;"	m	struct:sock_iocb	typeref:struct:sock_iocb::list_head
+lock_sock	include/sock.h	/^static inline void lock_sock(struct sock *sk)$/;"	f
+max_header	include/sock.h	/^	int			max_header;$/;"	m	struct:proto
+mem_cgroup_sockets_destroy	include/sock.h	/^void mem_cgroup_sockets_destroy(struct mem_cgroup *memcg)$/;"	f
+mem_cgroup_sockets_enabled	include/sock.h	1077;"	d
+mem_cgroup_sockets_enabled	include/sock.h	1079;"	d
+mem_cgroup_sockets_init	include/sock.h	/^int mem_cgroup_sockets_init(struct mem_cgroup *memcg, struct cgroup_subsys *ss)$/;"	f
+memcg	include/sock.h	/^	struct mem_cgroup	*memcg;$/;"	m	struct:cg_proto	typeref:struct:cg_proto::mem_cgroup
+memcg_memory_allocated_add	include/sock.h	/^static inline void memcg_memory_allocated_add(struct cg_proto *prot,$/;"	f
+memcg_memory_allocated_read	include/sock.h	/^static inline u64 memcg_memory_allocated_read(struct cg_proto *prot)$/;"	f
+memcg_memory_allocated_sub	include/sock.h	/^static inline void memcg_memory_allocated_sub(struct cg_proto *prot,$/;"	f
+memcg_proto_activated	include/sock.h	/^static inline bool memcg_proto_activated(struct cg_proto *cg_proto)$/;"	f
+memcg_proto_active	include/sock.h	/^static inline bool memcg_proto_active(struct cg_proto *cg_proto)$/;"	f
+memory_allocated	include/sock.h	/^	atomic_long_t		*memory_allocated;	\/* Current allocated memory. *\/$/;"	m	struct:proto
+memory_allocated	include/sock.h	/^	struct res_counter	*memory_allocated;	\/* Current allocated memory. *\/$/;"	m	struct:cg_proto	typeref:struct:cg_proto::res_counter
+memory_pressure	include/sock.h	/^	int			*memory_pressure;$/;"	m	struct:cg_proto
+memory_pressure	include/sock.h	/^	int			*memory_pressure;$/;"	m	struct:proto
+msg	include/sock.h	/^	struct msghdr		*msg, async_msg;$/;"	m	struct:sock_iocb	typeref:struct:sock_iocb::msghdr
+mtu_reduced	include/sock.h	/^	void		(*mtu_reduced)(struct sock *sk);$/;"	m	struct:proto
+name	include/sock.h	/^	char			name[32];$/;"	m	struct:proto
+no_autobind	include/sock.h	/^	bool			no_autobind;$/;"	m	struct:proto
+node	include/sock.h	/^	struct list_head	node;$/;"	m	struct:proto	typeref:struct:proto::list_head
+obj_size	include/sock.h	/^	unsigned int		obj_size;$/;"	m	struct:proto
+orphan_count	include/sock.h	/^	struct percpu_counter	*orphan_count;$/;"	m	struct:proto	typeref:struct:proto::percpu_counter
+owned	include/sock.h	/^	int			owned;$/;"	m	struct:__anon16
+owner	include/sock.h	/^	struct module		*owner;$/;"	m	struct:proto	typeref:struct:proto::module
+parent_cg_proto	include/sock.h	/^static inline struct cg_proto *parent_cg_proto(struct proto *proto,$/;"	f
+proto	include/sock.h	/^struct proto {$/;"	s
+proto_cgroup	include/sock.h	/^	struct cg_proto		*(*proto_cgroup)(struct mem_cgroup *memcg);$/;"	m	struct:proto	typeref:struct:proto::proto_cgroup
+proto_memory_allocated	include/sock.h	/^proto_memory_allocated(struct proto *prot)$/;"	f
+proto_memory_pressure	include/sock.h	/^proto_memory_pressure(struct proto *prot)$/;"	f
+proto_sockets_allocated_sum_positive	include/sock.h	/^proto_sockets_allocated_sum_positive(struct proto *prot)$/;"	f
+raw_hash	include/sock.h	/^		struct raw_hashinfo	*raw_hash;$/;"	m	union:proto::__anon25	typeref:struct:proto::__anon25::raw_hashinfo
+recvmsg	include/sock.h	/^	int			(*recvmsg)(struct kiocb *iocb, struct sock *sk,$/;"	m	struct:proto
+rehash	include/sock.h	/^	void			(*rehash)(struct sock *sk);$/;"	m	struct:proto
+release_cb	include/sock.h	/^	void		(*release_cb)(struct sock *sk);$/;"	m	struct:proto
+rmem_alloc	include/sock.h	/^		atomic_t	rmem_alloc;$/;"	m	struct:sock::__anon24
+rsk_prot	include/sock.h	/^	struct request_sock_ops	*rsk_prot;$/;"	m	struct:proto	typeref:struct:proto::request_sock_ops
+scm	include/sock.h	/^	struct scm_cookie	*scm;$/;"	m	struct:sock_iocb	typeref:struct:sock_iocb::scm_cookie
+sendmsg	include/sock.h	/^	int			(*sendmsg)(struct kiocb *iocb, struct sock *sk,$/;"	m	struct:proto
+sendpage	include/sock.h	/^	int			(*sendpage)(struct sock *sk, struct page *page,$/;"	m	struct:proto
+setsockopt	include/sock.h	/^	int			(*setsockopt)(struct sock *sk, int level,$/;"	m	struct:proto
+shutdown	include/sock.h	/^	void			(*shutdown)(struct sock *sk, int how);$/;"	m	struct:proto
+siocb_to_kiocb	include/sock.h	/^static inline struct kiocb *siocb_to_kiocb(struct sock_iocb *si)$/;"	f
+size	include/sock.h	/^	int			size;$/;"	m	struct:sock_iocb
+sk	include/sock.h	/^	struct sock		*sk;$/;"	m	struct:sock_iocb	typeref:struct:sock_iocb::sock
+sk_acceptq_added	include/sock.h	/^static inline void sk_acceptq_added(struct sock *sk)$/;"	f
+sk_acceptq_is_full	include/sock.h	/^static inline bool sk_acceptq_is_full(const struct sock *sk)$/;"	f
+sk_acceptq_removed	include/sock.h	/^static inline void sk_acceptq_removed(struct sock *sk)$/;"	f
+sk_ack_backlog	include/sock.h	/^	unsigned short		sk_ack_backlog;$/;"	m	struct:sock
+sk_add_backlog	include/sock.h	/^static inline __must_check int sk_add_backlog(struct sock *sk, struct sk_buff *skb,$/;"	f
+sk_add_bind_node	include/sock.h	/^static inline void sk_add_bind_node(struct sock *sk,$/;"	f
+sk_add_node	include/sock.h	/^static inline void sk_add_node(struct sock *sk, struct hlist_head *list)$/;"	f
+sk_add_node_rcu	include/sock.h	/^static inline void sk_add_node_rcu(struct sock *sk, struct hlist_head *list)$/;"	f
+sk_allocation	include/sock.h	/^	gfp_t			sk_allocation;$/;"	m	struct:sock
+sk_async_wait_queue	include/sock.h	/^	struct sk_buff_head	sk_async_wait_queue;$/;"	m	struct:sock	typeref:struct:sock::sk_buff_head
+sk_backlog	include/sock.h	/^	} sk_backlog;$/;"	m	struct:sock	typeref:struct:sock::__anon24
+sk_backlog_rcv	include/sock.h	/^	int			(*sk_backlog_rcv)(struct sock *sk,$/;"	m	struct:sock
+sk_backlog_rcv	include/sock.h	/^static inline int sk_backlog_rcv(struct sock *sk, struct sk_buff *skb)$/;"	f
+sk_bind_node	include/sock.h	305;"	d
+sk_bound_dev_if	include/sock.h	304;"	d
+sk_callback_lock	include/sock.h	/^	rwlock_t		sk_callback_lock;$/;"	m	struct:sock
+sk_can_gso	include/sock.h	/^static inline bool sk_can_gso(const struct sock *sk)$/;"	f
+sk_cgrp	include/sock.h	/^	struct cg_proto		*sk_cgrp;$/;"	m	struct:sock	typeref:struct:sock::cg_proto
+sk_cgrp_prioidx	include/sock.h	/^	__u32			sk_cgrp_prioidx;$/;"	m	struct:sock
+sk_change_net	include/sock.h	/^static inline void sk_change_net(struct sock *sk, struct net *net)$/;"	f
+sk_classid	include/sock.h	/^	u32			sk_classid;$/;"	m	struct:sock
+sk_data_ready	include/sock.h	/^	void			(*sk_data_ready)(struct sock *sk, int bytes);$/;"	m	struct:sock
+sk_del_node_init	include/sock.h	/^static inline bool sk_del_node_init(struct sock *sk)$/;"	f
+sk_del_node_init_rcu	include/sock.h	549;"	d
+sk_destruct	include/sock.h	/^	void                    (*sk_destruct)(struct sock *sk);$/;"	m	struct:sock
+sk_dontcopy_begin	include/sock.h	297;"	d
+sk_dontcopy_end	include/sock.h	298;"	d
+sk_drops	include/sock.h	/^	atomic_t		sk_drops;$/;"	m	struct:sock
+sk_dst_cache	include/sock.h	/^	struct dst_entry __rcu	*sk_dst_cache;$/;"	m	struct:sock	typeref:struct:sock::__rcu
+sk_dst_get	include/sock.h	/^sk_dst_get(struct sock *sk)$/;"	f
+sk_dst_lock	include/sock.h	/^	spinlock_t		sk_dst_lock;$/;"	m	struct:sock
+sk_dst_reset	include/sock.h	/^sk_dst_reset(struct sock *sk)$/;"	f
+sk_dst_set	include/sock.h	/^sk_dst_set(struct sock *sk, struct dst_entry *dst)$/;"	f
+sk_eat_skb	include/sock.h	/^static inline void sk_eat_skb(struct sock *sk, struct sk_buff *skb, bool copied_early)$/;"	f
+sk_enter_memory_pressure	include/sock.h	/^static inline void sk_enter_memory_pressure(struct sock *sk)$/;"	f
+sk_entry	include/sock.h	/^static inline struct sock *sk_entry(const struct hlist_node *node)$/;"	f
+sk_err	include/sock.h	/^	int			sk_err,$/;"	m	struct:sock
+sk_err_soft	include/sock.h	/^				sk_err_soft;$/;"	m	struct:sock
+sk_error_queue	include/sock.h	/^	struct sk_buff_head	sk_error_queue;$/;"	m	struct:sock	typeref:struct:sock::sk_buff_head
+sk_error_report	include/sock.h	/^	void			(*sk_error_report)(struct sock *sk);$/;"	m	struct:sock
+sk_family	include/sock.h	300;"	d
+sk_filter	include/sock.h	/^	struct sk_filter __rcu	*sk_filter;$/;"	m	struct:sock	typeref:struct:sock::__rcu
+sk_filter_charge	include/sock.h	/^static inline void sk_filter_charge(struct sock *sk, struct sk_filter *fp)$/;"	f
+sk_filter_release	include/sock.h	/^static inline void sk_filter_release(struct sk_filter *fp)$/;"	f
+sk_filter_uncharge	include/sock.h	/^static inline void sk_filter_uncharge(struct sock *sk, struct sk_filter *fp)$/;"	f
+sk_flags	include/sock.h	/^	unsigned long 		sk_flags;$/;"	m	struct:sock
+sk_for_each	include/sock.h	611;"	d
+sk_for_each_bound	include/sock.h	626;"	d
+sk_for_each_from	include/sock.h	619;"	d
+sk_for_each_rcu	include/sock.h	613;"	d
+sk_for_each_safe	include/sock.h	624;"	d
+sk_forward_alloc	include/sock.h	/^	int			sk_forward_alloc;$/;"	m	struct:sock
+sk_frag	include/sock.h	/^	struct page_frag	sk_frag;$/;"	m	struct:sock	typeref:struct:sock::page_frag
+sk_gfp_atomic	include/sock.h	/^static inline gfp_t sk_gfp_atomic(struct sock *sk, gfp_t gfp_mask)$/;"	f
+sk_gso_max_segs	include/sock.h	/^	u16			sk_gso_max_segs;$/;"	m	struct:sock
+sk_gso_max_size	include/sock.h	/^	unsigned int		sk_gso_max_size;$/;"	m	struct:sock
+sk_gso_type	include/sock.h	/^	int			sk_gso_type;$/;"	m	struct:sock
+sk_has_account	include/sock.h	/^static inline bool sk_has_account(struct sock *sk)$/;"	f
+sk_has_allocations	include/sock.h	/^static inline bool sk_has_allocations(const struct sock *sk)$/;"	f
+sk_has_memory_pressure	include/sock.h	/^static inline bool sk_has_memory_pressure(const struct sock *sk)$/;"	f
+sk_hash	include/sock.h	299;"	d
+sk_hashed	include/sock.h	/^static inline bool sk_hashed(const struct sock *sk)$/;"	f
+sk_head	include/sock.h	/^static inline struct sock *sk_head(const struct hlist_head *head)$/;"	f
+sk_leave_memory_pressure	include/sock.h	/^static inline void sk_leave_memory_pressure(struct sock *sk)$/;"	f
+sk_lingertime	include/sock.h	/^	unsigned long	        sk_lingertime;$/;"	m	struct:sock
+sk_lock	include/sock.h	/^	socket_lock_t		sk_lock;$/;"	m	struct:sock
+sk_mark	include/sock.h	/^	__u32			sk_mark;$/;"	m	struct:sock
+sk_max_ack_backlog	include/sock.h	/^	unsigned short		sk_max_ack_backlog;$/;"	m	struct:sock
+sk_mem_charge	include/sock.h	/^static inline void sk_mem_charge(struct sock *sk, int size)$/;"	f
+sk_mem_pages	include/sock.h	/^static inline int sk_mem_pages(int amt)$/;"	f
+sk_mem_reclaim	include/sock.h	/^static inline void sk_mem_reclaim(struct sock *sk)$/;"	f
+sk_mem_reclaim_partial	include/sock.h	/^static inline void sk_mem_reclaim_partial(struct sock *sk)$/;"	f
+sk_mem_uncharge	include/sock.h	/^static inline void sk_mem_uncharge(struct sock *sk, int size)$/;"	f
+sk_memalloc_socks	include/sock.h	/^static inline int sk_memalloc_socks(void)$/;"	f
+sk_memory_allocated	include/sock.h	/^sk_memory_allocated(const struct sock *sk)$/;"	f
+sk_memory_allocated_add	include/sock.h	/^sk_memory_allocated_add(struct sock *sk, int amt, int *parent_status)$/;"	f
+sk_memory_allocated_sub	include/sock.h	/^sk_memory_allocated_sub(struct sock *sk, int amt)$/;"	f
+sk_net	include/sock.h	307;"	d
+sk_next	include/sock.h	/^static inline struct sock *sk_next(const struct sock *sk)$/;"	f
+sk_no_check	include/sock.h	/^				sk_no_check  : 2,$/;"	m	struct:sock
+sk_nocaps_add	include/sock.h	/^static inline void sk_nocaps_add(struct sock *sk, netdev_features_t flags)$/;"	f
+sk_node	include/sock.h	292;"	d
+sk_node_init	include/sock.h	/^static inline void sk_node_init(struct hlist_node *node)$/;"	f
+sk_nulls_add_node_rcu	include/sock.h	/^static inline void sk_nulls_add_node_rcu(struct sock *sk, struct hlist_nulls_head *list)$/;"	f
+sk_nulls_del_node_init_rcu	include/sock.h	/^static inline bool sk_nulls_del_node_init_rcu(struct sock *sk)$/;"	f
+sk_nulls_for_each	include/sock.h	615;"	d
+sk_nulls_for_each_from	include/sock.h	621;"	d
+sk_nulls_for_each_rcu	include/sock.h	617;"	d
+sk_nulls_head	include/sock.h	/^static inline struct sock *sk_nulls_head(const struct hlist_nulls_head *head)$/;"	f
+sk_nulls_next	include/sock.h	/^static inline struct sock *sk_nulls_next(const struct sock *sk)$/;"	f
+sk_nulls_node	include/sock.h	293;"	d
+sk_nulls_node_init	include/sock.h	/^static inline void sk_nulls_node_init(struct hlist_nulls_node *node)$/;"	f
+sk_omem_alloc	include/sock.h	/^	atomic_t		sk_omem_alloc;$/;"	m	struct:sock
+sk_pacing_rate	include/sock.h	/^	u32			sk_pacing_rate; \/* bytes per second *\/$/;"	m	struct:sock
+sk_page_frag	include/sock.h	/^static inline struct page_frag *sk_page_frag(struct sock *sk)$/;"	f
+sk_peek_off	include/sock.h	/^	__s32			sk_peek_off;$/;"	m	struct:sock
+sk_peek_offset	include/sock.h	/^static inline int sk_peek_offset(struct sock *sk, int flags)$/;"	f
+sk_peek_offset_bwd	include/sock.h	/^static inline void sk_peek_offset_bwd(struct sock *sk, int val)$/;"	f
+sk_peek_offset_fwd	include/sock.h	/^static inline void sk_peek_offset_fwd(struct sock *sk, int val)$/;"	f
+sk_peer_cred	include/sock.h	/^	const struct cred	*sk_peer_cred;$/;"	m	struct:sock	typeref:struct:sock::cred
+sk_peer_pid	include/sock.h	/^	struct pid		*sk_peer_pid;$/;"	m	struct:sock	typeref:struct:sock::pid
+sk_policy	include/sock.h	/^	struct xfrm_policy	*sk_policy[2];$/;"	m	struct:sock	typeref:struct:sock::xfrm_policy
+sk_priority	include/sock.h	/^	__u32			sk_priority;$/;"	m	struct:sock
+sk_prot	include/sock.h	306;"	d
+sk_prot_clear_nulls	include/sock.h	/^static inline void sk_prot_clear_nulls(struct sock *sk, int size)$/;"	f
+sk_prot_creator	include/sock.h	/^	struct proto		*sk_prot_creator;$/;"	m	struct:sock	typeref:struct:sock::proto
+sk_prot_mem_limits	include/sock.h	/^static inline long sk_prot_mem_limits(const struct sock *sk, int index)$/;"	f
+sk_protinfo	include/sock.h	/^	void			*sk_protinfo;$/;"	m	struct:sock
+sk_protocol	include/sock.h	/^				sk_protocol  : 8,$/;"	m	struct:sock
+sk_rcvbuf	include/sock.h	/^	int			sk_rcvbuf;$/;"	m	struct:sock
+sk_rcvlowat	include/sock.h	/^	int			sk_rcvlowat;$/;"	m	struct:sock
+sk_rcvqueues_full	include/sock.h	/^static inline bool sk_rcvqueues_full(const struct sock *sk, const struct sk_buff *skb,$/;"	f
+sk_rcvtimeo	include/sock.h	/^	long			sk_rcvtimeo;$/;"	m	struct:sock
+sk_receive_queue	include/sock.h	/^	struct sk_buff_head	sk_receive_queue;$/;"	m	struct:sock	typeref:struct:sock::sk_buff_head
+sk_refcnt	include/sock.h	294;"	d
+sk_refcnt_debug_dec	include/sock.h	/^static inline void sk_refcnt_debug_dec(struct sock *sk)$/;"	f
+sk_refcnt_debug_dec	include/sock.h	1066;"	d
+sk_refcnt_debug_inc	include/sock.h	/^static inline void sk_refcnt_debug_inc(struct sock *sk)$/;"	f
+sk_refcnt_debug_inc	include/sock.h	1065;"	d
+sk_refcnt_debug_release	include/sock.h	/^static inline void sk_refcnt_debug_release(const struct sock *sk)$/;"	f
+sk_refcnt_debug_release	include/sock.h	1067;"	d
+sk_reuse	include/sock.h	302;"	d
+sk_reuseport	include/sock.h	303;"	d
+sk_rmem_alloc	include/sock.h	324;"	d
+sk_rmem_alloc_get	include/sock.h	/^static inline int sk_rmem_alloc_get(const struct sock *sk)$/;"	f
+sk_rmem_schedule	include/sock.h	/^sk_rmem_schedule(struct sock *sk, struct sk_buff *skb, int size)$/;"	f
+sk_route_caps	include/sock.h	/^	netdev_features_t	sk_route_caps;$/;"	m	struct:sock
+sk_route_nocaps	include/sock.h	/^	netdev_features_t	sk_route_nocaps;$/;"	m	struct:sock
+sk_rx_dst	include/sock.h	/^	struct dst_entry	*sk_rx_dst;$/;"	m	struct:sock	typeref:struct:sock::dst_entry
+sk_rxhash	include/sock.h	/^	__u32			sk_rxhash;$/;"	m	struct:sock
+sk_security	include/sock.h	/^	void			*sk_security;$/;"	m	struct:sock
+sk_send_head	include/sock.h	/^	struct sk_buff		*sk_send_head;$/;"	m	struct:sock	typeref:struct:sock::sk_buff
+sk_set_socket	include/sock.h	/^static inline void sk_set_socket(struct sock *sk, struct socket *sock)$/;"	f
+sk_shutdown	include/sock.h	/^	unsigned int		sk_shutdown  : 2,$/;"	m	struct:sock
+sk_sleep	include/sock.h	/^static inline wait_queue_head_t *sk_sleep(struct sock *sk)$/;"	f
+sk_sndbuf	include/sock.h	/^	int			sk_sndbuf;$/;"	m	struct:sock
+sk_sndtimeo	include/sock.h	/^	long			sk_sndtimeo;$/;"	m	struct:sock
+sk_socket	include/sock.h	/^	struct socket		*sk_socket;$/;"	m	struct:sock	typeref:struct:sock::socket
+sk_sockets_allocated_dec	include/sock.h	/^static inline void sk_sockets_allocated_dec(struct sock *sk)$/;"	f
+sk_sockets_allocated_inc	include/sock.h	/^static inline void sk_sockets_allocated_inc(struct sock *sk)$/;"	f
+sk_sockets_allocated_read_positive	include/sock.h	/^sk_sockets_allocated_read_positive(struct sock *sk)$/;"	f
+sk_stamp	include/sock.h	/^	ktime_t			sk_stamp;$/;"	m	struct:sock
+sk_state	include/sock.h	301;"	d
+sk_state_change	include/sock.h	/^	void			(*sk_state_change)(struct sock *sk);$/;"	m	struct:sock
+sk_stream_memory_free	include/sock.h	/^static inline bool sk_stream_memory_free(const struct sock *sk)$/;"	f
+sk_stream_min_wspace	include/sock.h	/^static inline int sk_stream_min_wspace(const struct sock *sk)$/;"	f
+sk_stream_moderate_sndbuf	include/sock.h	/^static inline void sk_stream_moderate_sndbuf(struct sock *sk)$/;"	f
+sk_stream_wspace	include/sock.h	/^static inline int sk_stream_wspace(const struct sock *sk)$/;"	f
+sk_timer	include/sock.h	/^	struct timer_list	sk_timer;$/;"	m	struct:sock	typeref:struct:sock::timer_list
+sk_tx_queue_clear	include/sock.h	/^static inline void sk_tx_queue_clear(struct sock *sk)$/;"	f
+sk_tx_queue_get	include/sock.h	/^static inline int sk_tx_queue_get(const struct sock *sk)$/;"	f
+sk_tx_queue_mapping	include/sock.h	295;"	d
+sk_tx_queue_set	include/sock.h	/^static inline void sk_tx_queue_set(struct sock *sk, int tx_queue)$/;"	f
+sk_type	include/sock.h	/^				sk_type      : 16;$/;"	m	struct:sock
+sk_under_memory_pressure	include/sock.h	/^static inline bool sk_under_memory_pressure(const struct sock *sk)$/;"	f
+sk_unhashed	include/sock.h	/^static inline bool sk_unhashed(const struct sock *sk)$/;"	f
+sk_user_data	include/sock.h	/^	void			*sk_user_data;$/;"	m	struct:sock
+sk_user_ns	include/sock.h	/^static inline struct user_namespace *sk_user_ns(struct sock *sk)$/;"	f
+sk_userlocks	include/sock.h	/^				sk_userlocks : 4,$/;"	m	struct:sock
+sk_wait_event	include/sock.h	843;"	d
+sk_wake_async	include/sock.h	/^static inline void sk_wake_async(struct sock *sk, int how, int band)$/;"	f
+sk_wmem_alloc	include/sock.h	/^	atomic_t		sk_wmem_alloc;$/;"	m	struct:sock
+sk_wmem_alloc_get	include/sock.h	/^static inline int sk_wmem_alloc_get(const struct sock *sk)$/;"	f
+sk_wmem_free_skb	include/sock.h	/^static inline void sk_wmem_free_skb(struct sock *sk, struct sk_buff *skb)$/;"	f
+sk_wmem_queued	include/sock.h	/^	int			sk_wmem_queued;$/;"	m	struct:sock
+sk_wmem_schedule	include/sock.h	/^static inline bool sk_wmem_schedule(struct sock *sk, int size)$/;"	f
+sk_wq	include/sock.h	/^	struct socket_wq __rcu	*sk_wq;$/;"	m	struct:sock	typeref:struct:sock::__rcu
+sk_write_pending	include/sock.h	/^	int			sk_write_pending;$/;"	m	struct:sock
+sk_write_queue	include/sock.h	/^	struct sk_buff_head	sk_write_queue;$/;"	m	struct:sock	typeref:struct:sock::sk_buff_head
+sk_write_space	include/sock.h	/^	void			(*sk_write_space)(struct sock *sk);$/;"	m	struct:sock
+skb_add_data_nocache	include/sock.h	/^static inline int skb_add_data_nocache(struct sock *sk, struct sk_buff *skb,$/;"	f
+skb_copy_to_page	include/sock.h	/^static inline int skb_copy_to_page(struct sock *sk, char __user *from,$/;"	f
+skb_copy_to_page_nocache	include/sock.h	/^static inline int skb_copy_to_page_nocache(struct sock *sk, char __user *from,$/;"	f
+skb_do_copy_data_nocache	include/sock.h	/^static inline int skb_do_copy_data_nocache(struct sock *sk, struct sk_buff *skb,$/;"	f
+skb_set_owner_r	include/sock.h	/^static inline void skb_set_owner_r(struct sk_buff *skb, struct sock *sk)$/;"	f
+skb_set_owner_w	include/sock.h	/^static inline void skb_set_owner_w(struct sk_buff *skb, struct sock *sk)$/;"	f
+skb_steal_sock	include/sock.h	/^static inline struct sock *skb_steal_sock(struct sk_buff *skb)$/;"	f
+skc_addrpair	include/sock.h	/^		__addrpair	skc_addrpair;$/;"	m	union:sock_common::__anon17
+skc_bind_node	include/sock.h	/^		struct hlist_node	skc_bind_node;$/;"	m	union:sock_common::__anon22	typeref:struct:sock_common::__anon22::hlist_node
+skc_bound_dev_if	include/sock.h	/^	int			skc_bound_dev_if;$/;"	m	struct:sock_common
+skc_daddr	include/sock.h	/^			__be32	skc_daddr;$/;"	m	struct:sock_common::__anon17::__anon18
+skc_dontcopy_begin	include/sock.h	/^	int			skc_dontcopy_begin[0];$/;"	m	struct:sock_common
+skc_dontcopy_end	include/sock.h	/^	int                     skc_dontcopy_end[0];$/;"	m	struct:sock_common
+skc_dport	include/sock.h	/^			__be16	skc_dport;$/;"	m	struct:sock_common::__anon20::__anon21
+skc_family	include/sock.h	/^	unsigned short		skc_family;$/;"	m	struct:sock_common
+skc_hash	include/sock.h	/^		unsigned int	skc_hash;$/;"	m	union:sock_common::__anon19
+skc_net	include/sock.h	/^	struct net	 	*skc_net;$/;"	m	struct:sock_common	typeref:struct:sock_common::net
+skc_node	include/sock.h	/^		struct hlist_node	skc_node;$/;"	m	union:sock_common::__anon23	typeref:struct:sock_common::__anon23::hlist_node
+skc_nulls_node	include/sock.h	/^		struct hlist_nulls_node skc_nulls_node;$/;"	m	union:sock_common::__anon23	typeref:struct:sock_common::__anon23::hlist_nulls_node
+skc_num	include/sock.h	/^			__u16	skc_num;$/;"	m	struct:sock_common::__anon20::__anon21
+skc_portaddr_node	include/sock.h	/^		struct hlist_nulls_node skc_portaddr_node;$/;"	m	union:sock_common::__anon22	typeref:struct:sock_common::__anon22::hlist_nulls_node
+skc_portpair	include/sock.h	/^		__portpair	skc_portpair;$/;"	m	union:sock_common::__anon20
+skc_prot	include/sock.h	/^	struct proto		*skc_prot;$/;"	m	struct:sock_common	typeref:struct:sock_common::proto
+skc_rcv_saddr	include/sock.h	/^			__be32	skc_rcv_saddr;$/;"	m	struct:sock_common::__anon17::__anon18
+skc_refcnt	include/sock.h	/^	atomic_t		skc_refcnt;$/;"	m	struct:sock_common
+skc_reuse	include/sock.h	/^	unsigned char		skc_reuse:4;$/;"	m	struct:sock_common
+skc_reuseport	include/sock.h	/^	unsigned char		skc_reuseport:4;$/;"	m	struct:sock_common
+skc_state	include/sock.h	/^	volatile unsigned char	skc_state;$/;"	m	struct:sock_common
+skc_tx_queue_mapping	include/sock.h	/^	int			skc_tx_queue_mapping;$/;"	m	struct:sock_common
+skc_u16hashes	include/sock.h	/^		__u16		skc_u16hashes[2];$/;"	m	union:sock_common::__anon19
+slab	include/sock.h	/^	struct kmem_cache	*slab;$/;"	m	struct:proto	typeref:struct:proto::kmem_cache
+slab_flags	include/sock.h	/^	int			slab_flags;$/;"	m	struct:proto
+slock	include/sock.h	/^	spinlock_t		slock;$/;"	m	struct:__anon16
+sock	include/sock.h	/^	struct socket		*sock;$/;"	m	struct:sock_iocb	typeref:struct:sock_iocb::socket
+sock	include/sock.h	/^struct sock {$/;"	s
+sock_common	include/sock.h	/^struct sock_common {$/;"	s
+sock_copy_flags	include/sock.h	/^static inline void sock_copy_flags(struct sock *nsk, struct sock *osk)$/;"	f
+sock_error	include/sock.h	/^static inline int sock_error(struct sock *sk)$/;"	f
+sock_flag	include/sock.h	/^static inline bool sock_flag(const struct sock *sk, enum sock_flags flag)$/;"	f
+sock_flags	include/sock.h	/^enum sock_flags {$/;"	g
+sock_graft	include/sock.h	/^static inline void sock_graft(struct sock *sk, struct socket *parent)$/;"	f
+sock_hold	include/sock.h	/^static inline void sock_hold(struct sock *sk)$/;"	f
+sock_intr_errno	include/sock.h	/^static inline int sock_intr_errno(long timeo)$/;"	f
+sock_iocb	include/sock.h	/^struct sock_iocb {$/;"	s
+sock_lock_init_class_and_name	include/sock.h	1452;"	d
+sock_net	include/sock.h	/^struct net *sock_net(const struct sock *sk)$/;"	f
+sock_net_set	include/sock.h	/^void sock_net_set(struct sock *sk, struct net *net)$/;"	f
+sock_orphan	include/sock.h	/^static inline void sock_orphan(struct sock *sk)$/;"	f
+sock_owned_by_user	include/sock.h	1438;"	d
+sock_poll_wait	include/sock.h	/^static inline void sock_poll_wait(struct file *filp,$/;"	f
+sock_prot_inuse_add	include/sock.h	/^static inline void sock_prot_inuse_add(struct net *net, struct proto *prot,$/;"	f
+sock_put	include/sock.h	/^static inline void sock_put(struct sock *sk)$/;"	f
+sock_rcvlowat	include/sock.h	/^static inline int sock_rcvlowat(const struct sock *sk, int waitall, int len)$/;"	f
+sock_rcvtimeo	include/sock.h	/^static inline long sock_rcvtimeo(const struct sock *sk, bool noblock)$/;"	f
+sock_recv_timestamp	include/sock.h	/^sock_recv_timestamp(struct msghdr *msg, struct sock *sk, struct sk_buff *skb)$/;"	f
+sock_recv_ts_and_drops	include/sock.h	/^static inline void sock_recv_ts_and_drops(struct msghdr *msg, struct sock *sk,$/;"	f
+sock_release_ownership	include/sock.h	/^static inline void sock_release_ownership(struct sock *sk)$/;"	f
+sock_reset_flag	include/sock.h	/^static inline void sock_reset_flag(struct sock *sk, enum sock_flags flag)$/;"	f
+sock_rps_record_flow	include/sock.h	/^static inline void sock_rps_record_flow(const struct sock *sk)$/;"	f
+sock_rps_reset_flow	include/sock.h	/^static inline void sock_rps_reset_flow(const struct sock *sk)$/;"	f
+sock_rps_reset_rxhash	include/sock.h	/^static inline void sock_rps_reset_rxhash(struct sock *sk)$/;"	f
+sock_rps_save_rxhash	include/sock.h	/^static inline void sock_rps_save_rxhash(struct sock *sk,$/;"	f
+sock_set_flag	include/sock.h	/^static inline void sock_set_flag(struct sock *sk, enum sock_flags flag)$/;"	f
+sock_sndtimeo	include/sock.h	/^static inline long sock_sndtimeo(const struct sock *sk, bool noblock)$/;"	f
+sock_writeable	include/sock.h	/^static inline bool sock_writeable(const struct sock *sk)$/;"	f
+sock_wspace	include/sock.h	/^static inline unsigned long sock_wspace(struct sock *sk)$/;"	f
+socket	include/sock.h	/^	struct socket socket;$/;"	m	struct:socket_alloc	typeref:struct:socket_alloc::socket
+socket_alloc	include/sock.h	/^struct socket_alloc {$/;"	s
+socket_lock_t	include/sock.h	/^} socket_lock_t;$/;"	t	typeref:struct:__anon16
+sockets_allocated	include/sock.h	/^	struct percpu_counter	*sockets_allocated;	\/* Current number of sockets. *\/$/;"	m	struct:cg_proto	typeref:struct:cg_proto::percpu_counter
+sockets_allocated	include/sock.h	/^	struct percpu_counter	*sockets_allocated;	\/* Current number of sockets. *\/$/;"	m	struct:proto	typeref:struct:proto::percpu_counter
+socks	include/sock.h	/^	atomic_t		socks;$/;"	m	struct:proto
+sysctl_mem	include/sock.h	/^	long			*sysctl_mem;$/;"	m	struct:cg_proto
+sysctl_mem	include/sock.h	/^	long			*sysctl_mem;$/;"	m	struct:proto
+sysctl_rmem	include/sock.h	/^	int			*sysctl_rmem;$/;"	m	struct:proto
+sysctl_wmem	include/sock.h	/^	int			*sysctl_wmem;$/;"	m	struct:proto
+tail	include/sock.h	/^		struct sk_buff	*tail;$/;"	m	struct:sock::__anon24	typeref:struct:sock::__anon24::sk_buff
+twsk_prot	include/sock.h	/^	struct timewait_sock_ops *twsk_prot;$/;"	m	struct:proto	typeref:struct:proto::timewait_sock_ops
+udp_table	include/sock.h	/^		struct udp_table	*udp_table;$/;"	m	union:proto::__anon25	typeref:struct:proto::__anon25::udp_table
+unhash	include/sock.h	/^	void			(*unhash)(struct sock *sk);$/;"	m	struct:proto
+unlock_sock_fast	include/sock.h	/^static inline void unlock_sock_fast(struct sock *sk, bool slow)$/;"	f
+vfs_inode	include/sock.h	/^	struct inode vfs_inode;$/;"	m	struct:socket_alloc	typeref:struct:socket_alloc::inode
+wq	include/sock.h	/^	wait_queue_head_t	wq;$/;"	m	struct:__anon16
+wq_has_sleeper	include/sock.h	/^static inline bool wq_has_sleeper(struct socket_wq *wq)$/;"	f
 ISDIGIT	include/string.h	1;"	d
+UDP6_INC_STATS_BH	include/udp.h	219;"	d
+UDP6_INC_STATS_USER	include/udp.h	223;"	d
+UDPX_INC_STATS_BH	include/udp.h	229;"	d
+UDPX_INC_STATS_BH	include/udp.h	237;"	d
+UDP_CSUM_DEFAULT	include/udp.h	105;"	d
+UDP_CSUM_NORCV	include/udp.h	102;"	d
+UDP_CSUM_NOXMIT	include/udp.h	99;"	d
+UDP_INC_STATS_BH	include/udp.h	215;"	d
+UDP_INC_STATS_USER	include/udp.h	212;"	d
+UDP_SKB_CB	include/udp.h	52;"	d
+_UDP_H	include/udp.h	23;"	d
+__udp_lib_checksum_complete	include/udp.h	/^static inline __sum16 __udp_lib_checksum_complete(struct sk_buff *skb)$/;"	f
+bucket	include/udp.h	/^	int			bucket;$/;"	m	struct:udp_iter_state
+count	include/udp.h	/^	int			count;$/;"	m	struct:udp_hslot
+cscov	include/udp.h	/^	__u16		cscov;$/;"	m	struct:udp_skb_cb
+family	include/udp.h	/^	sa_family_t			family;$/;"	m	struct:udp_seq_afinfo
+family	include/udp.h	/^	sa_family_t		family;$/;"	m	struct:udp_iter_state
+h4	include/udp.h	/^		struct inet_skb_parm	h4;$/;"	m	union:udp_skb_cb::__anon33	typeref:struct:udp_skb_cb::__anon33::inet_skb_parm
+h6	include/udp.h	/^		struct inet6_skb_parm	h6;$/;"	m	union:udp_skb_cb::__anon33	typeref:struct:udp_skb_cb::__anon33::inet6_skb_parm
+hash	include/udp.h	/^	struct udp_hslot	*hash;$/;"	m	struct:udp_table	typeref:struct:udp_table::udp_hslot
+hash2	include/udp.h	/^	struct udp_hslot	*hash2;$/;"	m	struct:udp_table	typeref:struct:udp_table::udp_hslot
+head	include/udp.h	/^	struct hlist_nulls_head	head;$/;"	m	struct:udp_hslot	typeref:struct:udp_hslot::hlist_nulls_head
+header	include/udp.h	/^	} header;$/;"	m	struct:udp_skb_cb	typeref:union:udp_skb_cb::__anon33
+lock	include/udp.h	/^	spinlock_t		lock;$/;"	m	struct:udp_hslot
+log	include/udp.h	/^	unsigned int		log;$/;"	m	struct:udp_table
+mask	include/udp.h	/^	unsigned int		mask;$/;"	m	struct:udp_table
+name	include/udp.h	/^	char				*name;$/;"	m	struct:udp_seq_afinfo
+p	include/udp.h	/^	struct seq_net_private  p;$/;"	m	struct:udp_iter_state	typeref:struct:udp_iter_state::seq_net_private
+partial_cov	include/udp.h	/^	__u8		partial_cov;$/;"	m	struct:udp_skb_cb
+seq_fops	include/udp.h	/^	const struct file_operations	*seq_fops;$/;"	m	struct:udp_seq_afinfo	typeref:struct:udp_seq_afinfo::file_operations
+seq_ops	include/udp.h	/^	struct seq_operations		seq_ops;$/;"	m	struct:udp_seq_afinfo	typeref:struct:udp_seq_afinfo::seq_operations
+udp_csum	include/udp.h	/^static inline __wsum udp_csum(struct sk_buff *skb)$/;"	f
+udp_csum_outgoing	include/udp.h	/^static inline __wsum udp_csum_outgoing(struct sock *sk, struct sk_buff *skb)$/;"	f
+udp_hashslot	include/udp.h	/^static inline struct udp_hslot *udp_hashslot(struct udp_table *table,$/;"	f
+udp_hashslot2	include/udp.h	/^static inline struct udp_hslot *udp_hashslot2(struct udp_table *table,$/;"	f
+udp_hslot	include/udp.h	/^struct udp_hslot {$/;"	s
+udp_iter_state	include/udp.h	/^struct udp_iter_state {$/;"	s
+udp_lib_checksum_complete	include/udp.h	/^static inline int udp_lib_checksum_complete(struct sk_buff *skb)$/;"	f
+udp_lib_close	include/udp.h	/^static inline void udp_lib_close(struct sock *sk, long timeout)$/;"	f
+udp_lib_hash	include/udp.h	/^static inline void udp_lib_hash(struct sock *sk)$/;"	f
+udp_seq_afinfo	include/udp.h	/^struct udp_seq_afinfo {$/;"	s
+udp_skb_cb	include/udp.h	/^struct udp_skb_cb {$/;"	s
+udp_table	include/udp.h	/^	struct udp_table		*udp_table;$/;"	m	struct:udp_seq_afinfo	typeref:struct:udp_seq_afinfo::udp_table
+udp_table	include/udp.h	/^	struct udp_table	*udp_table;$/;"	m	struct:udp_iter_state	typeref:struct:udp_iter_state::udp_table
+udp_table	include/udp.h	/^struct udp_table {$/;"	s
 CMD_ARG_MAX	include/util.h	8;"	d
 GB	include/util.h	13;"	d
 KB	include/util.h	11;"	d
@@ -689,4 +1311,20 @@ chByteCommandLine	init/main.c	/^char chByteCommandLine[CMD_ARG_MAX][32];$/;"	v
 do_init_call	init/main.c	/^static bool do_init_call(void)$/;"	f	file:
 main	init/main.c	/^int main(void)$/;"	f
 obj	mm/Makefile	/^obj:=$(src:.c=.o)$/;"	m
-mm_manage	mm/malloc.c	/^BYTE mm_manage(void)$/;"	f
+add_list	mm/malloc.c	/^bool add_list(struct free_list_node p)$/;"	f
+bHaveUsed	mm/malloc.c	/^    bool bHaveUsed;$/;"	m	struct:mem_desc	file:
+ch	mm/malloc.c	/^    byte ch[1];$/;"	m	struct:mem_desc	file:
+free	mm/malloc.c	/^void (free)(void *p)$/;"	f
+free_list_node	mm/malloc.c	/^struct free_list_node$/;"	s	file:
+g_ptListFirst	mm/malloc.c	/^static struct free_list_node *g_ptListFirst;$/;"	v	typeref:struct:free_list_node	file:
+g_ptListTail	mm/malloc.c	/^static struct free_list_node *g_ptListTail;$/;"	v	typeref:struct:free_list_node	file:
+g_tMemoryCusor	mm/malloc.c	/^static long  g_tMemoryCusor;$/;"	v	file:
+init	mm/malloc.c	/^void init(void * addr,size_t len)$/;"	f
+init_heap	mm/malloc.c	/^bool init_heap(void)$/;"	f
+list	mm/malloc.c	/^    struct free_list_node list;$/;"	m	struct:mem_desc	typeref:struct:mem_desc::free_list_node	file:
+malloc	mm/malloc.c	/^void * (malloc)(size_t n)$/;"	f
+mem_desc	mm/malloc.c	/^struct mem_desc$/;"	s	file:
+next	mm/malloc.c	/^    struct free_list_node *next;$/;"	m	struct:free_list_node	typeref:struct:free_list_node::free_list_node	file:
+prev	mm/malloc.c	/^    struct free_list_node *prev;$/;"	m	struct:free_list_node	typeref:struct:free_list_node::free_list_node	file:
+remove_list	mm/malloc.c	/^bool remove_list(struct free_list_node *p)$/;"	f
+wCurrentSize	mm/malloc.c	/^    int  wCurrentSize;$/;"	m	struct:mem_desc	file:

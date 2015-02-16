@@ -10,8 +10,9 @@ extern TagSysCall SYSCALL_BEGIN[],SYSCALL_END[];
 
 typedef struct
 {
-    int (*init)(void);
+    bool (*init)(void);
 }TagInitCall;
 extern TagInitCall INIT_CALL_BEGIN[],INIT_CALL_END[];
 
-#define INSTALLDEVICE(name,func) static __attribute__((__used__)) __attribute__((section(".INITSECT"))) TagInitCall Drive_##name={func,#name};
+#define INSTALLDEVICE(name,func) static __attribute__((__used__)) __attribute__((section(".INITSECT"))) TagInitCall Drive_##name={func};
+#define INSTALLINIT(name,func) INSTALLDEVICE(name,func)

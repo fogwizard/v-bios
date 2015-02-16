@@ -3,23 +3,375 @@
 	{
 		"selected_items":
 		[
+			[
+				"se",
+				"self"
+			],
+			[
+				"a",
+				"AppHandle"
+			],
+			[
+				"mem",
+				"mem"
+			],
+			[
+				"add",
+				"add_list"
+			],
+			[
+				"w",
+				"wHeapBase"
+			],
+			[
+				"b",
+				"bHaveUsed"
+			],
+			[
+				"g",
+				"g_tListTail"
+			],
+			[
+				"free",
+				"free_list_node"
+			],
+			[
+				"p",
+				"p"
+			],
+			[
+				"pr",
+				"prev"
+			],
+			[
+				"re",
+				"remove_list"
+			],
+			[
+				"fr",
+				"free_list_node"
+			],
+			[
+				"si",
+				"size_t"
+			],
+			[
+				"s",
+				"sendto"
+			],
+			[
+				"n",
+				"net_ops_desc"
+			],
+			[
+				"cs",
+				"cs8900_recv"
+			],
+			[
+				"cs8900_",
+				"cs8900_send"
+			],
+			[
+				"do",
+				"do_init_call"
+			],
+			[
+				"us",
+				"usage"
+			],
+			[
+				"UART",
+				"Uart0PrintChar"
+			],
+			[
+				"U",
+				"Uart0PrintChar"
+			],
+			[
+				"ATAG_C",
+				"ATAG_CMDLINE"
+			],
+			[
+				"str",
+				"strcpy"
+			],
+			[
+				"ch",
+				"chCommandLine"
+			],
+			[
+				"reb",
+				"reboot_entry"
+			],
+			[
+				"t",
+				"tCurser"
+			],
+			[
+				"set_tag",
+				"set_tag_none"
+			],
+			[
+				"tag_c",
+				"tag_cmdline"
+			],
+			[
+				"tag",
+				"tag_revision"
+			],
+			[
+				"tag_r",
+				"tag_ramdisk"
+			],
+			[
+				"tag_",
+				"tag_initrd"
+			],
+			[
+				"tag_v",
+				"tag_vidiotext"
+			],
+			[
+				"u",
+				"uint16"
+			],
+			[
+				"wS",
+				"wStart"
+			],
+			[
+				"read",
+				"read_one_byte_from_flash"
+			],
+			[
+				"c_",
+				"c_VbiosMagic"
+			],
+			[
+				"Re",
+				"ReadLen"
+			],
+			[
+				"na",
+				"nand_ready"
+			],
+			[
+				"ar",
+				"argv"
+			],
+			[
+				"fs",
+				"fsm_rt_back"
+			],
+			[
+				"READ",
+				"READ_START"
+			],
+			[
+				"print",
+				"Uart0PrintChar"
+			],
+			[
+				"B",
+				"BlockNum"
+			],
+			[
+				"nand_w",
+				"nand_write_cmd"
+			],
+			[
+				"nad",
+				"nand_cmd"
+			],
+			[
+				"nand",
+				"nand_ready"
+			],
+			[
+				"Pa",
+				"PageIndex"
+			],
+			[
+				"P",
+				"PageAddr"
+			],
+			[
+				"Page",
+				"PageAddr"
+			],
+			[
+				"v",
+				"v_bios_flash_load"
+			],
+			[
+				"o",
+				"wOffset"
+			],
+			[
+				"W",
+				"WORD"
+			],
+			[
+				"Bot",
+				"BottonHarf"
+			],
+			[
+				"Bo",
+				"BottonHarf"
+			],
+			[
+				"is",
+				"is_large_page"
+			],
+			[
+				"in",
+				"include"
+			],
+			[
+				"NF",
+				"NF_DATA"
+			],
+			[
+				"N",
+				"NAND_CTRL_BASE"
+			],
+			[
+				"c",
+				"CommandRegister"
+			],
+			[
+				"UT",
+				"UINT32"
+			],
+			[
+				"TH",
+				"THINIT_FLASH"
+			],
+			[
+				"de",
+				"define"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "/home/fog/v-bios/v-bios/boot/Common/main.c",
+			"settings":
+			{
+				"buffer_size": 2853,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/fog/v-bios/v-bios/mm/malloc.c",
+			"settings":
+			{
+				"buffer_size": 1927,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/fog/v-bios/v-bios/App/TestMalloc.c",
+			"settings":
+			{
+				"buffer_size": 910,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/fog/v-bios/v-bios/include/Typedef.h",
+			"settings":
+			{
+				"buffer_size": 974,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/fog/v-bios/v-bios/App/boot_linux.c",
+			"settings":
+			{
+				"buffer_size": 4449,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/fog/v-bios/v-bios/App/Makefile",
+			"settings":
+			{
+				"buffer_size": 191,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/fog/v-bios/v-bios/App/cd.c",
+			"settings":
+			{
+				"buffer_size": 189,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/fog/v-bios/v-bios/include/malloc.h",
+			"settings":
+			{
+				"buffer_size": 48,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/fog/v-bios/v-bios/include/malloc.c",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
 	],
-	"build_system": "",
+	"build_system": "Packages/User/c.sublime-build",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"ast",
+				"SublimeAStyleFormatter: Format Current File"
+			],
+			[
+				"as",
+				"SublimeAStyleFormatter: Format Current File"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"asty",
+				"SublimeAStyleFormatter: Format Current File"
+			],
+			[
+				"su",
+				"SublimeAStyleFormatter: Format Current File"
+			],
+			[
+				"sub",
+				"SublimeAStyleFormatter: Format Current File"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pci",
+				"Package Control: Install Package"
+			]
 		],
-		"width": 0.0
+		"width": 449.0
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 139.0
 	},
 	"distraction_free":
 	{
@@ -32,10 +384,85 @@
 	},
 	"file_history":
 	[
+		"/home/fog/v-bios/v-bios/mm/TestMalloc.c",
+		"/home/fog/v-bios/v-bios/App/malloc.c",
+		"/home/fog/DataBase/main.py",
+		"/home/fog/python/AutoCode.glade",
+		"/home/fog/python/AutoCode.py",
+		"/home/fog/python/AutoCode.",
+		"/home/fog/.config/sublime-text-2/Packages/User/UserAddWord.py",
+		"/home/fog/v-bios/v-bios/Drive/Flash/flash.c",
+		"/home/fog/v-bios/v-bios/Drive/Uart/Uart.c",
+		"/home/fog/v-bios/v-bios/boot/head.s",
+		"/home/fog/v-bios/v-bios/include/Typedef.h",
+		"/home/fog/v-bios/v-bios/include/flash.h",
+		"/home/fog/v-bios/v-bios/App/boot_linux.c",
+		"/home/fog/v-bios/v-bios/App/tftp.c",
+		"/home/fog/v-bios/v-bios/Lib/stdlib/stdlib.c",
+		"/home/fog/v-bios/v-bios/include/errno-base.h",
+		"/home/fog/v-bios/v-bios/App/load.c",
+		"/home/fog/v-bios/v-bios/Drive/Uart/kermit.c",
+		"/home/fog/v-bios/v-bios/init/main.c",
+		"/home/fog/v-bios/v-bios/include/SysCall.h",
+		"/home/fog/v-bios/v-bios/Drive/Net/cs8900.c",
+		"/home/fog/v-bios/v-bios/include/net.h",
+		"/home/fog/v-bios/v-bios/Core/net_core.c",
+		"/home/fog/v-bios/v-bios/mm/malloc.c",
+		"/home/fog/v-bios/v-bios/include/malloc.h",
+		"/home/fog/v-bios/v-bios/bh.lds",
+		"/home/fog/v-bios/v-bios/mm/Makefile",
+		"/home/fog/v-bios/v-bios/Drive/Net/tftp.c",
+		"/home/fog/v-bios/v-bios/include/sock.h",
+		"/home/fog/v-bios/v-bios/v-bios-bh.dis",
+		"/home/fog/v-bios/v-bios/include/main.c",
+		"/home/fog/v-bios/v-bios/init/Shell.c",
+		"/home/fog/v-bios/v-bios/include/errno.h",
+		"/home/fog/v-bios/v-bios/App/Makefile",
+		"/home/fog/v-bios/v-bios/boot/Common/main.c",
+		"/home/fog/maxwit-read-only/g-bios/configure",
+		"/home/fog/python/main.py",
+		"/home/fog/v-bios/v-bios/Drive/Flash/Common/main.c",
+		"/home/fog/v-bios/v-bios/include/arm.h",
+		"/home/fog/v-bios/v-bios/App/ls.c",
+		"/home/fog/v-bios/v-bios/Drive/Drive/Flash/flash.c",
+		"/home/fog/v-bios/v-bios/Makefile",
+		"/home/fog/v-bios/v-bios/boot/Makefile",
+		"/home/fog/v-bios/v-bios/App/main.c",
+		"/home/fog/v-bios/v-bios/include/Common/main.c",
+		"/home/fog/v-bios/v-bios/boot/v-bios-th.bin",
+		"/home/fog/v-bios/v-bios/Drive/Flash/ls.c",
+		"/home/fog/v-bios/v-bios/App/md.c",
+		"/home/fog/v-bios/v-bios/include/util.h",
+		"/home/fog/v-bios/v-bios/App/flashrw.c",
+		"/home/fog/v-bios/v-bios/v-bios-bh.bin",
+		"/home/fog/maxwit-read-only/g-bios/g-bios-bh.bin",
+		"/home/fog/linux3.10/linux-3.10.40/arch/arm/boot/zImage",
+		"/home/fog/v-bios/v-bios/include/atag.h",
+		"/home/fog/v-bios/v-bios/App/boot_linux.dis",
+		"/home/fog/maxwit-read-only/g-bios/include/arch/arm.h",
+		"/home/fog/maxwit-read-only/g-bios/app/boot/boot_linux.dis",
+		"/home/fog/v-bios/v-bios/boot/v-bios-th.dis",
+		"/home/fog/v-bios/v-bios/App/reboot.c",
+		"/home/fog/v-bios/v-bios/App/cd.c",
+		"/home/fog/v-bios/v-bios/include/string.h",
+		"/home/fog/v-bios/v-bios/Lib/stdlib/string.c",
+		"/home/fog/v-bios/v-bios/Lib/stdlib/stdio.c",
+		"/home/fog/v-bios/v-bios/include/boot_linux.c",
+		"/home/fog/v-bios/v-bios/boot_linux.c",
+		"/home/fog/v-bios/v-bios/App/help.c",
+		"/home/fog/.config/sublime-text-2/Packages/User/c.sublime-build",
+		"/home/fog/.config/sublime-text-2/Packages/Terminal/Terminal.sublime-settings",
+		"/home/fog/v-bios/v-bios/Drive/Misc/misc.c",
+		"/home/fog/v-bios/v-bios/include/stdlib.h",
+		"/home/fog/v-bios/v-bios/Drive/Flash/Makefile",
+		"/home/fog/v-bios/v-bios/Drive/Makefile",
+		"/home/fog/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/fog/v-bios/v-bios/include/s3c24xxreg.h",
+		"/home/fog/v-bios/v-bios/Core/SysCall.c"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -49,6 +476,22 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"MainWin",
+			"static",
+			"bx",
+			"e12fff13",
+			"bx",
+			"the",
+			"tag_header",
+			"sizeof(tag_header)+sizeof(tag_mem)",
+			"byte",
+			"ptCore",
+			"tAddr",
+			"UINT32",
+			"addr",
+			"g_tPart",
+			"04b0 4ce2 4e04",
+			"04b0 4ce2"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -66,8 +509,253 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/home/fog/v-bios/v-bios/boot/Common/main.c",
+					"settings":
+					{
+						"buffer_size": 2853,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2853,
+								2853
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2814.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/fog/v-bios/v-bios/mm/malloc.c",
+					"settings":
+					{
+						"buffer_size": 1927,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1550,
+								1550
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 964.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/fog/v-bios/v-bios/App/TestMalloc.c",
+					"settings":
+					{
+						"buffer_size": 910,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								725,
+								725
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 317.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/fog/v-bios/v-bios/include/Typedef.h",
+					"settings":
+					{
+						"buffer_size": 974,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								147,
+								143
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/fog/v-bios/v-bios/App/boot_linux.c",
+					"settings":
+					{
+						"buffer_size": 4449,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								554,
+								554
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 42.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/fog/v-bios/v-bios/App/Makefile",
+					"settings":
+					{
+						"buffer_size": 191,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								191,
+								191
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/fog/v-bios/v-bios/App/cd.c",
+					"settings":
+					{
+						"buffer_size": 189,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/home/fog/v-bios/v-bios/include/malloc.h",
+					"settings":
+					{
+						"buffer_size": 48,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								48,
+								48
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/home/fog/v-bios/v-bios/include/malloc.c",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -77,7 +765,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 35.0
 	},
 	"layout":
 	{
@@ -102,6 +790,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 126.0
+	},
 	"replace":
 	{
 		"height": 0.0

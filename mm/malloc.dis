@@ -1,0 +1,69 @@
+
+malloc.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <mm_manage-0x10>:
+   0:	6d5f6d6d 	.word	0x6d5f6d6d
+   4:	67616e61 	.word	0x67616e61
+   8:	0065      	.short	0x0065
+   a:	0000      	.short	0x0000
+   c:	ff00000c 	.word	0xff00000c
+
+00000010 <mm_manage>:
+  10:	e3a00000 	mov	r0, #0	; 0x0
+  14:	e12fff1e 	bx	lr
+  18:	74696e69 	.word	0x74696e69
+  1c:	00          	.byte	0x00
+  1d:	00          	.byte	0x00
+  1e:	0000      	.short	0x0000
+  20:	ff000008 	.word	0xff000008
+
+00000024 <init>:
+  24:	e12fff1e 	bx	lr
+  28:	74696e69 	.word	0x74696e69
+  2c:	6165685f 	.word	0x6165685f
+  30:	0070      	.short	0x0070
+  32:	0000      	.short	0x0000
+  34:	ff00000c 	.word	0xff00000c
+
+00000038 <init_heap>:
+  38:	e12fff1e 	bx	lr
+
+Disassembly of section .INITSECT:
+
+00000000 <Drive_heap>:
+   0:	00000000 	.word	0x00000000
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	5328203a 	teqpl	r8, #58	; 0x3a
+   8:	6372756f 	cmnvs	r2, #465567744	; 0x1bc00000
+   c:	20797265 	rsbscs	r7, r9, r5, ror #4
+  10:	202b2b47 	eorcs	r2, fp, r7, asr #22
+  14:	6574694c 	ldrbvs	r6, [r4, #-2380]!
+  18:	30303220 	eorscc	r3, r0, r0, lsr #4
+  1c:	2d317139 	ldfcss	f7, [r1, #-228]!
+  20:	29363731 	ldmdbcs	r6!, {r0, r4, r5, r8, r9, sl, ip, sp}
+  24:	332e3420 	teqcc	lr, #536870912	; 0x20000000
+  28:	Address 0x00000028 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00002941 	andeq	r2, r0, r1, asr #18
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000001f 	andeq	r0, r0, pc, lsl r0
+  10:	00543405 	subseq	r3, r4, r5, lsl #8
+  14:	01080206 	tsteq	r8, r6, lsl #4
+  18:	04120109 	ldreq	r0, [r2], #-265
+  1c:	01150114 	tsteq	r5, r4, lsl r1
+  20:	01180317 	tsteq	r8, r7, lsl r3
+  24:	021a0119 	andseq	r0, sl, #1073741830	; 0x40000006
+  28:	Address 0x00000028 is out of bounds.
+

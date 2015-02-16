@@ -1,4 +1,4 @@
-src+=SysCall.c
+src+=SysCall.c net_core.c
 obj:=$(src:.c=.o)
 $(obj): $(src) 
 	$(CC) -c $(CCFLAG) $^

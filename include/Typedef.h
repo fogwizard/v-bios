@@ -1,8 +1,8 @@
 typedef unsigned char BYTE,Byte,byte,uchar,uint8_t;
-typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t;
-typedef int  bool,BOOL,Bool;
+typedef unsigned int  WORD,word,uint,uint32_t,UINT32,uint32,size_t,__u32,u32;
+typedef int  bool,BOOL,Bool,__s32;
 typedef unsigned long ULONG,ulong;
-typedef unsigned short uint16;
+typedef unsigned short uint16,u16;
 typedef short int16;
 
 typedef enum

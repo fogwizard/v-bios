@@ -32,5 +32,6 @@ SECTIONS
 		. = ALIGN(4);
 		INIT_CALL_END = .;
 	}
-	_end = .;
+	. =ALIGN(4);
+	_boodloader_end = .;
 }

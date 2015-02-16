@@ -8,12 +8,7 @@
 #include "kermit.h"
 #include "arm.h"
 #include "errno.h"
-
-typedef struct 
-{
-   unsigned short dst;
-   unsigned short src;
-}sock;
+#include "net.h"
 
 #define FILENAME_MAX 32
 
@@ -21,25 +16,33 @@ static usage(void)
 {
     printf("use command like: tftp 192.168.2.1 get zImage.bin\r\n");
 }
-static bool ip_to_long(long *nip,char *args)
+static bool ip_to_long(UINT32 *nip,char *args)
 {
     return true;
 }
-static bool   long_to_ip(long nip,char *args)
+static bool   long_to_ip(UINT32 nip,char *args)
 {
     return true;
 }
 
-static bool tftp_aqst_file(sock *pSock)
-{
-
+static bool ack_pack(tag_sock *pSock,int fd)
+{   
+    sendto(fd);
+    recvfrom(fd);
+    return true;
 }
-static bool tftp_recv_file(sock *pSock,void *addr)
+
+static bool tftp_aqst_file(tag_sock *pSock,int fd)
+{
+    return true;
+}
+static bool tftp_recv_file(tag_sock *pSock,void *addr,int fd)
 {
     byte *pLoad=(byte *)addr;
     while(true)
     {
-
+        ack_pack(pSock,fd);
+        break;//debug
     }  
 }
 
@@ -48,16 +51,17 @@ static int main(int argc,char * argv[])
     //UINT32 wNip;
     UINT32 wSip;
     UINT32 wDownLoadAddr;
+    int fd;
     char chFileNameBuf[FILENAME_MAX];
     char *pchFileName=chFileNameBuf;
-    sock *pSock=NULL;
+    tag_sock *pSock=NULL;
 
     if((4!=argc)&&(5!=argc))
     {
         usage();
         return E2BIG;
     }
-    if(false==ip_to_long(wSip,argv[1]))
+    if(false==ip_to_long(&wSip,argv[1]))
     {
         printf("sever ip error\r\n");
         usage();
@@ -78,8 +82,10 @@ static int main(int argc,char * argv[])
     {
         wDownLoadAddr=0x30008000;
     }
-    tftp_aqst_file(pSock);
-    tftp_recv_file(pSock,(void *)wDownLoadAddr);
+    fd=sock_alloc();
+    tftp_aqst_file(pSock,fd);
+    tftp_recv_file(pSock,(void *)wDownLoadAddr,fd);
+    sock_close(fd);
     return 0;
 }
 

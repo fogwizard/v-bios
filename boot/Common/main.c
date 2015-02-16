@@ -157,3 +157,4 @@ bool th_run_bh(void)
     BottonHarf pBottonHarf = (BottonHarf)BH_START_ADDRESS_MEM;
     pBottonHarf();
 }
+
