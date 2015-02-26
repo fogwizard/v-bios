@@ -4,7 +4,6 @@
 #4.install libtool  in libtool  dir 
 # cancel the dir palse now ,so such install in system
 if [ "$1" = "?" ]; then
-	echo "Please Source Envsetup In The Father Dir And Then  Cast The $TOP Dir To This Script"
 	echo "(1)source build/envsetup.sh in this dir and don't source in father dir(too high arm-linux-g++)"
 	echo "(2)./startbuild ,As this script do it..." 
 	echo "(3)make && make install (install should be sudo )"
