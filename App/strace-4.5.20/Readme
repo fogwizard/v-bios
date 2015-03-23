@@ -1,0 +1,1 @@
+make LDLIBS="-static -Wl --start-group -lc -lnss_files -lnss_dns -lresolv -Wl --end-group"
