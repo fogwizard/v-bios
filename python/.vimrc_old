@@ -1,0 +1,46 @@
+"config begin 
+"impressive : http://amix.dk/vim/vimrc.html
+"==========================================
+"General  
+"==========================================
+" history存储长度
+set history=1000       
+"检测文件类型  
+filetype on  
+" 针对不同的文件类型采用不同的缩进格式    
+filetype indent on                 
+"允许插件    
+filetype plugin on  
+"启动自动补全  
+filetype plugin indent on  
+" 非兼容vi模式。去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
+set nocompatible        
+set autoread          " 文件修改之后自动载入。  
+set shortmess=atI       " 启动的时候不显示那个援助索马里儿童的提示  
+
+" 取消备份。  
+" Turn backup off, since most stuff is in SVN, git et.c anyway...  
+set nobackup  
+set nowb  
+set noswapfile  
+
+"粘贴时保持格式  
+set paste  
+"- 则点击光标不会换,用于复制  
+set mouse-=a           " 在所有的模式下面打开鼠标。  
+set selection=exclusive    
+set selectmode=mouse,key  
+
+" No annoying sound on errors  
+" 去掉输入错误的提示声音  
+set noerrorbells  
+set novisualbell  
+set t_vb=  
+set tm=500  
+
+"==========================================  
+" show and format  
+"==========================================  
+"显示行号：  
+set number  
+set nowrap  " 取消换行.
