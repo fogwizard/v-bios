@@ -16,7 +16,20 @@ int file_size2(const char* filename)
 int test_header(unsigned char *data)
 {
 	unsigned char *p=data;
+	struct struct_zip *zip=NULL;
 	if(NULL==p)return -EACCES;
+	if(*p++!=0x1F){
+		printf("File Type Error,line=%d,Exit Now\n",__LINE__);
+		return -EAGAIN;
+	}
+	if(*p++!=0x8B){
+		printf("File Type Error,line=%d,Exit Now\n",__LINE__);
+		return -EAGAIN;
+	}
+	if(*p++!=0x08){
+		printf("File Type Error,line=%d,Exit Now\n",__LINE__);
+		return -EAGAIN;
+	}
 	return 0;
 }
 int do_gunzip(const char *name)
